@@ -100,12 +100,11 @@
 
 %--------------Now the document begins------------------
 
-\title{Approximate Counting Edge Covers via Correlation Decay}
+\title{A Simple FPTAS for Counting Edge Covers}
 \begin{document}
 \maketitle
 \begin{abstract}
-	An edge cover for an undirected graph is the set of edges covering every vertices in the graph.
-	We demonstrate the correlation decay property of sampling edge covers in general graphs, and present a PTAS for the approximate counting edge covers in general graphs.
+An edge cover of a graph is a set of edges such that every vertex has at least an adjacent edge in it. Previously, approximation algorithm is only known for 3 regular graphs and it is randomized. We design a very simple deterministic fully polynomial-time approximation scheme  (FPTAS) for counting the number of edge covers for any graph. Our main technique is correlation decay, which is a powerful tool to design FPTAS for counting problems. In order to get FPTAS for general graphs without degree bound, we make use of a stronger notion called computationally efficient correlation decay, which is introduced in [Li, Lu, Yin SODA 2012].  
 \end{abstract}
 \section{Introduction}
 Since we are only dealing with undirected graph, we will simply write graph to refer to undirected graph.
@@ -347,7 +346,10 @@ so we have
 
 Note that $\forall i$, both $G_i^1, G_i^2$ must be dangling graphs.(FIXME \footnote{ Can we say nontrivial dangling graphs if we restrict graphs to have at least 6 vertices?})
 
-	\section{The Correlation Decay Property}
+\section{The Algorithm}
+
+
+\section{The Correlation Decay Property}
 	\subsection{Nontrivial Dangling Graphs}
 	FIXME: introduce the recursion depth as a parameter into the recursion.
 
@@ -410,5 +412,8 @@ Note that $\forall i$, both $G_i^1, G_i^2$ must be dangling graphs.(FIXME \footn
 			\sum_i \frac{\partial \mathbb{P}\left( \beta = 0 \right) }{ \partial P(G_i^2, f_i) } \leq d_1 \left( \frac{1}{2} \right)^{d_1-1} +d_2 \left( \frac{1}{2} \right)^{d_2-1}
 		\]
 	\end{Cor}
+
+	\subsection{Computationally Efficient Correlation Decay}
+
 
 \end{document}
