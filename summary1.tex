@@ -115,18 +115,18 @@ TBA.
 \section{Preliminaries}
 \subsection{Definitions}
 \begin{Def}
-	A hanging edge $e=(u,\_)$ of a graph is such singleton edge with only one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
+	A dangling edge $e=(u,\_)$ of a graph is such singleton edge with only one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
 
-	A completely hanging edge $e=(\_, \_)$ of a graph is such edge with no end-point vertex. Note that a completely hanging edge is not a hanging edge.
+	A completely dangling edge $e=(\_, \_)$ of a graph is such edge with no end-point vertex. Note that a completely dangling edge is not a dangling edge.
 
-	A graph with at least one hanging edge is called a non-trivial hanging graph.
+	A graph with at least one dangling edge is called a non-trivial dangling graph.
 	
-	Here's the list of configurations of trivial hanging graphs:(FIXME DRAW FIGURES) 
+	Here's the list of configurations of trivial dangling graphs:(FIXME DRAW FIGURES) 
 	\begin{itemize}
 		\item  $E=\emptyset$.
 		\item $V=\emptyset$.
-		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still hanging graphs, either trivial or not}) Graphs containing only a vertex with only hanging edges.
-		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still hanging graphs, either trivial or not}) Graphs containing only completely hanging edges.
+		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only a vertex with only dangling edges.
+		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only completely dangling edges.
 	\end{itemize}
 \end{Def}
 
@@ -134,7 +134,7 @@ Other definitions TBA.
 \subsection{Notations}
 For a graph $G=(V,E)$ and edge $e=(u,v) \in E$, let $G-e \triangleq (V, E-e)$, and $G-e-u-v \triangleq (V-\set{u,v}, E-e)$.
 
-For example, given a degree-3 vertex $u$ with hanging edge $e$, the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
+For example, given a degree-3 vertex $u$ with dangling edge $e$, the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
 FIXME: also define $G-e-u$.
 
 \begin{figure}[htp]
@@ -171,7 +171,7 @@ FIXME: also define $G-e-u$.
 		\caption{$G-e-u$}
 		\label{fig:G-e-u}
 	\end{subfigure}
-	\caption{Hanging graphs examples.}
+	\caption{Dangling graphs examples.}
 \end{figure}
 
 We use $0$ to denote scalar value $0$, and $\mathbf{0}$ to denote vector value 0, and $\set{e_i}_{i=1}^{d}$ denote the $d$-dimensional vector with $i$-th coordinate being $e_i$, so $\set{e_i} = \mathbf{0}$ means $\forall i, e_i = 0$.
@@ -185,9 +185,9 @@ Given a graph $G=(V,E)$ with edge $e$,  now define $P(G, e)$ to be the probabili
 \end{equation}
 
 Now we're ready for writing out the recursion.
-\subsection{Nontrivial Hanging Graphs}
+\subsection{Nontrivial Dangling Graphs}
 \begin{Prop}
-For nontrivial hanging graph $G=(V,E)$ with a hanging edge $e=(u,\_)$, denote the $d$ %non-hanging?
+For nontrivial dangling graph $G=(V,E)$ with a dangling edge $e=(u,\_)$, denote the $d$ %non-dangling?
 edges incident with $u$ except $e$ as $e_1, e_2, \ldots, e_d$,
 let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), so we have%. $P(G,e)$ satisfies
 	\begin{equation}
@@ -215,21 +215,22 @@ let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), 
 \end{proof}
 
 \begin{Cor}
-	For nontrivial hanging graphs,
+	For nontrivial dangling graphs,
 	\[P(G, e) \leq \frac{1}{2}\]
 \end{Cor}
 
-As a side note, note that $\forall i, G_i$ is a hanging graph (maybe trivial hanging graphs though), although $e_i$ can be a completely hanging edge.
+In fact this corrolary comes no surprise, because by looking combinatorially, picking a dangling edge should definitely yields more solutions.
 
-TODO: sum of partial derivatives < 1, hence the correlation decay property on hanging graphs.
+As a side note, note that $\forall i, G_i$ is a dangling graph (maybe trivial dangling graphs though), although $e_i$ can be a completely dangling edge.
 
-\subsection{Trivial Hanging Graphs}
+
+\subsection{Trivial Dangling Graphs}
 TBA.
 
 \subsection{General Graphs}
-Here we focus on graphs with no hanging edges and no completely hanging edges, as trivial hanging graphs is just trivial base cases, and nontrivial hanging graphs has been handled in the previous section.
+Here we focus on graphs with no dangling edges and no completely dangling edges, as trivial dangling graphs is just trivial base cases, and nontrivial dangling graphs has been handled in the previous section.
 
-Here's a typical example of converting a general graph to hanging graphs.
+Here's a typical example of converting a general graph to dangling graphs.
 Say we picked $e=(u,v)$ out of any general graph as in figure \ref{fig:generalG}, again we want to write the recursion of $P(G,e)$ for $G$.
 By definition we have 
 \begin{equation}
@@ -324,8 +325,6 @@ And denote $Z = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}$, we also have,
 	\caption{General graphs examples.}
 \end{figure}
 
-% FIXME it doesn't look right here... Why it seems we need to estimate 3 terms instead of just 1 term namely $Z_{\alpha = 0, \beta = 0}$?
-
 First consider the term $ \mathbb{P}\left( \alpha = 0, \beta = 0 \right) = \frac{\sum_{\alpha = \mathbf{0}, \beta = \mathbf{0}} Z_{\alpha, \beta}^{G_2}}{Z} $, it says the probability in edge coverings of $G_2$ that none of the edges $\set{e_i}$ and none of $\set{f_i}$ is chosen.
 
 Denote $G_i^1 \triangleq G - e - u - v - \sum_{k=1}^{i-1} e_k$, and $G_i^2 \triangleq G-e-u-v - \sum_{k=1}^{d_1}e_k - \sum_{k=1}^{i-1} f_k$,
@@ -346,7 +345,70 @@ so we have
 	\end{align*}
 \end{proof}
 
-Note that $\forall i$, both $G_i^1, G_i^2$ must be hanging graphs.(FIXME \footnote{ Can we say nontrivial hanging graphs if we restrict graphs to have at least 6 vertices?})
+Note that $\forall i$, both $G_i^1, G_i^2$ must be dangling graphs.(FIXME \footnote{ Can we say nontrivial dangling graphs if we restrict graphs to have at least 6 vertices?})
 
-	TODO: show that $\mathbb{P}\left( \alpha = 0, \beta = 0 \right), \mathbb{P}\left( \alpha = 0 \right), \mathbb{P}\left( \beta = 0 \right)$ has correlation decay property, hence the correlation decay property on $P(G, e)$ on general graphs.
+	\section{The Correlation Decay Property}
+	\subsection{Nontrivial Dangling Graphs}
+	FIXME: introduce the recursion depth as a parameter into the recursion.
+
+	\begin{Prop}
+		If every $G_i$ is nontrivial dangling graphs, and $e_i$ is not completely dangling, 
+		\begin{align*}
+			\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} < 1 
+		\end{align*}
+	\end{Prop}
+
+	\begin{proof}
+		Denote $i^*$ be one of the indices of smallest $P(G_i, e_i)$, also note that for nontrivial dangling graphs, $P(G,e) \leq \frac{1}{2}$.
+	\begin{align*}
+		\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}}  =& \cfrac{\sum_i \prod_{k \neq i} P(G_k, e_k)  }{\left( 2 - \prod_i P(G_i, e_i) \right)^2} \\
+		\leq & d \prod_{k \neq i^*} P(G_k, e_k) \\
+		\leq & d \left( \frac{1}{2} \right)^{d-1}
+	\end{align*}
+
+	So for $d \geq 3$ we already have $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} < 1$.
+
+	Note that $d\geq 1$ because the graph is nontrivial.
+	Now first consider $d=1$, $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} = \frac{1}{\left( 2 - P(G_1,e_1) \right)^2} < \frac{4}{9} $.
+
+	Next consider $d=2$,  $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} = \frac{P(G_1,e_1) + P(G_2,e_2)}{\left( 2 - P(G_1,e_1)P(G_2,e_2) \right)^2} < \frac{16}{49} $.
+	\end{proof}
+
+	\subsection{General Graphs}
+
+	Note that the recursion for general graph is applied only once, so it's sufficient to show that the sum of the partial derivatives is bounded.
+
+	\begin{Prop}
+		\begin{align*}
+			\frac{\partial \mathbb{P}\left( \alpha = 0, \beta = 0 \right) }{ \partial P(G_i^1, e_i) } \leq (\frac{1}{2})^{d_1 + d_2 -1} \\
+			\frac{\partial \mathbb{P}\left( \alpha = 0, \beta = 0 \right) }{ \partial P(G_i^2, f_i) } \leq (\frac{1}{2})^{d_1 + d_2 -1} 
+		\end{align*}
+	\end{Prop}
+	\begin{proof}
+		\begin{align*}
+			\frac{\partial \mathbb{P}\left( \alpha = 0, \beta = 0 \right) }{ \partial P(G_k^1, e_k) } = &\frac{\prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) }{\partial P(G_k^1, e_k)} \\
+			=&\prod_{i=1,i\neq k}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i)\\
+			\leq & (\frac{1}{2})^{d_1 + d_2 -1}
+		\end{align*}
+		Similarly for $\frac{\partial \mathbb{P}\left( \alpha = 0, \beta = 0 \right) }{ \partial P(G_i^2, f_i) }$.
+	\end{proof}
+
+	\begin{Cor}
+		\[\sum_k \frac{\partial \mathbb{P}\left( \alpha = 0, \beta = 0 \right) }{ \partial P(G_k^1, e_k) } + \sum_k \frac{\partial \mathbb{P}\left( \alpha = 0, \beta = 0 \right) }{ \partial P(G_k^2, f_k) } \leq (d_1 + d_2) (\frac{1}{2})^{d_1+d_2-1}\]
+	\end{Cor}
+
+	\begin{Prop}
+		\begin{align*}
+			\frac{\partial \mathbb{P}\left( \alpha = 0 \right) }{ \partial P(G_i^1, e_i) } \leq (\frac{1}{2})^{d_1 -1} \\
+			\frac{\partial \mathbb{P}\left( \beta = 0 \right) }{ \partial P(G_i^2, f_i) } \leq (\frac{1}{2})^{d_2 -1} 
+		\end{align*}
+	\end{Prop}
+
+	\begin{Cor}
+		\[ 
+			\sum_i \frac{\partial \mathbb{P}\left( \alpha = 0 \right) }{ \partial P(G_i^1, e_i) } +
+			\sum_i \frac{\partial \mathbb{P}\left( \beta = 0 \right) }{ \partial P(G_i^2, f_i) } \leq d_1 \left( \frac{1}{2} \right)^{d_1-1} +d_2 \left( \frac{1}{2} \right)^{d_2-1}
+		\]
+	\end{Cor}
+
 \end{document}
