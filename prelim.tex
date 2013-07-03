@@ -1,0 +1,75 @@
+
+\section{Preliminaries}
+\subsection{Definitions}
+An edge cover of a graph is a set of edges such that every vertex has at least an adjacent edge in it.
+
+Given a graph $G=(V,E)$ with edge $e$,  we use $P(G, e)$ to denote the marginal probability over all edge covers of $G$ that edge $e$ is not chosen, or formally,
+\begin{equation}
+	P(G, e) \triangleq \mathbb{P} \left(\textrm{edge $e$ is not chosen in $X$ } \mid \textrm{ $X$ is an edge cover of $G$} \right)
+	\label{defpge}
+\end{equation}
+
+Here are several concepts useful in the recursions.
+\begin{Def}
+	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with only one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
+
+	A {\bf completely dangling edge} $e=(\_, \_)$ of a graph is such edge with no end-point vertex. Note that a completely dangling edge is not a dangling edge.
+
+	A graph with at least one dangling edge is called {\bf non-trivial dangling graph}.
+
+	Here's the list of configurations of trivial dangling graphs:(FIXME DRAW FIGURES) 
+	\begin{itemize}
+		\item  $E=\emptyset$.
+		\item $V=\emptyset$.
+		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only a vertex with only dangling edges.
+		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only completely dangling edges.
+	\end{itemize}
+
+	We use {\bf non-dangling graphs} to refer to graphs containing neither dangling edges, nor completely dangling edges, and not trivial dangling graphs.
+\end{Def}
+
+\subsection{Notations}
+For a graph $G=(V,E)$ and edge $e=(u,v) \in E$, let $G-e \triangleq (V, E-e)$, and $G-e-u-v \triangleq (V-\set{u,v}, E-e)$.
+
+For example, given a degree-3 vertex $u$ with dangling edge $e$, the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
+FIXME: also define $G-e-u$.
+
+\begin{figure}[htp]
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\setlength{\unitlength}{1mm}
+		\begin{picture}(20,30)
+			\put(0,0){\circle*{10}}
+			\put(0,0){\line(1,1){10}}
+			\put(20,0){\circle*{10}}
+			\put(20,0){\line(-1,1){10}}
+			\put(10,10){\circle*{10}}
+			\put(10,10){\line(0,1){10}}
+			\put(14,10){$u$}
+			\put(8,15){$e$}
+			\put(2,6){$e_1$}
+			\put(15,5){$e_2$}
+		\end{picture}
+		\caption{$G$}
+		\label{fig:G}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\setlength{\unitlength}{1mm}
+		\begin{picture}(20,20)
+			\put(0,0){\circle*{10}}
+			\put(0,0){\line(0,1){10}}
+			\put(20,0){\circle*{10}}
+			\put(20,0){\line(0,1){10}}
+			\put(2,6){$e_1$}
+			\put(15,6){$e_2$}
+		\end{picture}
+		\caption{$G-e-u$}
+		\label{fig:G-e-u}
+	\end{subfigure}
+	\caption{Dangling graphs examples.}
+\end{figure}
+
+We use $0$ to denote scalar value $0$, and $\mathbf{0}$ to denote vector value 0, and $\set{e_i}_{i=1}^{d}$ denote the $d$-dimensional vector with $i$-th coordinate being $e_i$, so $\set{e_i} = \mathbf{0}$ means $\forall i, e_i = 0$.
+

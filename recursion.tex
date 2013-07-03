@@ -1,0 +1,208 @@
+
+\section{The Recursion}
+
+
+Now we're ready for the recursion.
+\subsection{Nontrivial Dangling Graphs}
+\begin{Prop}
+For nontrivial dangling graph $G=(V,E)$ with a dangling edge $e=(u,\_)$, denote the $d$ %non-dangling?
+edges incident with $u$ except $e$ as $e_1, e_2, \ldots, e_d$,
+let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), so we have%. $P(G,e)$ satisfies
+	\begin{equation}
+		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)} = \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
+		\label{propp3rg}
+	\end{equation}
+\end{Prop}
+\begin{proof}
+	For $\alpha \in \set{0,1}^d$, let $E_{\alpha}$ be the set of edge coverings in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\alpha$, denote $Z_{\alpha} = \norm{E_{\alpha}}$, and $Z = \sum_{\alpha \in \set{0,1}^d} Z_{\alpha}$. % \triangleq \set{X : X\subseteq E, $
+
+		Also note that counting edge coverings with restriction $\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$.
+	\begin{align*}
+		P(G,e) = & \frac{\textrm{number of solutions with $e$ not chosen}}{\textrm{total number of solutions}} \\
+		=& \frac{\sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha}} \\
+		=& \frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
+	\end{align*}
+
+	Now consider the term $\frac{Z_{\mathbf{0}}}{Z}$, it says the probability over all solutions in $G-e-u$ that none of $\set{e_i}_{i=1}^{d}$ is picked, so
+	\begin{align*}
+		\frac{Z_{\mathbf{0}}}{Z}=\mathbb{P} \left( \set{e_i} = \mathbf{0}\right) = \mathbb{P} (e_1 = 0) \prod_{i=2}^d \mathbb{P} \left(e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0}\right) = \prod_{i=1}^d P(G_i, e_i).
+	\end{align*}
+
+	Hence concludes the proof.
+	
+\end{proof}
+
+\begin{Cor}
+	For nontrivial dangling graphs,
+	\[P(G, e) \leq \frac{1}{2}\]
+\end{Cor}
+
+In fact this corrolary comes no surprise, because by looking combinatorially, picking a dangling edge should definitely yields more solutions.
+
+As a side note, note that $\forall i, G_i$ is a dangling graph (maybe trivial dangling graphs though), although $e_i$ can be a completely dangling edge.
+
+
+\subsection{Trivial Dangling Graphs}
+TBA.
+
+\subsection{General Graphs}
+Here we focus on graphs with no dangling edges and no completely dangling edges, as trivial dangling graphs is just trivial base cases, and nontrivial dangling graphs has been handled in the previous section.
+
+Here's a typical example of converting a general graph to dangling graphs.
+Say we picked $e=(u,v)$ out of any general graph as in figure \ref{fig:generalG}, again we want to write the recursion of $P(G,e)$ for $G$.
+By definition we have 
+\begin{equation}
+	P(G,e) = \frac{(\textrm{number of solutions in $G-e$})}{\textrm{(number of solutions in $G-e$) + (number of solutions in $G-e-u-v$)}}.
+\end{equation}
+
+
+	For $\alpha \in \set{0,1}^{d_1}, \beta \in \set{0,1}^{d_2}$, let $E_{\alpha,\beta}^G$ be the set of edge coverings in $G$ such that its restriction to $\set{e_i}_{i=1}^{d_1}$ is consistent with $\alpha$, and restriction to $\set{f_i}_{i=1}^{d_2}$ is consistent with $\beta$,  where $\set{e_i}$ is the set of edges incident with vertex $u$ except $e$, and $\set{f_i}$ is the set of edges incident with vertex $v$ except $e$, and $d_1 = \norm{\set{e_i}}, d_2 = \norm{\set{f_i}}$.
+
+	Denote $Z_{\alpha, \beta}^G \triangleq \norm{E_{\alpha, \beta}^G}$, $G_1 \triangleq G-e, G_2 \triangleq G-e-u-v$, $C_1$ be the number of solutions in $G_1$, $C_2$ be the number of solutions in $G_2$, now we have
+\begin{Prop}
+\[C_1 = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_1} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_2}\]
+\[C_2 = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}\]
+And denote $Z = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}$, we also have,
+\[P(G,e) = \frac{\sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_2}}{Z + \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_2}} = 1 - \frac{1}{2 + \mathbb{P}\left( \alpha = 0, \beta = 0 \right) - \mathbb{P} \left( \alpha = 0 \right) - \mathbb{P} \left( \beta = 0 \right)}\]
+\end{Prop}
+
+
+\begin{figure}[htp]
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\setlength{\unitlength}{1mm}
+		\begin{picture}(20,30)
+			\put(0,0){\circle*{10}}
+			\put(0,0){\line(1,1){10}}
+			\put(20,0){\circle*{10}}
+			\put(20,0){\line(-1,1){10}}
+			\put(10,10){\circle*{10}}
+			\put(10,10){\line(0,1){10}}
+			\put(10,20){\circle*{10}}
+			\put(10,20){\line(1,1){10}}
+			\put(10,20){\line(-1,1){10}}
+			\put(20,30){\circle*{10}}
+			\put(0,30){\circle*{10}}
+			\put(14,20){$v$}
+			\put(14,10){$u$}
+			\put(8,14.5){$e$}
+			\put(2,6){$e_1$}
+			\put(15,5){$e_2$}
+			\put(3,28){$f_1$}
+			\put(13,28){$f_2$}
+		\end{picture}
+		\caption{$G$}
+		\label{fig:generalG}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\setlength{\unitlength}{1mm}
+		\begin{picture}(20,30)
+			\put(0,1){\circle*{10}}
+			\put(0,0){\line(1,1){10}}
+			\put(20,1){\circle*{10}}
+			\put(20,0){\line(-1,1){10}}
+			\put(10,10){\circle*{10}}
+			\put(10,20){\circle*{10}}
+			\put(10,20){\line(1,1){10}}
+			\put(10,20){\line(-1,1){10}}
+			\put(20,30){\circle*{10}}
+			\put(0,30){\circle*{10}}
+			\put(14,20){$v$}
+			\put(14,10){$u$}
+			\put(2,6){$e_1$}
+			\put(15,5){$e_2$}
+			\put(3,28){$f_1$}
+			\put(13,28){$f_2$}
+		\end{picture}
+		\caption{$G_1 = G-e$}
+		\label{fig:generalG-e}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\setlength{\unitlength}{1mm}
+		\begin{picture}(20,20)
+			\put(0,1){\circle*{10}}
+			\put(0,1){\line(0,1){10}}
+			\put(20,1){\circle*{10}}
+			\put(20,1){\line(0,1){10}}
+			\put(20,30){\circle*{10}}
+			\put(20,30){\line(0,-1){10}}
+			\put(0,30){\circle*{10}}
+			\put(0,30){\line(0,-1){10}}
+			\put(2,6){$e_1$}
+			\put(15,6){$e_2$}
+			\put(2,24){$f_1$}
+			\put(15,24){$f_2$}
+		\end{picture}
+		\caption{$G_2 = G-e-u-v$}
+		\label{fig:generalG-e-u-v}
+	\end{subfigure}
+	\caption{General graphs examples.}
+\end{figure}
+
+First consider the term $ \mathbb{P}\left( \alpha = 0, \beta = 0 \right) = \frac{\sum_{\alpha = \mathbf{0}, \beta = \mathbf{0}} Z_{\alpha, \beta}^{G_2}}{Z} $, it says the probability in edge coverings of $G_2$ that none of the edges $\set{e_i}$ and none of $\set{f_i}$ is chosen.
+
+Let
+
+$G_i^1 \triangleq G - e - u - v - \sum_{k=1}^{i-1} e_k$,
+
+$G_i^2 \triangleq G-e-u-v - \sum_{k=1}^{d_1}e_k - \sum_{k=1}^{i-1} f_k$,
+
+$G_i^3 \triangleq G - e - u - v - \sum_{k=1}^{i-1} f_k$,
+
+so we have
+
+\begin{Prop}
+	\begin{align*}
+		\mathbb{P}\left( \alpha = 0\right) &= \prod_{i=1}^{d_1} P(G_i^1, e_i) \\
+		\mathbb{P}\left( \beta = 0\right) &= \prod_{i=1}^{d_1} P(G_i^3, f_i) \\
+		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) &= \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) 
+	\end{align*}
+\end{Prop}
+
+\begin{proof}
+	\begin{align*}
+		\mathbb{P}\left( \alpha = 0\right) =&\mathbb{P} \left( \set{e_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^1, e_i) \\
+		\mathbb{P}\left( \beta = 0\right) =&\mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^3, f_i) \\
+		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) =& \mathbb{P} \left( \alpha = 0 \right) \cdot \mathbb{P}\left( \beta = 0 \mid \alpha = 0 \right) \\
+		=& \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \cdot \mathbb{P} \left( \set{f_i} = \mathbf{0} \mid \set{e_i} = \mathbf{0} \right) \\
+=&\prod_{i=1}^{d_1} \mathbb{P} \left( e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0} \right) \cdot \prod_{i=1}^{d_2} \mathbb{P} \left( f_i = 0 \mid \set{e_j}_{j=1}^{d_1} = \mathbf{0},\set{f_j}_{j=1}^{i-1} = \mathbf{0} \right) \\
+=& \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) 
+	\end{align*}
+\end{proof}
+
+Note that $\forall i$, both $G_i^1, G_i^2$ must be dangling graphs.(FIXME \footnote{ Can we say nontrivial dangling graphs if we restrict graphs to have at least 6 vertices?})
+
+An over-simplified version of the computation tree and algorithm naturally follows. Despite its simplicity, it's FPTAS for constant bounded degree graph. In the next section, we establish its correlation decay property, and overcome the degree bound by a stronger notion called computationally efficient correlation decay.
+
+\IncMargin{1em}
+\begin{algorithm}[H]
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\emph{ \textbf{function} $\hat{P}(G, e, C, L):$}
+\BlankLine
+\Input{Graph $G$; edge $e$; boundary configuration $C$; recursion depth $L$; }
+\Output{Estimate of $P(G,e)$  using boundary configuration $C$.}
+\Begin{
+	\If{$G$ is trivial dangling graphs }{\Return{ $C\restriction e$}}
+	\ElseIf{$G$ is non-dangling graphs }{
+		$X \leftarrow \prod_{i=1}^{d_1} \hat{P}(G_i^1, e_i, C, L)$\;
+		$Y \leftarrow \prod_{i=1}^{d_2} \hat{P}(G_i^2, f_i, C, L)$\;
+		$Z \leftarrow \prod_{i=1}^{d_2} \hat{P}(G_i^3, f_i, C, L)$\;
+		\Return{ $1 - \cfrac{1}{2+ X\cdot Y  - X - Z }$ }\;
+	}
+	\ElseIf{$e$ is completely dangling }{
+		$e' \leftarrow \textrm{ any dangling edges in } G$\;
+		\Return{ $\hat{P}(G-e, e', C, L-1) $}\;
+	}
+	\Else(// $e$ is dangling and $G$ is nontrivial dangling){
+		$L' \leftarrow L - 1$\;
+		\Return{ $\frac{1-\prod_{i=1}^d \hat{P}(G_i, e_i, C, L')}{2 - \prod_{i=1}^d \hat{P}(G_i, e_i, C, L')}$} \;
+	}
+ }
+ \caption{Tree-depth based estimate of $P(G,e)$ }
+\end{algorithm}
+\DecMargin{1em}
+

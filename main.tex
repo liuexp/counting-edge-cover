@@ -1,0 +1,127 @@
+\documentclass[a4paper]{article}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+%\usepackage{minted}
+\usepackage{color}
+\usepackage{makeidx}
+\usepackage{xeCJK}
+%\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={AR PL New Kai}]{Adobe Song Std}
+\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{array}
+%\usepackage{gnuplot-lua-tikz}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{enumerate}
+%\geometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
+\usepackage{wrapfig}
+%\usepackage{lettrine}
+\usepackage{abstract}
+\usepackage{subcaption}
+
+% THEOREMS -------------------------------------------------------
+\newtheorem{Thm}{Theorem}
+\newtheorem{Cor}[Thm]{Corollary}
+\newtheorem{Conj}[Thm]{Conjecture}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Prob}{Problem}
+\newtheorem{Exam}{Example}
+\newtheorem{Def}[Thm]{Definition}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Not}[Thm]{Notation}
+\newtheorem*{Sol}{Solution}
+
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\CommentS}[1]{}
+% CODE ----------------------------------------------------------
+\newcommand{\PltImg}[1]{
+\begin{center}
+\input{#1}
+\end{center}
+}
+
+\newenvironment{code}%
+{\vglue 5pt \VerbatimEnvironment\begin{Sbox}\begin{minipage}{0.9\textwidth}\begin{small}\begin{Verbatim}}%
+{\end{Verbatim}\end{small}\end{minipage}\end{Sbox}\setlength{\shadowsize}{2pt}\shadowbox{\TheSbox}\vglue 5pt}
+
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\tikzstyle{weight} = [font=\small]
+\tikzstyle{edge} = [draw,thick,->,every node/.style={font=\sffamily\small}]
+\tikzstyle{vertex}=[circle,fill=blue!20,minimum size=20pt,inner sep=0pt]
+%\usetikzlibrary{automata}
+%\usepackage[latin1]{inputenc}
+\usepackage{verbatim}
+\usepackage{listings}
+%\usepackage{algorithmic} %old version; we can use algorithmicx instead
+%\usepackage{algorithm}
+%\usepackage[noend]{algpseudocode} %for pseudo code, include algorithmicsx automatically
+\usepackage[ruled,vlined]{algorithm2e}
+
+\lstdefinelanguage{Smalltalk}{
+  morekeywords={self,super,true,false,nil,thisContext}, % This is overkill
+  morestring=[d]',
+  morecomment=[s]{"}{"},
+  alsoletter={\#:},
+  escapechar={!},
+  literate=
+    {BANG}{!}1
+    {UNDERSCORE}{\_}1
+    {\\st}{Smalltalk}9 % convenience -- in case \st occurs in code
+    % {'}{{\textquotesingle}}1 % replaced by upquote=true in \lstset
+    {_}{{$\leftarrow$}}1
+    {>>>}{{\sep}}1
+    {^}{{$\uparrow$}}1
+    {~}{{$\sim$}}1
+    {-}{{\sf -\hspace{-0.13em}-}}1  % the goal is to make - the same width as +
+    %{+}{\raisebox{0.08ex}{+}}1		% and to raise + off the baseline to match -
+    {-->}{{\quad$\longrightarrow$\quad}}3
+	, % Don't forget the comma at the end!
+  tabsize=2
+}[keywords,comments,strings]
+
+\lstloadlanguages{C++, Lisp, Haskell, Python, Smalltalk, Mathematica} %, Java,bash,Gnuplot,make,Matlab,PHP,Prolog,R,Ruby,sh,SQL,TeX,XML}
+
+%--------------Now the document begins------------------
+
+\title{A Simple FPTAS for Counting Edge Covers}
+\begin{document}
+\author{Chengyu Lin
+	\and
+	Jingcheng Liu
+	\and
+	Pinyan Lu
+}
+\maketitle
+\begin{abstract}
+An edge cover of a graph is a set of edges such that every vertex has at least an adjacent edge in it. Previously, approximation algorithm is only known for 3 regular graphs and it is randomized. We design a very simple deterministic fully polynomial-time approximation scheme  (FPTAS) for counting the number of edge covers for any graph. Our main technique is correlation decay, which is a powerful tool to design FPTAS for counting problems. In order to get FPTAS for general graphs without degree bound, we make use of a stronger notion called computationally efficient correlation decay, which is introduced in [Li, Lu, Yin SODA 2012].  
+\end{abstract}
+
+\input{intro.tex}
+
+\input{prelim.tex}
+
+\input{recursion.tex}
+
+\input{cdproperty.tex}
+
+\input{fptas.tex}
+\end{document}

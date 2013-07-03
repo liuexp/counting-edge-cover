@@ -1,0 +1,31 @@
+
+\section{Computation Tree and an FPTAS Algorithm}
+%P(G,e,C,L) - P(G,e,C',L)
+\IncMargin{1em}
+\begin{algorithm}[H]
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\emph{ \textbf{function} $P(G, e, C, L):$}
+\BlankLine
+\Input{Graph $G$; edge $e$; boundary configuration $C$; M-based depth $L$; }
+\Output{Estimate of $P(G,e)$ from vertices in $B^*_M(L)$ using boundary configuration $C$.}
+\Begin{
+	\If{$G$ is trivial dangling graphs }{\Return{ $C\restriction e$}}
+	\ElseIf{$G$ is non-dangling graphs }{
+		$X \leftarrow \prod_{i=1}^{d_1} P(G_i^1, e_i, C, L)$\;
+		$Y \leftarrow \prod_{i=1}^{d_2} P(G_i^2, f_i, C, L)$\;
+		$Z \leftarrow \prod_{i=1}^{d_2} P(G_i^3, f_i, C, L)$\;
+		\Return{ $1 - \cfrac{1}{2+ X\cdot Y  - X - Z }$ }\;
+	}
+	\ElseIf{$e$ is completely dangling }{
+		$e' \leftarrow \textrm{ any dangling edges in } G$\;
+		\Return{ $P(G-e, e', C, L-1) $}\;
+	}
+	\Else(// $e$ is dangling and $G$ is nontrivial dangling){
+		$L' \leftarrow L - \lceil \log_M\left( d + 1 \right) \rceil$\;
+		\Return{ $\frac{1-\prod_{i=1}^d P(G_i, e_i, C, L')}{2 - \prod_{i=1}^d P(G_i, e_i, C, L')}$} \;
+	}
+ }
+ \caption{Estimate $P(G,e)$ using $B^*_M(L)$}
+\end{algorithm}
+\DecMargin{1em}
+
