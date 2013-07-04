@@ -3,33 +3,35 @@
 \subsection{Definitions}
 An edge cover of a graph is a set of edges such that every vertex has at least an adjacent edge in it.
 
-Given a graph $G=(V,E)$ with edge $e$,  we use $P(G, e)$ to denote the marginal probability over all edge covers of $G$ that edge $e$ is not chosen, or formally,
+Given a graph $G=(V,E)$ with edge $e$,  we use $EC(G)$ to denote the set of all edge covers of graph $G$, and $P(G, e)$ to denote the marginal probability over $EC(G)$ that edge $e$ is not chosen, or formally, with $X \sim EC(G)$ uniformly,
 \begin{equation}
-	P(G, e) \triangleq \mathbb{P} \left(\textrm{edge $e$ is not chosen in $X$ } \mid \textrm{ $X$ is an edge cover of $G$} \right)
+	P(G, e) \triangleq \mathbb{P} \left(\textrm{edge $e$ is not chosen in $X$ } \right)
 	\label{defpge}
 \end{equation}
 
-Here are several concepts useful in the recursions.
+In this paper, we deal with an extended notion of graphs where dangling edges and free edges may be allowed.
 \begin{Def}
 	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with only one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
 
 	A {\bf free edge} $e=(\_, \_)$ of a graph is such edge with no end-point vertex. Note that a free edge is not a dangling edge.
 
-	A graph with at least one dangling edge is called {\bf non-trivial dangling graph}.
+%	A graph with at least one dangling edge is called {\bf non-trivial dangling graph}.
+%
+%	We use {\bf non-dangling graphs} to refer to graphs containing neither dangling edges, nor free edges, and not trivial dangling graphs.
 
-	Here's the list of configurations of trivial dangling graphs:(FIXME DRAW FIGURES) 
-	\begin{itemize}
-		\item  $E=\emptyset$.
-		\item $V=\emptyset$.
-		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only a vertex with only dangling edges.
-		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only free edges.
-	\end{itemize}
-
-	We use {\bf non-dangling graphs} to refer to graphs containing neither dangling edges, nor free edges, and not trivial dangling graphs.
 \end{Def}
 
+	So we use graph to refer graphs in the usual sense with or without dangling edges or free edges.
+	Edges in the usual sense (i.e. not dangling and not free), will be refered to as normal edges, 
+	and graphs with only normal edges(i.e. graphs in the usual sense) will be refered to as normal graphs.
+
+	We remark that an alternative view to these combinatorial definitions is from Rtw-Mon-CNF,
+	a dangling edge is just a variable which only appears at one clause, and a free edge is a variable
+	that does not appear at all, whereas normal edge just corresponds to variables appearing twice.
+
+
 \subsection{Notations}
-For a graph $G=(V,E)$ and edge $e=(u,v) \in E$, let $G-e \triangleq (V, E-e)$, and $G-e-u-v \triangleq (V-\set{u,v}, E-e)$.
+For a graph $G=(V,E)$ and a normal edge $e=(u,v) \in E$, let $G-e \triangleq (V, E-e)$, and $G-v \triangleq (V-\set{v}, E-e)$.
 
 For example, given a degree-3 vertex $u$ with dangling edge $e$, the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
 FIXME: also define $G-e-u$.
