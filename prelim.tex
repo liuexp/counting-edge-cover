@@ -22,15 +22,25 @@ In this paper, we deal with an extended notion of undirected graphs where dangli
 \end{Def}
 
 	So we use graph to refer graphs in the usual sense with or without dangling edges or free edges.
-	Edges in the usual sense (i.e. not dangling and not free), will be refered to as normal edges, 
+	Edges in the usual sense (i.e. not dangling and not free), will be refered to as normal edges,
 	and graphs with only normal edges(i.e. graphs in the usual sense) will be refered to as normal graphs.
 
 	We remark that an alternative view to these combinatorial definitions is from Rtw-Mon-CNF,
 	a dangling edge is just a variable which only appears at one clause, and a free edge is a variable
 	that does not appear at all, whereas normal edge just corresponds to variables appearing twice.
 
-\subsection{Notations}
-For a graph $G=(V,E)$ and an edge (may or may not be normal) $e \in E$, let $G-e \triangleq (V, E-e)$, and $G-v \triangleq (V-\set{v}, \set{(x,y):x\neq v, y\neq v, (x,y) \in E} \cup \set{(x,\_):(v,x) \in E})$.
+%\subsection{Notations}
+
+For a graph $G=(V,E)$ with an edge (may be dangling or free) $e \in E$ and a vertex $v \in V$,
+$$G-e \triangleq (V, E-e)$$
+and
+\begin{align*}
+G-v \triangleq & (V-\set{v}, \set{(x,y):x \in V-\set{v}, y \in V-\set{v}, (x,y) \in E}  \\
+ &\cup \set{(x,\_):x \in V-\set{v}, (v,x) \in E}  \\
+ &\cup \set{(\_,\_): (v,\_) \in E \text{ or } (v,v) \in E})
+\end{align*}
+
+Note that here in edge set $E$, duplicates are allowed. We may have multiple dangling edges $(v,\_)$, many free edges $(\_,\_)$ and even parallel edges between two vertices $(u,v)$.
 
 For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure \ref{fig:G} , the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
 
@@ -72,4 +82,3 @@ For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure 
 \end{figure}
 
 We use $0$ to denote scalar value $0$, and $\mathbf{0}$ to denote vector value 0, and $\set{e_i}_{i=1}^{d}$ denote the $d$-dimensional vector with $i$-th coordinate being $e_i$, so $\set{e_i} = \mathbf{0}$ means $\forall i, e_i = 0$.
-

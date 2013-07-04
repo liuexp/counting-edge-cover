@@ -23,12 +23,12 @@ Note the recursion depth used here is actually the so-called $M$-based depth int
 	}
 	\ElseIf{$e$ is dangling }{
 		$L' \leftarrow L - \lceil \log_M\left( d + 1 \right) \rceil$\;
-		\Return{ $\frac{1-\prod_{i=1}^d P(G_i, e_i, C, L')}{2 - \prod_{i=1}^d P(G_i, e_i, C, L')}$} \;
+		\Return{ $\frac{1-\prod_{i=1}^d P(G_i, e_i, L')}{2 - \prod_{i=1}^d P(G_i, e_i, L')}$} \;
 	}
 	\Else(// $e$ is normal ){
-		$X \leftarrow \prod_{i=1}^{d_1} P(G_i^1, e_i, C, L)$\;
-		$Y \leftarrow \prod_{i=1}^{d_2} P(G_i^2, f_i, C, L)$\;
-		$Z \leftarrow \prod_{i=1}^{d_2} P(G_i^3, f_i, C, L)$\;
+		$X \leftarrow \prod_{i=1}^{d_1} P(G_i^1, e_i, L)$\;
+		$Y \leftarrow \prod_{i=1}^{d_2} P(G_i^2, f_i, L)$\;
+		$Z \leftarrow \prod_{i=1}^{d_2} P(G_i^3, f_i, L)$\;
 		\Return{ $1 - \cfrac{1}{2+ X\cdot Y  - X - Z }$ }\;
 	}
  }
