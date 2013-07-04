@@ -1,1 +1,2 @@
-	
+all:
+	xelatex main.tex
