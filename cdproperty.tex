@@ -62,12 +62,30 @@ Given a $d_1$-dimensional vector $x \in [0, \frac{1}{2}]^{d_1}$ and two $d_2$-di
 	\begin{proof}
 		\begin{align*}
 		\abs{ \sum_i \frac{\partial g(x,y,z)}{\partial x_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
-		&\leq d_1 \frac{1}{2^{d_1 - 1}} \\
-		\abs{ \sum_i \frac{\partial g(x,y,z)}{\partial x_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
-		&\leq d_1 \frac{1}{2^{d_1 - 1}} \\
-		\abs{ \sum_i \frac{\partial g(x,y,z)}{\partial x_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
-		&\leq d_1 \frac{1}{2^{d_1 - 1}} \\
+		&\leq d_1 \frac{1}{2^{d_1 - 1}}  \leq 1 \\
+		\abs{ \sum_i \frac{\partial g(x,y,z)}{\partial y_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+		&\leq d_2 \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
+		\abs{ \sum_i \frac{\partial g(x,y,z)}{\partial z_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+		&\leq d_2 \frac{1}{2^{d_2 - 1}} \leq 1 \\
 		\end{align*}
 	\end{proof}
 
+	Now we are ready for the main theorem.
+
+	\begin{proof}
+		First we note that by Mean Value Theorem,
+		given estimated $\hat{x}$, let $x$ be the true value, let $i^*$ be the indices that maximizes $\abs{x_i - \hat{x_i}}$.
+		we have
+		\[ \abs{f(\hat{x}) - f(x)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
+
+		Given estimated $\hat{x},\hat{y},\hat{z}$,
+		\[ \abs{g(\hat{x}, \hat{y}, \hat{z}) - g(x,y,z)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
+		\[ \abs{g(\hat{x}, \hat{y}, \hat{z}) - g(x,y,z)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
+		\[ \abs{g(\hat{x}, \hat{y}, \hat{z}) - g(x,y,z)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
+
+
+		We prove by simple induction.$L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling, when $e$ is normal we have 
+
+		Case 1, $e$ is dangling edge.
+	\end{proof}<++>
 	Note that the recursion for general graph is applied only once, so it's sufficient to show that the sum of the partial derivatives is bounded.
