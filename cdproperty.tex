@@ -1,21 +1,30 @@
 \section{Correlation Decay Property}
-In this section, we establish the correlation decay property first on nontrivial dangling graphs, then generalize it to general graphs and graphs without degree bound.
 
-\begin{Def}
-	The recursion on $P(G,e, C, L)$ is said to exhibit exponential correlation decay phenomenon if for every two boundary conditions $C, C'$ and some constant $\alpha <1$,
-	\[\abs{P(G,e,C,L) - P(G,e,C',L)} = O(\alpha ^L)\]
-\end{Def}
+In the last section we show an algorithm $P(G,e,L)$ for estimating the marginal probability $P(G,e)$,
+so here we establish the exponential correlation decay property, in the stronger sense with the $M$-based depth, of the estimation error in $P(G,e,L)$.%, hence $P(G,e,L)$
 
-FIXME: is this equivalent to saying $L$ is just the distance of $e$ from the set of edges in which $C,C'$ differs?
+\begin{Thm}
+	Given graph $G$, edge $e$ and a depth $L$,
+	\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L}\]
+\end{Thm}
+
+Such phenomenon is usually refered to as exponential correlation decay. Before we prove the main theorem, we will introduce a few useful propositions and lemmas.
+
+\begin{Prop}
+	\[P(G, e) \leq \frac{1}{2}\]
+\end{Prop}
+
+\begin{proof}
+	Although one may examine this case by case algebraically, this propositions can be seen quite obvious combinatorially in that, for any edge cover $X \in EC(G)$ s.t. $e \notin X$, $X+e$ is also an edge cover in $G$, and $\forall X,Y \in EC(G)$ s.t. $X \neq Y, e \notin X, e\notin Y$, we have $X+e \neq Y+e$. So the edge covers with $e$ chosen is at least as many as the edge covers with $e$ not chosen, hence concludes the proposition follows.
+\end{proof}
 
 
-	\subsection{Nontrivial Dangling Graphs}
-	\begin{Prop}
-		If every $G_i$ is nontrivial dangling graphs, and $e_i$ is not free, 
+	\begin{Lem}
+		Given graph $G$ and a dangling edge $e$,
 		\begin{align*}
-			\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} < 1 
+			\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} \leq \frac{1}{2}. 
 		\end{align*}
-	\end{Prop}
+	\end{Lem}
 
 	\begin{proof}
 		Denote $i^*$ be one of the indices of smallest $P(G_i, e_i)$, since for nontrivial dangling graphs, $P(G,e) \leq \frac{1}{2}$.
@@ -25,18 +34,18 @@ FIXME: is this equivalent to saying $L$ is just the distance of $e$ from the set
 		\leq & d \left( \frac{1}{2} \right)^{d-1}
 	\end{align*}
 
-	So for $d \geq 3$ we already have $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} < 1$.
+	So for $d \geq 4$ we have $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} \leq \frac{1}{2}$.
 
 	Note that $d\geq 1$ because the graph is nontrivial.
 
-	Now first consider $d=1$, $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} = \frac{1}{\left( 2 - P(G_1,e_1) \right)^2} < \frac{4}{9} $.
+	Now first consider $d=1$, $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} = \frac{1}{\left( 2 - P(G_1,e_1) \right)^2} \leq \frac{4}{9} $.
 
-	Next consider $d=2$,  $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} = \frac{P(G_1,e_1) + P(G_2,e_2)}{\left( 2 - P(G_1,e_1)P(G_2,e_2) \right)^2} < \frac{16}{49} $.
+	Next consider $d=2$,  $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} = \frac{P(G_1,e_1) + P(G_2,e_2)}{\left( 2 - P(G_1,e_1)P(G_2,e_2) \right)^2} \leq \frac{16}{49} $.
+
+	Finally for $d=3$,  $\abs{\sum_i \cfrac{\partial P(G,e)}{\partial P(G_i,e_i)}} = \frac{P(G_1,e_1) + P(G_2,e_2)}{\left( 2 - P(G_1,e_1)P(G_2,e_2) \right)^2} < \frac{16}{49} $.
 	\end{proof}
 
-	\subsection{General Graphs}
 
-	Note that the recursion for general graph is applied only once, so it's sufficient to show that the sum of the partial derivatives is bounded.
 
 	\begin{Prop}
 		\begin{align*}
@@ -73,9 +82,4 @@ FIXME: is this equivalent to saying $L$ is just the distance of $e$ from the set
 		\]
 	\end{Cor}
 
-	\subsection{Computationally Efficient Correlation Decay}
-	TODO: define the recursion depth of an edge.
-	\begin{Def}
-		Let $T$ be a rooted tree, $M\geq 2$ be a constant, the M-based depth $L_M (e)$ of a edge $e$ in $T$ is defined recursively as follows:
-		$L_M (e) = 0$ if ???
-	\end{Def}
+	Note that the recursion for general graph is applied only once, so it's sufficient to show that the sum of the partial derivatives is bounded.

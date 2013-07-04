@@ -70,7 +70,7 @@ By definition we have
 \[\norm{EC(G-e)} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_1} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_2}\]
 %\[C_2 = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}\]
 
-Since we are only working with $G_2$, we may simply denote $Z_{\alpha, \beta} \triangleq Z_{\alpha, \beta}^{G_2}$, now let $Z = \sum_{\alpha , \beta} Z_{\alpha, \beta}$, we have,
+Since we are only working with $G_2$, we may simply denote $Z_{\alpha, \beta} \triangleq Z_{\alpha, \beta}^{G_2}$, now let $Z = \sum_{\alpha , \beta} Z_{\alpha, \beta}$, and $\mathbb{P} \left( \alpha = 0, \beta = 0 \right) \triangleq \frac{Z_{\mathbf{0},\mathbf{0}}}{Z}, \mathbb{P} \left( \alpha = \mathbf{0} \right) \triangleq \frac{\sum_{\beta} Z_{\mathbf{0}, \beta} }{Z}, \mathbb{P} \left( \beta = \mathbf{0} \right) \triangleq \frac{\sum_{\alpha} Z_{ \alpha , \mathbf{0}} }{Z}$ we have,
 
 \begin{Prop}
 	
@@ -161,7 +161,7 @@ P(G,e) &= \frac{\sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, 
 	\caption{Normal edge examples.}
 \end{figure}
 
-First consider the term $ \mathbb{P}\left( \alpha = 0, \beta = 0 \right) = \frac{\sum_{\alpha = \mathbf{0}, \beta = \mathbf{0}} Z_{\alpha, \beta}^{G_2}}{Z} $, it says the probability in edge coverings of $G_2$ that none of the edges $\set{e_i}$ and none of $\set{f_i}$ is chosen.
+%First consider the term $ \mathbb{P}\left( \alpha = 0, \beta = 0 \right) = \frac{\sum_{\alpha = \mathbf{0}, \beta = \mathbf{0}} Z_{\alpha, \beta}^{G_2}}{Z} $, it says the probability in edge coverings of $G_2$ that none of the edges $\set{e_i}$ and none of $\set{f_i}$ is chosen.
 
 Let
 
@@ -191,6 +191,10 @@ so we have
 =& \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) 
 	\end{align*}
 \end{proof}
+
+\begin{Cor}
+	TBA.
+\end{Cor}
 
 Note that $\forall i$, neither $e_i, f_i$ can be normal edge, in other words, this final case is invoked only once.
 (FIXME \footnote{$e_i,f_i$ in $G$ must be modified to be not normal in $G_i$.})

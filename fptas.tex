@@ -5,8 +5,9 @@
 We may compute the marginal probability $P(G, e)$ with the previous recursion, but
 that could take recursion depth of $O(n)$ which results in exponential computation time.
 
-So here we use a truncated computation tree for an estimate of $P(G,e)$,
-note the recursion depth here is actually the so-called $M$-based depth introduced in \cite{LLY12}.
+So here we use a truncated computation tree for an estimate of $P(G,e)$.
+
+Note the recursion depth used here is actually the so-called $M$-based depth introduced in \cite{LLY12}.
 
 \IncMargin{1em}
 \begin{algorithm}[H]
@@ -31,7 +32,7 @@ note the recursion depth here is actually the so-called $M$-based depth introduc
 		\Return{ $1 - \cfrac{1}{2+ X\cdot Y  - X - Z }$ }\;
 	}
  }
- \caption{Estimate $P(G,e)$ up to M-based depth $L$}
+ \caption{Estimate $P(G,e)$ up to depth $L$}
 \end{algorithm}
 \DecMargin{1em}
 
