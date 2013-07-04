@@ -16,9 +16,8 @@
 		$Z \leftarrow \prod_{i=1}^{d_2} P(G_i^3, f_i, C, L)$\;
 		\Return{ $1 - \cfrac{1}{2+ X\cdot Y  - X - Z }$ }\;
 	}
-	\ElseIf{$e$ is completely dangling }{
-		$e' \leftarrow \textrm{ any dangling edges in } G$\;
-		\Return{ $P(G-e, e', C, L-1) $}\;
+	\ElseIf{$e$ is free }{
+		\Return{ $\frac{1}{2}$}\;
 	}
 	\Else(// $e$ is dangling and $G$ is nontrivial dangling){
 		$L' \leftarrow L - \lceil \log_M\left( d + 1 \right) \rceil$\;

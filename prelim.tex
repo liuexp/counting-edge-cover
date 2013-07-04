@@ -13,7 +13,7 @@ Here are several concepts useful in the recursions.
 \begin{Def}
 	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with only one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
 
-	A {\bf completely dangling edge} $e=(\_, \_)$ of a graph is such edge with no end-point vertex. Note that a completely dangling edge is not a dangling edge.
+	A {\bf free edge} $e=(\_, \_)$ of a graph is such edge with no end-point vertex. Note that a free edge is not a dangling edge.
 
 	A graph with at least one dangling edge is called {\bf non-trivial dangling graph}.
 
@@ -22,10 +22,10 @@ Here are several concepts useful in the recursions.
 		\item  $E=\emptyset$.
 		\item $V=\emptyset$.
 		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only a vertex with only dangling edges.
-		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only completely dangling edges.
+		\item (FIXME MAYBE NOT NEEDED \footnote{check if each $G_i$ is still dangling graphs, either trivial or not}) Graphs containing only free edges.
 	\end{itemize}
 
-	We use {\bf non-dangling graphs} to refer to graphs containing neither dangling edges, nor completely dangling edges, and not trivial dangling graphs.
+	We use {\bf non-dangling graphs} to refer to graphs containing neither dangling edges, nor free edges, and not trivial dangling graphs.
 \end{Def}
 
 \subsection{Notations}

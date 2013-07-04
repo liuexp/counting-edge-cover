@@ -39,14 +39,14 @@ let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), 
 
 In fact this corrolary comes no surprise, because by looking combinatorially, picking a dangling edge should definitely yields more solutions.
 
-As a side note, note that $\forall i, G_i$ is a dangling graph (maybe trivial dangling graphs though), although $e_i$ can be a completely dangling edge.
+As a side note, note that $\forall i, G_i$ is a dangling graph (maybe trivial dangling graphs though), although $e_i$ can be a free edge.
 
 
 \subsection{Trivial Dangling Graphs}
 TBA.
 
 \subsection{General Graphs}
-Here we focus on graphs with no dangling edges and no completely dangling edges, as trivial dangling graphs is just trivial base cases, and nontrivial dangling graphs has been handled in the previous section.
+Here we focus on graphs with no dangling edges and no free edges, as trivial dangling graphs is just trivial base cases, and nontrivial dangling graphs has been handled in the previous section.
 
 Here's a typical example of converting a general graph to dangling graphs.
 Say we picked $e=(u,v)$ out of any general graph as in figure \ref{fig:generalG}, again we want to write the recursion of $P(G,e)$ for $G$.
@@ -193,9 +193,8 @@ An over-simplified version of the computation tree and algorithm naturally follo
 		$Z \leftarrow \prod_{i=1}^{d_2} \hat{P}(G_i^3, f_i, C, L)$\;
 		\Return{ $1 - \cfrac{1}{2+ X\cdot Y  - X - Z }$ }\;
 	}
-	\ElseIf{$e$ is completely dangling }{
-		$e' \leftarrow \textrm{ any dangling edges in } G$\;
-		\Return{ $\hat{P}(G-e, e', C, L-1) $}\;
+	\ElseIf{$e$ is free }{
+		\Return{ $\frac{1}{2}$}\;
 	}
 	\Else(// $e$ is dangling and $G$ is nontrivial dangling){
 		$L' \leftarrow L - 1$\;
