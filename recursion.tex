@@ -195,32 +195,3 @@ so we have
 Note that $\forall i$, neither $e_i, f_i$ can be normal edge, in other words, this final case is invoked only once.
 (FIXME \footnote{$e_i,f_i$ in $G$ must be modified to be not normal in $G_i$.})
 
-%An over-simplified version of the computation tree and algorithm naturally follows. Despite its simplicity, it's FPTAS for constant bounded degree graph. In the next section, we establish its correlation decay property, and overcome the degree bound by a stronger notion called computationally efficient correlation decay.
-%
-%\IncMargin{1em}
-%\begin{algorithm}[H]
-%\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
-%\emph{ \textbf{function} $\hat{P}(G, e, C, L):$}
-%\BlankLine
-%\Input{Graph $G$; edge $e$; boundary configuration $C$; recursion depth $L$; }
-%\Output{Estimate of $P(G,e)$  using boundary configuration $C$.}
-%\Begin{
-%	\If{$G$ is trivial dangling graphs }{\Return{ $C\restriction e$}}
-%	\ElseIf{$G$ is non-dangling graphs }{
-%		$X \leftarrow \prod_{i=1}^{d_1} \hat{P}(G_i^1, e_i, C, L)$\;
-%		$Y \leftarrow \prod_{i=1}^{d_2} \hat{P}(G_i^2, f_i, C, L)$\;
-%		$Z \leftarrow \prod_{i=1}^{d_2} \hat{P}(G_i^3, f_i, C, L)$\;
-%		\Return{ $1 - \cfrac{1}{2+ X\cdot Y  - X - Z }$ }\;
-%	}
-%	\ElseIf{$e$ is free }{
-%		\Return{ $\frac{1}{2}$}\;
-%	}
-%	\Else(// $e$ is dangling and $G$ is nontrivial dangling){
-%		$L' \leftarrow L - 1$\;
-%		\Return{ $\frac{1-\prod_{i=1}^d \hat{P}(G_i, e_i, C, L')}{2 - \prod_{i=1}^d \hat{P}(G_i, e_i, C, L')}$} \;
-%	}
-% }
-% \caption{Tree-depth based estimate of $P(G,e)$ }
-%\end{algorithm}
-%\DecMargin{1em}
-%
