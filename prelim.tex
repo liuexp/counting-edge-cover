@@ -9,7 +9,7 @@ Given a graph $G=(V,E)$ with edge $e$,  we use $EC(G)$ to denote the set of all 
 	\label{defpge}
 \end{equation}
 
-In this paper, we deal with an extended notion of graphs where dangling edges and free edges may be allowed.
+In this paper, we deal with an extended notion of undirected graphs where dangling edges and free edges may be allowed.
 \begin{Def}
 	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with only one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
 
@@ -29,12 +29,10 @@ In this paper, we deal with an extended notion of graphs where dangling edges an
 	a dangling edge is just a variable which only appears at one clause, and a free edge is a variable
 	that does not appear at all, whereas normal edge just corresponds to variables appearing twice.
 
-
 \subsection{Notations}
-For a graph $G=(V,E)$ and a normal edge $e=(u,v) \in E$, let $G-e \triangleq (V, E-e)$, and $G-v \triangleq (V-\set{v}, E-e)$.
+For a graph $G=(V,E)$ and an edge (may or may not be normal) $e \in E$, let $G-e \triangleq (V, E-e)$, and $G-v \triangleq (V-\set{v}, \set{(x,y):x\neq v, y\neq v, (x,y) \in E} \cup \set{(x,\_):(v,x) \in E})$.
 
-For example, given a degree-3 vertex $u$ with dangling edge $e$, the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
-FIXME: also define $G-e-u$.
+For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure \ref{fig:G} , the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
 
 \begin{figure}[htp]
 	\begin{subfigure}[b]{0.45\textwidth}
