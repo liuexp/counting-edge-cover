@@ -26,8 +26,10 @@ Given a $d_1$-dimensional vector $x \in [0, \frac{1}{2}]^{d_1}$ and two $d_2$-di
 
 
 	\begin{Lem}
+		For $d$-variate function $f(x)$,
 		\begin{align*}
-			\abs{\sum_i \cfrac{\partial f(x)}{\partial x_i}} \leq \frac{1}{2}. 
+			\abs{\sum_i \cfrac{\partial f(x)}{\partial x_i}} \leq & \frac{1}{2}. \\
+			\abs{\sum_i \cfrac{\partial f(x)}{\partial x_i}} \leq & d \left( \frac{1}{2} \right)^{d-1}
 		\end{align*}
 	\end{Lem}
 
@@ -74,18 +76,50 @@ Given a $d_1$-dimensional vector $x \in [0, \frac{1}{2}]^{d_1}$ and two $d_2$-di
 
 	\begin{proof}
 		First we note that by Mean Value Theorem,
-		given estimated $\hat{x}$, let $x$ be the true value, let $i^*$ be the indices that maximizes $\abs{x_i - \hat{x_i}}$.
-		we have
-		\[ \abs{f(\hat{x}) - f(x)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
+		given estimated $\hat{x}$, let $x$ be the true value, let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$.
+		we have for $d$-variate function $f$,
+		\begin{align*}
+		\abs{f(\hat{x}) - f(x)} \leq& \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \epsilon \\
+		\leq & d\cdot \left( \frac{1}{2} \right)^{d-1} \cdot \epsilon
+		\end{align*}
 
-		Given estimated $\hat{x},\hat{y},\hat{z}$,
-		\[ \abs{g(\hat{x}, \hat{y}, \hat{z}) - g(x,y,z)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
-		\[ \abs{g(\hat{x}, \hat{y}, \hat{z}) - g(x,y,z)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
-		\[ \abs{g(\hat{x}, \hat{y}, \hat{z}) - g(x,y,z)} \leq \abs{\sum_i \frac{\partial f(x)}{\partial x_i}} \cdot \abs{x_i^* - \hat{x_i}^*} \]
+		Given estimated $\hat{x},\hat{y},\hat{z}$, let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$.
+		\begin{align*}
+		\abs{g(\hat{x}, \hat{y}, \hat{z}) - g(x,y,z)} \leq & \left(  \abs{\sum_i \frac{\partial g(x,y,z)}{\partial x_i}} +\abs{ \sum_i \frac{\partial g(x,y,z)}{\partial y_i}} + \abs{ \sum_i \frac{\partial g(x,y,z)}{\partial z_i}} \right) \cdot \epsilon \\
+		\leq & 3\epsilon
+		\end{align*}
 
 
-		We prove by simple induction.$L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling, when $e$ is normal we have 
+		Also note that the recursion for normal edge case is applied only once.
+		Now we prove by simple induction.
+		The hypothesis is
+		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
+		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
+		
+		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling. When $e$ is normal, since the normal case only appears once, we have the maximal estimation error for the first two cases that $\epsilon \leq \frac{1}{2}$, so to sum up we have $\abs{P(G,e,L) - P(G,e)} \leq 3\cdot\frac{1}{2}$.
 
-		Case 1, $e$ is dangling edge.
-	\end{proof}<++>
-	Note that the recursion for general graph is applied only once, so it's sufficient to show that the sum of the partial derivatives is bounded.
+		Now suppose for $L<k$ we have the induction hypothesis true, now we try to show it's true for $L=k$.
+
+		{\bf Case 1}, $e$ is free edge, then $\abs{P(G,e,L) - P(G,e)} = 0$.
+
+		{\bf Case 2}, $e=(u,\_)$ is dangling with $deg(u)=d+1$, then by induction hypothesis we have $\epsilon \leq \frac{1}{2}^{L-\lceil \log_6{d+1}\rceil}$.
+		Now we only need to show that for $d \leq 4$,
+		\[\frac{1}{2^{1+L-\lceil \log_6{(d+1)}\rceil}} \leq \frac{1}{2^L}\]
+		which is obvious because $\lceil\log_6{d+1}\rceil \leq 1$.
+		Next we show for $d >4$, 
+		\[ d\cdot \left( \frac{1}{2} \right)^{d-1 + L - \lceil \log_6{d+1}\rceil}  \leq \left( \frac{1}{2} \right)^L \]
+		Namely for $d \geq 5$,
+		\[ \log_2 d + \lceil \log_6{(d+1)} \rceil \leq d-1\]
+		For $d=5,6$, one can directly examine that as $\log_2 d < 3$; for $d\geq7$, by simply taking the derivative one can show that
+		\[ \log_2 d + 1 + \log_6{(d+1)} \leq d-1\]
+
+		Therefore, the second part of the hypothesis for $L=k$ is verified.
+		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
+
+		{\bf Case 3}, $e$ is normal edge. Since the normal case only appears once at the root of the computation tree,
+		by induction hypothesis we have the maximal estimation error $\epsilon \leq (\frac{1}{2})^{L+1}$,
+		now we have the first part of the hypothesis for $L=k$ verified.
+		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
+		
+		To sum up, this concludes the proof for our main theorem.
+	\end{proof}
