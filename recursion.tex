@@ -175,7 +175,7 @@ so we have
 \begin{Prop}
 	\begin{align*}
 		\mathbb{P}\left( \alpha = 0\right) &= \prod_{i=1}^{d_1} P(G_i^1, e_i) \\
-		\mathbb{P}\left( \beta = 0\right) &= \prod_{i=1}^{d_1} P(G_i^3, f_i) \\
+		\mathbb{P}\left( \beta = 0\right) &= \prod_{i=1}^{d_2} P(G_i^3, f_i) \\
 		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) &= \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i)
 	\end{align*}
 \end{Prop}
@@ -183,7 +183,7 @@ so we have
 \begin{proof}
 	\begin{align*}
 		\mathbb{P}\left( \alpha = 0\right) =&\mathbb{P} \left( \set{e_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^1, e_i) \\
-		\mathbb{P}\left( \beta = 0\right) =&\mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^3, f_i) \\
+		\mathbb{P}\left( \beta = 0\right) =&\mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_2} P(G_i^3, f_i) \\
 		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) =& \mathbb{P} \left( \alpha = 0 \right) \cdot \mathbb{P}\left( \beta = 0 \mid \alpha = 0 \right) \\
 		=& \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \cdot \mathbb{P} \left( \set{f_i} = \mathbf{0} \mid \set{e_i} = \mathbf{0} \right) \\
 =&\prod_{i=1}^{d_1} \mathbb{P} \left( e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0} \right) \cdot \prod_{i=1}^{d_2} \mathbb{P} \left( f_i = 0 \mid \set{e_j}_{j=1}^{d_1} = \mathbf{0},\set{f_j}_{j=1}^{i-1} = \mathbf{0} \right) \\
@@ -192,11 +192,9 @@ so we have
 \end{proof}
 
 \begin{Cor}
-	\[P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_1} P(G_i^3, f_i)}\]
+	\[P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_2} P(G_i^3, f_i)}\]
 \end{Cor}
 
 Note that for every $i$, $e_i$ is dangling or free in $G_i^1$, $f_i$ is dangling or free in $G_i^3$, and in $G_i^2$, neither $e_i$ nor $f_i$ is normal.
-
-%Note that $\forall i$, neither $e_i, f_i$ can be normal edge, in other words, this final case is invoked only once.
-%(FIXME \footnote{$e_i,f_i$ in $G$ must be modified to be not normal in $G_i$.})
+(FIXME \footnote{$e_i,f_i$ in $G$ must be modified to be not normal in $G_i$.})
 
