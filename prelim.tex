@@ -31,21 +31,29 @@ In this paper, we deal with an extended notion of undirected graphs where dangli
 
 %\subsection{Notations}
 
-For a graph $G=(V,E)$ with an edge (may be dangling or free) $e \in E$ and a vertex $v \in V$,
-$$G-e \triangleq (V, E-e)$$
-and
+For a graph $G=(V,E)$, an edge $e = (u,v) \in E$ and a vertex $u \in V$,
+define 
 \begin{align*}
-G-v \triangleq & (V-\set{v}, \set{(x,y):x \in V-\set{v}, y \in V-\set{v}, (x,y) \in E}  \\
- &\cup \set{(x,\_):x \in V-\set{v}, (v,x) \in E}  \\
- &\cup \set{(\_,\_): (v,\_) \in E \text{ or } (v,v) \in E})
+G - e &\triangleq (V, E-e) \\
+e - u &\triangleq (\_, v) \text{(note that here $v$ could be $\_$)} \\
+G - u &\triangleq (V - u, \set{e: e \in E, e\text{ is not incident with }u} \cup \set{e - u: e \in E, e\text{ is incident with }u})
 \end{align*}
+
+%For a graph $G=(V,E)$ with an edge (may be dangling or free) $e \in E$ and a vertex $v \in V$,
+%$$G-e \triangleq (V, E-e)$$
+%and
+%\begin{align*}
+%G-v \triangleq & (V-\set{v}, \set{(x,y):x \in V-\set{v}, y \in V-\set{v}, (x,y) \in E}  \\
+% &\cup \set{(x,\_):x \in V-\set{v}, (v,x) \in E}  \\
+% &\cup \set{(\_,\_): (v,\_) \in E \text{ or } (v,v) \in E})
+%\end{align*}
 
 Note that here in edge set $E$, duplicates are allowed. We may have multiple dangling edges $(v,\_)$, many free edges $(\_,\_)$ and even parallel edges between two vertices $(u,v)$.
 
 For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure \ref{fig:G} , the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
 
 \begin{figure}[htp]
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
 		\centering
 		\setlength{\unitlength}{1mm}
 		\begin{picture}(20,30)
@@ -64,7 +72,7 @@ For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure 
 		\label{fig:G}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.3\textwidth}
 		\centering
 		\setlength{\unitlength}{1mm}
 		\begin{picture}(20,20)
@@ -77,6 +85,24 @@ For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure 
 		\end{picture}
 		\caption{$G-e-u$}
 		\label{fig:G-e-u}
+	\end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\setlength{\unitlength}{1mm}
+		\begin{picture}(20,20)
+			\put(0,0){\circle*{10}}
+			\put(0,0){\line(0,1){10}}
+			\put(20,0){\circle*{10}}
+			\put(20,0){\line(-1,1){10}}
+			\put(10,10){\circle*{10}}
+			\put(10,10){\line(0,1){10}}
+			\put(14,10){$u$}
+			\put(8,15){$e$}
+			\put(2,6){$e_1$}
+			\put(15,5){$e_2$}
+		\end{picture}
+		\caption{$e_1-u$}
+		\label{fig:e-u}
 	\end{subfigure}
 	\caption{Dangling edges examples.}
 \end{figure}
