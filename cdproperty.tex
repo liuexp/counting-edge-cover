@@ -105,40 +105,43 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		{\bf Case 1}, $e$ is free edge, then $\abs{P(G,e,L) - P(G,e)} = 0$.
 
 		{\bf Case 2}, $e=(u,\_)$ is dangling with $deg(u)=d+1$, then by induction hypothesis we have 
-%		$\epsilon \leq \frac{1}{2}^{L-\lceil \log_6{d+1}\rceil}$.
-%
-%		First we need to show that for $d \leq 4$,
-%		\[\frac{1}{2^{1+L-\lceil \log_6{(d+1)}\rceil}} \leq \frac{1}{2^L}\]
-%
-%		which is obvious because $\lceil\log_6{d+1}\rceil \leq 1$.
-%
-%		Next we show for $d >4$,
-%		\[ d\cdot \left( \frac{1}{2} \right)^{d-1 + L - \lceil \log_6{d+1}\rceil}  \leq \left( \frac{1}{2} \right)^L \]
-%
-%		Namely for $d \geq 5$,
-%		\[ \log_2 d + \lceil \log_6{(d+1)} \rceil \leq d-1\]
-%
-%		For $d=5,6$, one can directly examine that as $\log_2 d < 3$ and $\log_6 (d+1) < 2$.
-%
-%        %For $d\geq7$, by simply taking the derivative one can show that
-%		%\[ \log_2 d + \log_6{(d+1)} \leq d-1\]
+		$\epsilon \leq \frac{1}{2}^{L-\lceil \log_6{d+1}\rceil}$.
+
+		First we need to show that for $d \leq 4$,
+		\[\frac{1}{2^{1+L-\lceil \log_6{(d+1)}\rceil}} \leq \frac{1}{2^L}\]
+
+		which is obvious because $\lceil\log_6{d+1}\rceil \leq 1$.
+
+		Next we show for $d \geq 5$,
+		\[ d\cdot \left( \frac{1}{2} \right)^{d-1 + L - \lceil \log_6{(d+1)}\rceil}  \leq \left( \frac{1}{2} \right)^L \]
+
+		Namely for $d \geq 5$,
+		\[ \log_2 d + \lceil \log_6{(d+1)} \rceil \leq d-1\]
+
+		For $d=5,6$, one can directly examine that as $\log_2 d < 3$ and $\log_6 (d+1) < 2$.
+
+        %For $d\geq7$, by simply taking the derivative one can show that
+		%\[ \log_2 d + \log_6{(d+1)} \leq d-1\]
+		% @mrain:The derivative is wrong.
 %        Since $\frac{d \log_2 x + \log_6 (x+1)}{dx} = \frac{1}{x} + \frac{1}{x+1} < 1$ when $x \geq 7$.
 %        So for $d \ge 7$,
-%        \[ \log_2 d + \log_6{(d+1)} \leq d-1\]
 
-		$\epsilon \leq \frac{1}{2}^{L - \lceil d/5 \rceil}$.
-		First we need to show that for $d \leq 5$,
-		\[\frac{1}{2^{1+L-\lceil d/5\rceil}} \leq \frac{1}{2^L}\]
+		For $d\geq 7$, note that the function $f(x) = d-2 -\log_2 d - \log_6{(d+1)}$ is monotonically increasing, and $f(7)>0$, so we have 
+        \[ \log_2 d + \log_6{(d+1)} + 1 \leq d-1\]
 
-		which is obvious because $\lceil d/5 \rceil \leq 1$, 
-
-		Next we show for $d \geq 6$,
-		\[ d\cdot \left( \frac{1}{2} \right)^{d-1 + L - \lceil d/5 \rceil}  \leq \left( \frac{1}{2} \right)^L \]
-
-		Namely for $d \geq 6$,
-		\[ \log_2 d + \lceil d/5 \rceil \leq d-1\]
-
-		This is followed from that the function $f(x) = x - 2 - d/5 - \log_2 d$ is monotonically increasing, and $f(6)>0$.
+%		$\epsilon \leq \frac{1}{2}^{L - \lceil d/5 \rceil}$.
+%		First we need to show that for $d \leq 5$,
+%		\[\frac{1}{2^{1+L-\lceil d/5\rceil}} \leq \frac{1}{2^L}\]
+%
+%		which is obvious because $\lceil d/5 \rceil \leq 1$, 
+%
+%		Next we show for $d \geq 6$,
+%		\[ d\cdot \left( \frac{1}{2} \right)^{d-1 + L - \lceil d/5 \rceil}  \leq \left( \frac{1}{2} \right)^L \]
+%
+%		Namely for $d \geq 6$,
+%		\[ \log_2 d + \lceil d/5 \rceil \leq d-1\]
+%
+%		This is followed from that the function $f(x) = x - 2 - d/5 - \log_2 d$ is monotonically increasing, and $f(6)>0$.
 
 		Therefore, the second part of the hypothesis for $L=k$ is verified.
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]

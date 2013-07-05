@@ -2,9 +2,13 @@
 
 Finally, we present the procedures for approximately counting edge covers given good estimations of the marginal probability $P(G,e)$, hence an FPTAS for the approximate counting of edge covers problem.
 
-Let $Z(G) \triangleq \norm{EC(G)}$,
+\begin{Prop}
+	
+	Let $Z(G) \triangleq \norm{EC(G)}$, order the set of edges in $G$ in any order as $\set{e_i}$
 
-\[ Z(G) = \frac{1}{\prod_i (1 - P(G_i, e_i))} \]
+\[ Z(G) = \frac{1}{\prod_i^m (1 - P(G_i, e_i))} \]
+
+\end{Prop}
 
 $m$ edges, 
 take $L=O(\log m + \log(1/ \epsilon))$

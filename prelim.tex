@@ -15,9 +15,6 @@ In this paper, we deal with an extended notion of undirected graphs where dangli
 
 	A {\bf free edge} $e=(\_, \_)$ of a graph is such edge with no end-point vertex. Note that a free edge is not a dangling edge.
 
-%	A graph with at least one dangling edge is called {\bf non-trivial dangling graph}.
-%
-%	We use {\bf non-dangling graphs} to refer to graphs containing neither dangling edges, nor free edges, and not trivial dangling graphs.
 
 \end{Def}
 
@@ -28,8 +25,6 @@ In this paper, we deal with an extended notion of undirected graphs where dangli
 	We remark that an alternative view to these combinatorial definitions is from Rtw-Mon-CNF,
 	a dangling edge is just a variable which only appears at one clause, and a free edge is a variable
 	that does not appear at all, whereas normal edge just corresponds to variables appearing twice.
-
-%\subsection{Notations}
 
 For a graph $G=(V,E)$, an edge $e = (u,v) \in E$ and a vertex $u \in V$,
 define 
@@ -109,3 +104,5 @@ For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure 
 
 We use $0$ to denote scalar value $0$, and $\mathbf{0}$ to denote vector value 0, and $\set{e_i}_{i=1}^{d}$ denote the $d$-dimensional vector with $i$-th coordinate being $e_i$, so $\set{e_i} = \mathbf{0}$ means $\forall i, e_i = 0$.
 We also use the convention that when $d=0, \prod_i^d p_i \triangleq 1$.
+
+In general we use $n$ to refer to the number of vertices in a given graph, and $m$ to refer to the number of edges.
