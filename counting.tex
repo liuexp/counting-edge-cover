@@ -4,14 +4,55 @@ Finally, we present the procedures for approximately counting edge covers given 
 
 \begin{Prop}
 	
-	Let $Z(G) \triangleq \norm{EC(G)}$, order the set of edges in $G$ in any order as $\set{e_i}$
+	Let $Z(G) \triangleq \norm{EC(G)}$, order the set of edges in $G$ in any order as $\set{e_i}$, define $G_1 \triangleq G, G_i \triangleq G_{i-1} - e_{i-1} - u_{i-1} - v_{i-1}, 1 < i \leq m $.
 
-\[ Z(G) = \frac{1}{\prod_i^m (1 - P(G_i, e_i))} \]
+	\[ Z(G) = \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i))} \]
 
 \end{Prop}
 
-$m$ edges, 
-take $L=O(\log m + \log(1/ \epsilon))$
+\begin{proof}
+	Note that $EC(G) \neq \emptyset$, since the set of all edges $E$ is an edge cover.
 
-TODO.
+	Now with $X \sim EC(G)$ uniformly, $\mathbb{P}(X=E)$ has two equivalent expressions,
+	\begin{align*}
+		\mathbb{P} (X = E) =& \frac{1}{Z(G)} \\
+		\mathbb{P} (X = E) =& \prod_i \mathbb{P} \left(e_i = 1 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{1} \right) \\
+		=&\prod_i P(G_i, e_i)
+	\end{align*}
 
+	Therefore we have 
+	\[ Z(G) = \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i))} \]
+\end{proof}
+
+We now show the main theorem of this section.
+Define $Z(G, L) \triangleq \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i, L)}$ as the estimated number of edge covers given estimated $P(G_i, e_i, L)$
+
+\begin{Thm}
+	For $0< \epsilon <1$, take $L=\log m + \log(8/ \epsilon) $, 
+	\[ 1- \epsilon \leq \frac{Z(G, L)}{Z(G)} \leq 1+ \epsilon\]
+\end{Thm}
+
+\begin{proof}
+
+	\begin{align*}
+		\frac{Z(G,L)}{Z(G)} &= \prod_{i=1}^m \frac{1-P(G_i, e_i, L)}{1-P(G_i, e_i)}
+	\end{align*}
+
+	Note that by (FIXME refer to cd-main-theorem), 
+
+	\[\abs{P(G_i, e_i, L) - P(G,e)} \leq \frac{\epsilon}{4m}\]
+
+	Since $1-P(G,e) \geq \frac{1}{2}$,
+	\[ \frac{\abs{P(G_i, e_i, L) - P(G,e)}}{1 - P(G,e)} \leq \frac{\epsilon}{2m}\]
+	
+	Namely $\forall i$,
+	\[ \left( 1 - \frac{\epsilon}{2m} \right) \leq \frac{1-P(G_i, e_i, L)}{1 - P(G,e)} \leq \left( 1 + \frac{\epsilon}{2m} \right)\]
+	So we have
+	\[ \left( 1 - \frac{\epsilon}{2m} \right)^m \leq \prod_{i=1}^m \frac{1-P(G_i, e_i, L)}{1 - P(G,e)} \leq \left( 1 + \frac{\epsilon}{2m} \right)^m\]
+	\[ 1- \epsilon \leq \frac{Z(G, L)}{Z(G)} \leq 1+ \epsilon\]
+
+
+\end{proof}
+
+To sum up, run $Z(G, L)$ with $L = \log m + \log(8/ \epsilon)$, is the FPTAS for counting edge covers,
+the total running time is $O(m^2 \cdot n \cdot \frac{1}{\epsilon})$.

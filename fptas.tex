@@ -48,4 +48,4 @@ Note that the normal case is invoked only once, so the algorithm keeps exploring
 	 R(L) = 1, L\leq 0
  \end{align*}
 
- Therefore one may conclude that $R(L) \leq d^{1+\frac{L}{\log_6{(d+1)}}} \leq d\cdot M^L$, in other words, the running time of the above algorithm with recursion depth $L$ is at most $O(d\cdot M^L)$.
+ Therefore we conclude that $R(L) \leq d^{1+\frac{L}{\log_6{(d+1)}}} \leq d\cdot 6^L$, in other words, the running time of the above algorithm with recursion depth $L$ is at most $O(n\cdot 6^L)$.
