@@ -104,11 +104,15 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		{\bf Case 1}, $e$ is free edge, then $\abs{P(G,e,L) - P(G,e)} = 0$.
 
 		{\bf Case 2}, $e=(u,\_)$ is dangling with $deg(u)=d+1$, then by induction hypothesis we have $\epsilon \leq \frac{1}{2}^{L-\lceil \log_6{d+1}\rceil}$.
-		Now we only need to show that for $d \leq 4$,
+
+		First we need to show that for $d \leq 4$,
 		\[\frac{1}{2^{1+L-\lceil \log_6{(d+1)}\rceil}} \leq \frac{1}{2^L}\]
+
 		which is obvious because $\lceil\log_6{d+1}\rceil \leq 1$.
+
 		Next we show for $d >4$,
 		\[ d\cdot \left( \frac{1}{2} \right)^{d-1 + L - \lceil \log_6{d+1}\rceil}  \leq \left( \frac{1}{2} \right)^L \]
+
 		Namely for $d \geq 5$,
 		\[ \log_2 d + \lceil \log_6{(d+1)} \rceil \leq d-1\]
 
