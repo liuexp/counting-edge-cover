@@ -7,7 +7,8 @@ that could take recursion depth of $O(n)$ which results in exponential computati
 
 So here we use a truncated computation tree for an estimate of $P(G,e)$.
 
-Note the recursion depth used here is actually the so-called $M$-based depth introduced in \cite{LLY12} with $M=6$. We remark that actually $M$ could take any value as long as $M \geq 6$.
+%Note the recursion depth used here is actually the so-called $M$-based depth introduced in \cite{LLY12} with $M=6$. We remark that actually $M$ could take any value as long as $M \geq 6$.
+Note the recursion depth used here is just a natural generalization of the so-called $M$-based depth introduced in \cite{LLY12}, we remark that it's sufficient to get an FPTAS with $M\geq 6$ using the $M$-based depth, here we show a stronger efficient algorithm via a slightly modified notion of recursion depth.
 
 \IncMargin{1em}
 \begin{algorithm}[H]
@@ -17,12 +18,12 @@ Note the recursion depth used here is actually the so-called $M$-based depth int
 \Input{Graph $G$; edge $e$; Recursion depth $L$; }
 \Output{Estimate of $P(G,e)$ up to depth $L$ .}
 \Begin{
-	\If{$L=0$ }{\Return{ $\frac{1}{2}$}}
+	\If{$L\leq0$ }{\Return{ $\frac{1}{2}$}}
 	\ElseIf{$e$ is free }{
 		\Return{ $\frac{1}{2}$}\;
 	}
 	\ElseIf{$e$ is dangling }{
-		$L' \leftarrow L - \lceil \log_6\left( d + 1 \right) \rceil$\;
+		$L' \leftarrow L - \lceil d/5 \rceil$\;
 		\Return{ $\frac{1-\prod_{i=1}^d P(G_i, e_i, L')}{2 - \prod_{i=1}^d P(G_i, e_i, L')}$} \;
 	}
 	\Else(// $e$ is normal ){
@@ -36,3 +37,13 @@ Note the recursion depth used here is actually the so-called $M$-based depth int
 \end{algorithm}
 \DecMargin{1em}
 
+\subsection{Analysis of the Algorithm}
+Note that the normal case is invoked only once, so the algorithm keeps exploring in the third cases, until it hits the first 2 cases. Let $B(L)$ be the set of vertices in the recursion tree involved, and $R(L) \triangleq \norm{B(L)}$,
+ by the recursion on $P(G,e,L)$ in the third case we have the recursive relation for $R(L)$,
+ % Note that the corner case when $e$ is free so this is \leq rather than =
+ \begin{align*}
+	 R(L) \leq d R(L-d/5) , L > 0\\
+	 R(L) = 1, L\leq 0
+ \end{align*}
+
+ Therefore one may conclude that $R(L) \leq 5L + d$, in other words, the running time of the above algorithm with recursion depth $L$ is at most $O(n + L)$.
