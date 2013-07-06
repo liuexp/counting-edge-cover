@@ -34,15 +34,15 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\begin{Lem}
 		For $d$-variate function $f({\bf x})$,and a d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$,
 		\begin{align*}
-			\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
+			\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
 		\end{align*}
 	\end{Lem}
 
 	\begin{proof}
 		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
 	\begin{align*}
-		\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i \cfrac{ \prod_{k \neq i} x_k  }{\left( 2 - \prod_i x_i \right)^2} \\
-		\leq & d \prod_{k \neq i^*} x_k \\
+		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2} \\
+		\leq & d \prod_{k \neq i^*}^d x_k \\
 		\leq & d \left( \frac{1}{2} \right)^{d-1}
 	\end{align*}
 
@@ -70,11 +70,11 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 	\begin{proof}
 		\begin{align*}
-		 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+			\sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} } &= \sum_k^{d_1} \frac{\prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - \prod_i^{d_2} y_i \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
 		&\leq d_1 \frac{1}{2^{d_1 - 1}}  \leq 1 \\
-		 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} y_i \cdot \prod_{i}^{d_1} x_i}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
 		&\leq d_2 \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
-		 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} z_i }{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
 		&\leq d_2 \frac{1}{2^{d_2 - 1}} \leq 1 \\
 		\end{align*}
 	\end{proof}
@@ -129,7 +129,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		Namely for $d \geq 5$,
 		\[ \log_2 d + \lceil \log_6{(d+1)} \rceil \leq d-1\]
 
-		For $d=5,6$, one can directly examine that as $\log_2 d < 3$ and $\log_6 (d+1) < 2$.
+		For $d=5,6$, one can directly examine that as $\log_2 d < 3$ and $\log_6 6 =1, \log_6 7 < 2$.
 
         %For $d\geq7$, by simply taking the derivative one can show that
 		%\[ \log_2 d + \log_6{(d+1)} \leq d-1\]
