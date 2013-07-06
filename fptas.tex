@@ -1,13 +1,6 @@
 
 \section{Algorithm for Estimating Marginal Probability}
 
-We may compute the marginal probability $P(G, e)$ with the previous recursion, but
-that could take recursion depth of $O(n)$ which results in exponential computation time.
-So here we use a truncated computation tree for an estimate of $P(G,e)$.
-
-We remark that the recursion depth used here is actually the so-called $M$-based depth introduced in \cite{LLY12} with $M=6$. In fact $M$ could take any value as long as $M \geq 6$. %, and a slightly extended recursion depth could improve the algorithm running time for large $d$.
-%Note the recursion depth used here is just a natural generalization of the so-called $M$-based depth introduced in \cite{LLY12}, we remark that it's sufficient to get an FPTAS with $M\geq 6$ using the $M$-based depth, here we show a stronger efficient algorithm via a slightly modified notion of recursion depth.
-
 \IncMargin{1em}
 \begin{algorithm}[H]
 \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
@@ -35,6 +28,13 @@ We remark that the recursion depth used here is actually the so-called $M$-based
  \caption{Estimate $P(G,e)$ up to depth $L$}
 \end{algorithm}
 \DecMargin{1em}
+
+We may compute the marginal probability $P(G, e)$ with the previous recursion, but
+that could take recursion depth of $O(n)$ which results in exponential computation time.
+So here we use a truncated computation tree for an estimate of $P(G,e)$.
+
+We remark that the recursion depth used here is actually the so-called $M$-based depth introduced in \cite{LLY12} with $M=6$. In fact $M$ could take any value as long as $M \geq 6$. %, and a slightly extended recursion depth could improve the algorithm running time for large $d$.
+%Note the recursion depth used here is just a natural generalization of the so-called $M$-based depth introduced in \cite{LLY12}, we remark that it's sufficient to get an FPTAS with $M\geq 6$ using the $M$-based depth, here we show a stronger efficient algorithm via a slightly modified notion of recursion depth.
 
 %\subsection{Analysis of the Algorithm}
 
