@@ -110,7 +110,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		%\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 		
-		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling. When $e$ is normal, since the normal case only appears once, we have the maximal estimation error for the first two cases that $\epsilon \leq \frac{1}{2}$, so to sum up we have $\abs{P(G,e,L) - P(G,e)} \leq 3\cdot\frac{1}{2}$.
+		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling.% When $e$ is normal, since the normal case only appears once, we have the maximal estimation error for the first two cases that $\epsilon \leq \frac{1}{2}$, so to sum up we have $\abs{P(G,e,L) - P(G,e)} \leq 3\cdot\frac{1}{2}$.
 
 		Now suppose for $L<k$ we have the induction hypothesis true, now we try to show it's true for $L=k$.
 
@@ -155,7 +155,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 %
 %		This is followed from that the function $f(x) = x - 2 - d/5 - \log_2 d$ is monotonically increasing, and $f(6)>0$.
 
-		Therefore, the second part of the hypothesis for $L=k$ is verified.
+		Therefore, the hypothesis for $L=k$ is verified.
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 
 		%{\bf Case 3}, $e$ is normal edge. Since the normal case only appears once at the root of the computation tree,
