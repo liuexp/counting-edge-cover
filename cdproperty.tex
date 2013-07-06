@@ -70,12 +70,12 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 	\begin{proof}
 		\begin{align*}
-			\sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} } &= \sum_k^{d_1} \frac{\prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - \prod_i^{d_2} y_i \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
-		&\leq d_1 \frac{1}{2^{d_1 - 1}}  \leq 1 \\
-		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} y_i \cdot \prod_{i}^{d_1} x_i}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
-		&\leq d_2 \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
-		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} z_i }{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
-		&\leq d_2 \frac{1}{2^{d_2 - 1}} \leq 1 \\
+			\sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} } &= \sum_k^{d_1} \frac{\prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - \prod_i^{d_2} y_i \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} 
+		\leq d_1\cdot  \frac{1}{2^{d_1 - 1}}  \leq 1 \\
+		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} y_i \cdot \prod_{i}^{d_1} x_i}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} 
+		\leq d_2 \cdot \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
+		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} z_i }{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} 
+		\leq d_2 \cdot \frac{1}{2^{d_2 - 1}} \leq 1 \\
 		\end{align*}
 	\end{proof}
 
@@ -94,7 +94,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$, let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$.
 		\begin{align}
-		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq & \left(  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i}} + \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i}} \right) \cdot \epsilon 
+		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq & \left(  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i}} + \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i}} \right)  \epsilon 
 		\leq  3\epsilon
 		\label{meanvalue2}
 		\end{align}
@@ -102,7 +102,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 		Also note that the recursion for normal edge case is applied only once, so it's sufficient to show for free or dangling edge $e$,
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
-		then the case of normal edge automatically follows from \ref{meanvalue2} that
+		then the case of normal edge automatically follows from (\ref{meanvalue2}) that
 		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 
 		Now we prove by induction with induction hypothesis:

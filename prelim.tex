@@ -43,7 +43,7 @@ G - u &\triangleq (V - u, \set{e: e \in E, e\text{ is not incident with }u} \cup
 % &\cup \set{(\_,\_): (v,\_) \in E \text{ or } (v,v) \in E})
 %\end{align*}
 
-Note that here in edge set $E$, duplicates are allowed. We may have multiple dangling edges $(v,\_)$, many free edges $(\_,\_)$ and even parallel edges between two vertices $(u,v)$.
+Note that here in edge set $E$, duplicates are allowed. We may have multiple dangling edges $(v,\_)$, many free edges $(\_,\_)$ and even parallel edges between two vertices $(u,v)$. For simplicity we treat $(v,\_)$ and $(\_,v)$ as the same.
 
 For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure \ref{fig:G} , the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
 
