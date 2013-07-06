@@ -22,6 +22,8 @@ Such phenomenon is usually refered to as exponential correlation decay. Before w
 	Although one may examine this case by case algebraically, this propositions can be seen quite obvious combinatorially in that, for any edge cover $X \in EC(G)$ s.t. $e \notin X$, $X+e$ is also an edge cover in $G$, and $\forall X,Y \in EC(G)$ s.t. $X \neq Y, e \notin X, e\notin Y$, we have $X+e \neq Y+e$. So the edge covers with $e$ chosen is at least as many as the edge covers with $e$ not chosen, hence the proposition follows.
 \end{proof}
 
+We remark that our algorithm also guarantees that $P(G,e,L)$, since $\frac{1 - \prod_i x_i}{2 - \prod_i x_i} = \frac{1}{2} - \frac{\prod_i x_i}{2(2 - \prod_i x_i)}$, and $X\cdot Y - X - Z \leq 0$.
+
 For notational convenience, given a d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$, we denote
 \[ f({\bf x}) \triangleq \frac{1- \prod_i x_i}{2 - \prod_i x_i}\]
 
@@ -30,47 +32,49 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 
 	\begin{Lem}
-		For $d$-variate function $f({\bf x})$,
+		For $d$-variate function $f({\bf x})$,and a d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$,
 		\begin{align*}
-			\abs{\sum_i \cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
+			\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
 		\end{align*}
 	\end{Lem}
 
 	\begin{proof}
 		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
 	\begin{align*}
-		\abs{\sum_i \cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i \cfrac{ \prod_{k \neq i} x_k  }{\left( 2 - \prod_i x_i \right)^2} \\
+		\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i \cfrac{ \prod_{k \neq i} x_k  }{\left( 2 - \prod_i x_i \right)^2} \\
 		\leq & d \prod_{k \neq i^*} x_k \\
 		\leq & d \left( \frac{1}{2} \right)^{d-1}
 	\end{align*}
 
-	So for $d \geq 4$ we have $\abs{\sum_i \cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
+	So for $d \geq 4$ we have $\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
 
-	For $d=0, \abs{\sum_i \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
+	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
 
-	Now consider $d=1$, $\abs{\sum_i \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
+	Now consider $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
 
-	Next consider $d=2$,  $\abs{\sum_i \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
+	Next consider $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
 
-	Finally for $d=3$,  $\abs{\sum_i \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
+	Finally for $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
 	\end{proof}
 
 
 	\begin{Lem}
+Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d_2$-dimensional vectors ${\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
+\label{lemnormalpd}
 		\begin{align*}
-			\abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial x_i} } \leq & 1 \\
-			\abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial y_i} } \leq & 1 \\
-			\abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial z_i} } \leq & 1
+			 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i} } \leq & 1 \\
+			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i} } \leq & 1 \\
+			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i} } \leq & 1
 		\end{align*}
 	\end{Lem}
 
 	\begin{proof}
 		\begin{align*}
-		\abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial x_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+		 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
 		&\leq d_1 \frac{1}{2^{d_1 - 1}}  \leq 1 \\
-		\abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial y_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+		 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
 		&\leq d_2 \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
-		\abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial z_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
+		 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i} } &= \sum_i \frac{\prod_{k\neq i} x_k \left( 1 - \prod_k y_k \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} \\
 		&\leq d_2 \frac{1}{2^{d_2 - 1}} \leq 1 \\
 		\end{align*}
 	\end{proof}
@@ -81,23 +85,29 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		First we note that by Mean Value Theorem,
 		given estimated $\hat{\bf x}$, let ${\bf x}$ be the true value, let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$.
 		we have for $d$-variate function $f$,
-		\begin{align*}
-		\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \abs{\sum_i \frac{\partial f({\bf x})}{\partial x_i}} \cdot \epsilon \\
-		\leq & d\cdot \left( \frac{1}{2} \right)^{d-1} \cdot \epsilon
-		\end{align*}
+
+		\begin{align}
+		\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f({\bf x})}{\partial x_i}} \cdot \epsilon 
+		\leq  d\cdot \left( \frac{1}{2} \right)^{d-1} \cdot \epsilon
+		\label{meanvalue1}
+		\end{align}
 
 		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$, let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$.
-		\begin{align*}
-		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq & \left(  \abs{\sum_i \frac{\partial g({\bf x,y,z})}{\partial x_i}} +\abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial y_i}} + \abs{ \sum_i \frac{\partial g({\bf x,y,z})}{\partial z_i}} \right) \cdot \epsilon \\
-		\leq & 3\epsilon
-		\end{align*}
+		\begin{align}
+		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq & \left(  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i}} + \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i}} \right) \cdot \epsilon 
+		\leq  3\epsilon
+		\label{meanvalue2}
+		\end{align}
 
 
-		Also note that the recursion for normal edge case is applied only once.
-		Now we prove by simple induction.
-
-		Induction hypothesis:
+		Also note that the recursion for normal edge case is applied only once, so it's sufficient to show for free or dangling edge $e$,
+		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
+		then the case of normal edge automatically follows from \ref{meanvalue2} that
 		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
+
+		Now we prove by simple induction.
+		Induction hypothesis:
+		%\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 		
 		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling. When $e$ is normal, since the normal case only appears once, we have the maximal estimation error for the first two cases that $\epsilon \leq \frac{1}{2}$, so to sum up we have $\abs{P(G,e,L) - P(G,e)} \leq 3\cdot\frac{1}{2}$.
@@ -148,10 +158,10 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		Therefore, the second part of the hypothesis for $L=k$ is verified.
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 
-		{\bf Case 3}, $e$ is normal edge. Since the normal case only appears once at the root of the computation tree,
-		by induction hypothesis we have the maximal estimation error $\epsilon \leq (\frac{1}{2})^{L+1}$,
-		now we have the first part of the hypothesis for $L=k$ verified.
-		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
+		%{\bf Case 3}, $e$ is normal edge. Since the normal case only appears once at the root of the computation tree,
+		%by induction hypothesis we have the maximal estimation error $\epsilon \leq (\frac{1}{2})^{L+1}$,
+		%now we have the first part of the hypothesis for $L=k$ verified.
+		%\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 		
-		To sum up, this concludes the proof for our main theorem.
+		To sum up, the case of free or dangling edge and the case of normal edge together conclude the proof for our main theorem.
 	\end{proof}
