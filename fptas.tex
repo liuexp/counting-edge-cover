@@ -37,10 +37,15 @@ So here we use a truncated computation tree for an estimate of $P(G,e)$.
 We remark that the recursion depth used here is actually the so-called $M$-based depth introduced in \cite{LLY12} with $M=6$. In fact $M$ could take any value as long as $M \geq 6$. %, and a slightly extended recursion depth could improve the algorithm running time for large $d$.
 %Note the recursion depth used here is just a natural generalization of the so-called $M$-based depth introduced in \cite{LLY12}, we remark that it's sufficient to get an FPTAS with $M\geq 6$ using the $M$-based depth, here we show a stronger efficient algorithm via a slightly modified notion of recursion depth.
 %\subsection{Analysis of the Algorithm}
-Note that the normal case is invoked only once, so the algorithm keeps exploring in the third cases, until it hits the first 2 cases. We remark that an alternative view of the recursion depth is, we replace every node with degree greater than 6 with an $6$-ary branching subtree. Now let $B(L)$ be the set of vertices in the recursion tree involved, and $R(L) \triangleq \norm{B(L)}$,
- by the recursion on $P(G,e,L)$ in the third case we have the recursive relation for $R(L)$,
 
- TODO structural induction.
+Note that the normal case is invoked only once, so the algorithm keeps exploring in the third cases, until it hits the first 2 cases. We remark that an alternative view of the recursion depth is, we replace every node with degree greater than 6 with a $6$-ary branching subtree. 
+Now with this alternative view, it's easy to see that the nodes involved in the branching tree up to depth $L$ is at most $6^L$,
+so the algorithm $P(G,e,L)$ has running time $O(n \cdot 6^L)$.
+%Now let $B(L)$ be the set of vertices in the recursion tree involved, and $R(L) \triangleq \norm{B(L)}$,
+% by the recursion on $P(G,e,L)$ in the third case we have the recursive relation for $R(L)$,
+%
+% TODO structural induction.
+
  % Note that the corner case when $e$ is free so this is \leq rather than =
 % \begin{align*}
 %	 %R(L) \leq d R(L-d/5) , L > 0\\
