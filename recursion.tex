@@ -8,21 +8,21 @@ First we show the recursion for computing the marginal probability $P(G, e)$.
 	\[P(G,e) = \frac{1}{2}\]
 \end{Prop}
 \begin{proof}
-	If $e$ is a free edge, then any solution with $e$ chosen is in one-to-one correspondence to any solution with $e$ not chosen. Hence exactly half of the solutions in $EC(G)$ doesn't choose $e$, so $P(G, e) = \frac{1}{2}$.
+	If $e$ is a free edge, then any edge cover with $e$ chosen is in one-to-one correspondence to any edge cover with $e$ not chosen. Hence exactly half of the edge covers in $EC(G)$ doesn't choose $e$, so $P(G, e) = \frac{1}{2}$.
 \end{proof}
 
 \subsection{$e$ is dangling}
 \begin{Prop}
 For graph $G=(V,E)$ with a dangling edge $e=(u,\_)$, denote the $d$
 edges incident with $u$ except $e$ as $e_1, e_2, \ldots, e_d$,
-let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), so we have%. $P(G,e)$ satisfies
+let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), we have%. $P(G,e)$ satisfies
 	\begin{equation}
 		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)} %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
 		\label{propp3rg}
 	\end{equation}
 \end{Prop}
 \begin{proof}
-	For $\alpha \in \set{0,1}^d$, let $EC_{\alpha}(G-e-u)$ be the set of edge coverings in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\alpha$, denote $Z_{\alpha} = \norm{EC_{\alpha}(G-e-u)}$, and $Z = \sum_{\alpha \in \set{0,1}^d} Z_{\alpha}$. % \triangleq \set{X : X\subseteq E, $
+	For $\alpha \in \set{0,1}^d$, let $EC_{\alpha}(G-e-u)$ be the set of edge coverings in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\alpha$, denote $Z_{\alpha} = \norm{EC_{\alpha}(G-e-u)}$, and $Z = \sum_{\alpha \in \set{0,1}^d} Z_{\alpha} = \norm{EC(G-e-u)}$. % \triangleq \set{X : X\subseteq E, $
 
 		Also note that as long as $\alpha \neq 0$, counting edge coverings with restriction $\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
 	\begin{align*}
@@ -31,7 +31,7 @@ let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), 
 		=& \frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
 	\end{align*}
 
-	Now consider the term $\frac{Z_{\mathbf{0}}}{Z}$, it says the probability that a uniformly random solution drawn from $EC(G-e-u)$ picked none of $\set{e_i}_{i=1}^{d}$, so
+	Now consider the term $\frac{Z_{\mathbf{0}}}{Z}$, it says the probability that a uniformly random edge cover drawn from $EC(G-e-u)$ picked none of $\set{e_i}_{i=1}^{d}$, so
 	\begin{align*}
 		\frac{Z_{\mathbf{0}}}{Z}=\mathbb{P} \left( \set{e_i} = \mathbf{0}\right) = \mathbb{P} (e_1 = 0) \prod_{i=2}^d \mathbb{P} \left(e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0}\right) = \prod_{i=1}^d P(G_i, e_i).
 	\end{align*}
