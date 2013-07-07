@@ -27,7 +27,7 @@ In this paper, we deal with an extended notion of undirected graphs where dangli
 	that does not appear at all, whereas normal edge just corresponds to variables appearing twice.
 
 For a graph $G=(V,E)$, an edge $e = (u,v) \in E$ and a vertex $u \in V$,
-define 
+define
 \begin{align*}
 G - e &\triangleq (V, E-e) \\
 e - u &\triangleq (\_, v) \text{(note that here $v$ could be $\_$)} \\
@@ -45,7 +45,7 @@ G - u &\triangleq (V - u, \set{e: e \in E, e\text{ is not incident with }u} \cup
 
 Note that here in edge set $E$, duplicates are allowed. We may have multiple dangling edges $(v,\_)$, many free edges $(\_,\_)$ and even parallel edges between two vertices $(u,v)$. For simplicity we treat $(v,\_)$ and $(\_,v)$ as the same.
 
-For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure \ref{fig:G} , the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u}.
+For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure \ref{fig:G} , the result of $G-e-u$ is shown in Figure \ref{fig:G-e-u} and the result of $e_1 - u$ is shown in Figure \ref{fig:e-u}.
 
 \begin{figure}[htp]
 	\begin{subfigure}[b]{0.3\textwidth}
