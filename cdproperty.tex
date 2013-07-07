@@ -1,8 +1,8 @@
 \section{Correlation Decay Property}
 
 In the last section, we show an algorithm $P(G,e,L)$ for estimating the marginal probability $P(G,e)$,
-so here we establish the exponential correlation decay property, in the stronger sense with the 
-%modified recursion depth, 
+so here we establish the exponential correlation decay property, in the stronger sense with the
+%modified recursion depth,
 $M$-based depth,
 of the estimation error in $P(G,e,L)$.%, hence $P(G,e,L)$
 
@@ -31,88 +31,127 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 \[ g({\bf x,y,z}) \triangleq  1- \frac{1}{2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i} \]
 
 
+%	\begin{Lem}
+%		For $d$-variate function $f({\bf x})$,and a d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$,
+%		\begin{align*}
+%			\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} %\right)^{d-1}}}
+%		\end{align*}
+%	\end{Lem}
+%
+%	\begin{proof}
+%		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
+%	\begin{align*}
+%		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2}
+%		\leq  d \prod_{k \neq i^*}^d x_k
+%		\leq  d \left( \frac{1}{2} \right)^{d-1}
+%	\end{align*}
+%
+%	So for $d \geq 4$ we have $\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
+%
+%	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
+%
+%	Now consider $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
+%
+%	Next consider $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
+%
+%	Finally for $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
+%	\end{proof}
+%
+%	\begin{Cor}
+%		\label{meanvalue1}
+%		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ , let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
+%		\begin{align*}
+%			\abs{f(\hat{\bf x}) - f({\bf x})}
+%		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
+%		\end{align*}
+%	\end{Cor}
+%	\begin{proof}
+%		By Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq %\max\set{x_i, \hat{x_i}}$.
+
+%		\begin{align*}
+%			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon
+%		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
+%		\end{align*}
+%	\end{proof}
+
 	\begin{Lem}
-		For $d$-variate function $f({\bf x})$,and a d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$,
-		\begin{align*}
-			\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
-		\end{align*}
-	\end{Lem}
-
-	\begin{proof}
-		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
-	\begin{align*}
-		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2} 
-		\leq  d \prod_{k \neq i^*}^d x_k 
-		\leq  d \left( \frac{1}{2} \right)^{d-1}
-	\end{align*}
-
-	So for $d \geq 4$ we have $\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
-
-	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
-
-	Now consider $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
-
-	Next consider $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
-
-	Finally for $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
-	\end{proof}
-
-	\begin{Cor}
 		\label{meanvalue1}
 		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ , let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
 		\begin{align*}
-			\abs{f(\hat{\bf x}) - f({\bf x})} 
+			\abs{f(\hat{\bf x}) - f({\bf x})}
 		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
-		\end{align*}
-	\end{Cor}
-	\begin{proof}
-		By Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}$.
-
-		\begin{align*}
-			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon 
-		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
-		\end{align*}
-	\end{proof}
-
-
-	\begin{Lem}
-Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d_2$-dimensional vectors ${\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
-\label{lemnormalpd}
-		\begin{align*}
-			 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i} } \leq & 1 \\
-			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i} } \leq & 1 \\
-			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i} } \leq & 1
 		\end{align*}
 	\end{Lem}
 
 	\begin{proof}
+        First we show that
+        \begin{align*}
+			\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
+		\end{align*} 
+        
+		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
+    	\begin{align*}
+    		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2}
+    		\leq  d \prod_{k \neq i^*}^d x_k
+    		\leq  d \left( \frac{1}{2} \right)^{d-1}
+    	\end{align*}
+
+    	So for $d \geq 4$ we have $\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
+
+    	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
+
+    	Now consider $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
+
+    	Next consider $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
+
+    	Finally for $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
+        
+		Then by Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}$.
+
 		\begin{align*}
-			\sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} } &= \sum_k^{d_1} \frac{\prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - \prod_i^{d_2} y_i \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} 
-		\leq d_1\cdot  \frac{1}{2^{d_1 - 1}}  \leq 1 \\
-		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} y_i \cdot \prod_{i}^{d_1} x_i}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} 
-		\leq d_2 \cdot \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
-		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} z_i }{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2} 
-		\leq d_2 \cdot \frac{1}{2^{d_2 - 1}} \leq 1 \\
+			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot epsilon
+		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
 		\end{align*}
 	\end{proof}
+
+%	\begin{Lem}
+%Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d_2$-dimensional vectors ${\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
+%\label{lemnormalpd}
+%		\begin{align*}
+%			 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i} } \leq & 1 \\
+%			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i} } \leq & 1 \\
+%			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i} } \leq & 1
+%		\end{align*}
+%	\end{Lem}
+%
 	
-	\begin{Cor}
+	\begin{Lem}
 		\label{meanvalue2}
-		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively. 
+		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively.
 		
-		Let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$, 
+		Let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
 		\begin{align*}
-		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} 
+		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})}
 		\leq  3\epsilon
 		\end{align*}
 
-	\end{Cor}
+	\end{Lem}
 
 	\begin{proof}
-		By Mean Value Theorem, $\exists \tilde{\bf x}, \tilde{\bf y},  \tilde{\bf z}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}, \min\set{y_i,\hat{y_i}} \leq \tilde{y_i} \leq \max\set{y_i, \hat{y_i}}, \min\set{z_i,\hat{z_i}} \leq \tilde{z_i} \leq \max\set{z_i, \hat{z_i}}$.
+        First we have
 		\begin{align*}
-		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq & 
-		\left(  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial x_i}} + \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial z_i}} \right)  \epsilon 
+		\sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} } &= \sum_k^{d_1} \frac{\prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - \prod_i^{d_2} y_i \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2}
+		\leq d_1\cdot  \frac{1}{2^{d_1 - 1}}  \leq 1 \\
+		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} y_i \cdot \prod_{i}^{d_1} x_i}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2}
+		\leq d_2 \cdot \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
+		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} z_i }{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2}
+		\leq d_2 \cdot \frac{1}{2^{d_2 - 1}} \leq 1
+		\end{align*}
+
+		Then by Mean Value Theorem, $\exists \tilde{\bf x}, \tilde{\bf y},  \tilde{\bf z}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}, \min\set{y_i,\hat{y_i}} \leq \tilde{y_i} \leq \max\set{y_i, \hat{y_i}}, \min\set{z_i,\hat{z_i}} \leq \tilde{z_i} \leq \max\set{z_i, \hat{z_i}}$.
+		\begin{align*}
+		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq &
+		\left(  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial x_i}} + \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial z_i}} \right)  \epsilon
 		\leq  3\epsilon
 		\end{align*}
 	\end{proof}
@@ -123,7 +162,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 		Note that the recursion for normal edge case is applied only once, so it's sufficient to show for free or dangling edge $e$,
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
-		then the case of normal edge automatically follows from Corollary \ref{meanvalue2} that
+		then the case of normal edge automatically follows from Lemma \ref{meanvalue2} that
 		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 
 		Now we prove by induction with induction hypothesis:
@@ -136,10 +175,10 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 		{\bf Case 1}, $e$ is free edge, then $\abs{P(G,e,L) - P(G,e)} = 0$.
 
-		{\bf Case 2}, $e=(u,\_)$ is dangling with $deg(u)=d+1$, then by induction hypothesis we have 
+		{\bf Case 2}, $e=(u,\_)$ is dangling with $deg(u)=d+1$, then by induction hypothesis we have
 		$\epsilon \leq \frac{1}{2}^{L-\lceil \log_6{d+1}\rceil}$.
 
-		First by Corollary \ref{meanvalue1} we need to show that for $d \leq 4$,
+		First by Lemma \ref{meanvalue1} we need to show that for $d \leq 4$,
 		\[\frac{1}{2^{1+L-\lceil \log_6{(d+1)}\rceil}} \leq \frac{1}{2^L}\]
 
 		which is obvious because $\lceil\log_6{(d+1)}\rceil \leq 1$.
@@ -158,14 +197,14 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 %        Since $\frac{d \log_2 x + \log_6 (x+1)}{dx} = \frac{1}{x} + \frac{1}{x+1} < 1$ when $x \geq 7$.
 %        So for $d \ge 7$,
 
-		For $d\geq 7$, note that the function $f(x) = d-2 -\log_2 d - \log_6{(d+1)}$ is monotonically increasing, and $f(7)>0$, so we have 
+		For $d\geq 7$, note that the function $f(x) = d-2 -\log_2 d - \log_6{(d+1)}$ is monotonically increasing, and $f(7)>0$, so we have
         \[ \log_2 d + \log_6{(d+1)} + 1 \leq d-1\]
 
 %		$\epsilon \leq \frac{1}{2}^{L - \lceil d/5 \rceil}$.
 %		First we need to show that for $d \leq 5$,
 %		\[\frac{1}{2^{1+L-\lceil d/5\rceil}} \leq \frac{1}{2^L}\]
 %
-%		which is obvious because $\lceil d/5 \rceil \leq 1$, 
+%		which is obvious because $\lceil d/5 \rceil \leq 1$,
 %
 %		Next we show for $d \geq 6$,
 %		\[ d\cdot \left( \frac{1}{2} \right)^{d-1 + L - \lceil d/5 \rceil}  \leq \left( \frac{1}{2} \right)^L \]
