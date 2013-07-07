@@ -76,7 +76,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 	\begin{Lem}
 		\label{meanvalue1}
-		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ , let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
+		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ such that $\hat{\bf x} \in  [0, \frac{1}{2}]^d, {\bf x} \in [0, \frac{1}{2}]^d$, let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
 		\begin{align*}
 			\abs{f(\hat{\bf x}) - f({\bf x})}
 		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
@@ -84,32 +84,33 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\end{Lem}
 
 	\begin{proof}
-        First we show that
-        \begin{align*}
+        First we show for any d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$,
+        \begin{align}
+			\label{mv1pd}
 			\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
-		\end{align*} 
+		\end{align} 
         
-		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
+    	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
+
+    	For $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
+
+    	For $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
+
+    	For $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
+
+		Now denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
     	\begin{align*}
     		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2}
     		\leq  d \prod_{k \neq i^*}^d x_k
     		\leq  d \left( \frac{1}{2} \right)^{d-1}
     	\end{align*}
 
-    	So for $d \geq 4$ we have $\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
-
-    	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
-
-    	Now consider $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
-
-    	Next consider $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
-
-    	Finally for $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
+		So for $d \geq 4, \sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$, we have verified the inequality relations (\ref{mv1pd}).
         
-		Then by Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}$.
+		Finally by (\ref{mv1pd}) and Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}$.
 
 		\begin{align*}
-			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot epsilon
+			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon
 		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
 		\end{align*}
 	\end{proof}
@@ -127,9 +128,8 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	
 	\begin{Lem}
 		\label{meanvalue2}
-		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively.
-		
-		Let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
+		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively, such that ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}, \hat{\bf x} \in [0, \frac{1}{2}]^{d_1} , \hat{\bf y},\hat{\bf z} \in [0, \frac{1}{2}]^{d_2}$,
+		let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
 		\begin{align*}
 		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})}
 		\leq  3\epsilon
@@ -138,7 +138,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\end{Lem}
 
 	\begin{proof}
-        First we have
+		First for any ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
 		\begin{align*}
 		\sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} } &= \sum_k^{d_1} \frac{\prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - \prod_i^{d_2} y_i \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2}
 		\leq d_1\cdot  \frac{1}{2^{d_1 - 1}}  \leq 1 \\
@@ -156,7 +156,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\end{align*}
 	\end{proof}
 
-	Now we are ready for the proof of Theorem \ref{cd-main-theorem}.
+	Now we are ready for the proof of {\bf Theorem \ref{cd-main-theorem}}.
 
 	\begin{proof}
 

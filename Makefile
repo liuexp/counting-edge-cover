@@ -7,4 +7,4 @@ all:
 	echo `date` > ~/public_html/lastupdated
 
 zip:
-	zip z.zip *.tex *.pdf Makefile
+	zip z.zip *.tex *.pdf refs.bib Makefile

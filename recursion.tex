@@ -12,10 +12,10 @@ First we show the recursion for computing the marginal probability $P(G, e)$.
 \end{proof}
 
 \subsection{$e$ is dangling}
-\begin{Prop}
 For graph $G=(V,E)$ with a dangling edge $e=(u,\_)$, denote the $d$
 edges incident with $u$ except $e$ as $e_1, e_2, \ldots, e_d$,
-let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), we have%. $P(G,e)$ satisfies
+let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \triangleq G - e - u$), 
+\begin{Prop}
 	\begin{equation}
 		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)} %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
 		\label{propp3rg}
@@ -41,20 +41,8 @@ let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), 
 	
 \end{proof}
 
-%\begin{Cor}
-%	For nontrivial dangling graphs,
-%	\[P(G, e) \leq \frac{1}{2}\]
-%\end{Cor}
-%
-%In fact this corrolary comes no surprise, because by looking combinatorially, picking a dangling edge should definitely yields more solutions.
-%
-%As a side note, note that $\forall i, G_i$ is a dangling graph (maybe trivial dangling graphs though), although $e_i$ can be a free edge.
-
-%Note that $\forall i, e_i$ is either dangling or free, but not normal. (FIXME \footnote{$e_i$ in $G$ must be modified to be not normal in $G_i$.})
 
 \subsection{$e$ is normal edge}
-%Here we focus on graphs with no dangling edges and no free edges, as trivial dangling graphs is just trivial base cases, and nontrivial dangling graphs has been handled in the previous section.
-
 %Here's a typical example of converting a general graph to dangling graphs.
 %As an illustration, picking a normal edge $e=(u,v)$ in figure \ref{fig:generalG}, again we want to write the recursion of $P(G,e)$ for $G$.
 By definition we have
@@ -65,25 +53,7 @@ By definition we have
 
 	For $e=(u,v)$ as a normal edge, let $\set{e_i}$ be the set of edges incident with vertex $u$ except $e$, and $\set{f_i}$ is the set of edges incident with vertex $v$ except $e$, and $d_1 = \norm{\set{e_i}}, d_2 = \norm{\set{f_i}}$, now for $\alpha \in \set{0,1}^{d_1}, \beta \in \set{0,1}^{d_2}$, we use $E_{\alpha,\beta}^G$ to denote the set of edge coverings in $G$ such that its restriction to $\set{e_i}_{i=1}^{d_1}$ is consistent with $\alpha$, and restriction to $\set{f_i}_{i=1}^{d_2}$ is consistent with $\beta$.
 
-	Denote $Z_{\alpha, \beta}^G \triangleq \norm{EC_{\alpha, \beta}(G)}$, $G_1 \triangleq G-e, G_2 \triangleq G-e-u-v$, %and $C_1 \triangleq \norm{EC(G-e)}$, $C_2 \triangleq \norm{EC(G-e-u-v)}$,
-	now for $\alpha \neq \mathbf{0} , \beta \neq \mathbf{0}$, we also have working with $G_1$ and working with $G_2$ is the same with restriction to $\alpha$ and $\beta$, or formally,
-\[\norm{EC(G-e)} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_1} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_2}\]
-%\[C_2 = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}\]
-
-Since we are only working with $G_2$, we may simply denote $Z_{\alpha, \beta} \triangleq Z_{\alpha, \beta}^{G_2}$, now let $Z = \sum_{\alpha , \beta} Z_{\alpha, \beta}$, and $\mathbb{P} \left( \alpha = 0, \beta = 0 \right) \triangleq \frac{Z_{\mathbf{0},\mathbf{0}}}{Z}, \mathbb{P} \left( \alpha = \mathbf{0} \right) \triangleq \frac{\sum_{\beta} Z_{\mathbf{0}, \beta} }{Z}, \mathbb{P} \left( \beta = \mathbf{0} \right) \triangleq \frac{\sum_{\alpha} Z_{ \alpha , \mathbf{0}} }{Z}$ we have,
-
-\begin{Prop}
-	
-\[P(G,e) =  1 - \frac{1}{2 + \mathbb{P}\left( \alpha = 0, \beta = 0 \right) - \mathbb{P} \left( \alpha = 0 \right) - \mathbb{P} \left( \beta = 0 \right)}\]
-\end{Prop}
-\begin{proof}
-	\begin{align*}
-P(G,e) &= \frac{\sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}}{Z + \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}} \\
-&=\frac{Z - \sum_{\alpha}Z_{\alpha,\mathbf{0}} - \sum_{\beta} Z_{\mathbf{0}, \beta} + Z_{\mathbf{0}, \mathbf{0}}}{2Z - \sum_{\alpha}Z_{\alpha,\mathbf{0}} - \sum_{\beta} Z_{\mathbf{0}, \beta} + Z_{\mathbf{0}, \mathbf{0}}} \\
-&= 1 - \frac{1}{2 + \mathbb{P}\left( \alpha = 0, \beta = 0 \right) - \mathbb{P} \left( \alpha = 0 \right) - \mathbb{P} \left( \beta = 0 \right)}
-	\end{align*}
-\end{proof}
-
+	Denote $Z_{\alpha, \beta}^G \triangleq \norm{EC_{\alpha, \beta}(G)}$, $G_1 \triangleq G-e, G_2 \triangleq G-e-u-v$. As an illustration, given a normal edge $e=(u,v)$ in $G$ as in Figure \ref{fig:generalG}, $G_1$ and $G_2$ is like Figure \ref{fig:generalG-e} and Figure \ref{fig:generalG-e-u-v}.
 
 \begin{figure}[htp]
 	\begin{subfigure}[b]{0.3\textwidth}
@@ -161,41 +131,44 @@ P(G,e) &= \frac{\sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, 
 	\caption{Normal edge examples.}
 \end{figure}
 
-%First consider the term $ \mathbb{P}\left( \alpha = 0, \beta = 0 \right) = \frac{\sum_{\alpha = \mathbf{0}, \beta = \mathbf{0}} Z_{\alpha, \beta}^{G_2}}{Z} $, it says the probability in edge coverings of $G_2$ that none of the edges $\set{e_i}$ and none of $\set{f_i}$ is chosen.
+	Note that as long as $\alpha \neq \mathbf{0} , \beta \neq \mathbf{0}$, working with $G_1$ and working with $G_2$ is the same with restriction to $\alpha$ and $\beta$, or formally,
+\[\norm{EC(G-e)} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_1} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_2}\]
+%\[C_2 = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}\]
 
-Let
+Since only $G_2$ is involved, denote $Z_{\alpha, \beta} \triangleq Z_{\alpha, \beta}^{G_2}, Z \triangleq \sum_{\alpha \in \set{0,1}^{d_1} , \beta \in \set{0,1}^{d_2}} Z_{\alpha, \beta}$,
+and 
+$G_i^1 \triangleq G_2 - \sum_{k=1}^{i-1} e_k$,
+$G_i^2 \triangleq G_2 - \sum_{k=1}^{d_1}e_k - \sum_{k=1}^{i-1} f_k$,
+$G_i^3 \triangleq G_2 - \sum_{k=1}^{i-1} f_k$,
 
-$G_i^1 \triangleq G - e - u - v - \sum_{k=1}^{i-1} e_k$,
-
-$G_i^2 \triangleq G-e-u-v - \sum_{k=1}^{d_1}e_k - \sum_{k=1}^{i-1} f_k$,
-
-$G_i^3 \triangleq G - e - u - v - \sum_{k=1}^{i-1} f_k$,
-
-%so we have
 
 \begin{Prop}
-	\begin{align*}
-		\mathbb{P}\left( \alpha = 0\right) &= \prod_{i=1}^{d_1} P(G_i^1, e_i) \\
-		\mathbb{P}\left( \beta = 0\right) &= \prod_{i=1}^{d_2} P(G_i^3, f_i) \\
-		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) &= \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i)
-	\end{align*}
-\end{Prop}
+	
+	\[P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_2} P(G_i^3, f_i)}\]
 
+\end{Prop}
 \begin{proof}
+
 	\begin{align*}
-		\mathbb{P}\left( \alpha = 0\right) =&\mathbb{P} \left( \set{e_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^1, e_i) \\
-		\mathbb{P}\left( \beta = 0\right) =&\mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_2} P(G_i^3, f_i) \\
-		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) =& \mathbb{P} \left( \alpha = 0 \right) \cdot \mathbb{P}\left( \beta = 0 \mid \alpha = 0 \right) \\
-		=& \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \cdot \mathbb{P} \left( \set{f_i} = \mathbf{0} \mid \set{e_i} = \mathbf{0} \right) \\
-=&\prod_{i=1}^{d_1} \mathbb{P} \left( e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0} \right) \cdot \prod_{i=1}^{d_2} \mathbb{P} \left( f_i = 0 \mid \set{e_j}_{j=1}^{d_1} = \mathbf{0},\set{f_j}_{j=1}^{i-1} = \mathbf{0} \right) \\
-=& \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i)
+P(G,e) &= \frac{\sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}}{Z + \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}} \\
+&=\frac{Z - \sum_{\alpha}Z_{\alpha,\mathbf{0}} - \sum_{\beta} Z_{\mathbf{0}, \beta} + Z_{\mathbf{0}, \mathbf{0}}}{2Z - \sum_{\alpha}Z_{\alpha,\mathbf{0}} - \sum_{\beta} Z_{\mathbf{0}, \beta} + Z_{\mathbf{0}, \mathbf{0}}} \\
+&= 1 - \frac{1}{2 + \mathbb{P}\left( \alpha = 0, \beta = 0 \right) - \mathbb{P} \left( \alpha = 0 \right) - \mathbb{P} \left( \beta = 0 \right)}
 	\end{align*}
+
+where $\mathbb{P} \left( \alpha = 0, \beta = 0 \right) \triangleq \frac{Z_{\mathbf{0},\mathbf{0}}}{Z}, \mathbb{P} \left( \alpha = \mathbf{0} \right) \triangleq \frac{\sum_{\beta} Z_{\mathbf{0}, \beta} }{Z}, \mathbb{P} \left( \beta = \mathbf{0} \right) \triangleq \frac{\sum_{\alpha} Z_{ \alpha , \mathbf{0}} }{Z}$.
+
+Now consider the three terms respectively,
+	\begin{align*}
+		\mathbb{P}\left( \alpha = 0\right) &= \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^1, e_i) \\
+		\mathbb{P}\left( \beta = 0\right) &= \mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_2} P(G_i^3, f_i) \\
+		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) &=  \mathbb{P} \left( \alpha = 0 \right) \cdot \mathbb{P}\left( \beta = 0 \mid \alpha = 0 \right) \\
+		&=  \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \cdot \mathbb{P} \left( \set{f_i} = \mathbf{0} \mid \set{e_i} = \mathbf{0} \right) \\
+		&= \prod_{i=1}^{d_1} \mathbb{P} \left( e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0} \right) \cdot \prod_{i=1}^{d_2} \mathbb{P} \left( f_i = 0 \mid \set{e_j}_{j=1}^{d_1} = \mathbf{0},\set{f_j}_{j=1}^{i-1} = \mathbf{0} \right) \\
+		&= \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i)
+	\end{align*}
+
+	Hence concludes the proof.
 \end{proof}
 
-\begin{Cor}
-	\[P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_2} P(G_i^3, f_i)}\]
-\end{Cor}
-
 Note that for every $i$, $e_i$ is dangling or free in $G_i^1$, $f_i$ is dangling or free in $G_i^3$, and in $G_i^2$, neither $e_i$ nor $f_i$ is normal.
-%(FIXME \footnote{$e_i,f_i$ in $G$ must be modified to be not normal in $G_i$.})
 
