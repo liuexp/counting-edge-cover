@@ -26,9 +26,10 @@ let $G_i = G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 = G - e - u$), 
 
 		Also note that as long as $\alpha \neq 0$, counting edge coverings with restriction $\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
 	\begin{align*}
-		P(G,e) = & \frac{\norm{EC(G-e)}}{\norm{EC(G)}} \\
-		=& \frac{\sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha}} \\
-		=& \frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
+		P(G,e) = & \frac{\norm{EC(G-e)}}{\norm{EC(G)}} 
+		= \frac{\sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha}} 
+		=\frac{Z - Z_0}{2 Z - Z_0}
+		= \frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
 	\end{align*}
 
 	Now consider the term $\frac{Z_{\mathbf{0}}}{Z}$, it says the probability that a uniformly random edge cover drawn from $EC(G-e-u)$ picked none of $\set{e_i}_{i=1}^{d}$, so

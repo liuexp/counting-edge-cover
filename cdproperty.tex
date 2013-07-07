@@ -1,6 +1,6 @@
 \section{Correlation Decay Property}
 
-In the last section we show an algorithm $P(G,e,L)$ for estimating the marginal probability $P(G,e)$,
+In the last section, we show an algorithm $P(G,e,L)$ for estimating the marginal probability $P(G,e)$,
 so here we establish the exponential correlation decay property, in the stronger sense with the 
 %modified recursion depth, 
 $M$-based depth,
@@ -12,7 +12,7 @@ of the estimation error in $P(G,e,L)$.%, hence $P(G,e,L)$
 	\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}\]
 \end{Thm}
 
-Such phenomenon is usually refered to as exponential correlation decay. Before we prove the main theorem, we will introduce a few useful propositions and lemmas.
+Such phenomenon is usually referred to as exponential correlation decay. Before we prove the main theorem, we will introduce a few useful propositions and lemmas.
 
 \begin{Prop}
 	\[P(G, e) \leq \frac{1}{2}\]
@@ -41,9 +41,9 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\begin{proof}
 		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
 	\begin{align*}
-		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2} \\
-		\leq & d \prod_{k \neq i^*}^d x_k \\
-		\leq & d \left( \frac{1}{2} \right)^{d-1}
+		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2} 
+		\leq  d \prod_{k \neq i^*}^d x_k 
+		\leq  d \left( \frac{1}{2} \right)^{d-1}
 	\end{align*}
 
 	So for $d \geq 4$ we have $\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
@@ -55,6 +55,23 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	Next consider $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
 
 	Finally for $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
+	\end{proof}
+
+	\begin{Cor}
+		\label{meanvalue1}
+		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ , let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
+		\begin{align*}
+			\abs{f(\hat{\bf x}) - f({\bf x})} 
+		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
+		\end{align*}
+	\end{Cor}
+	\begin{proof}
+		By Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}$.
+
+		\begin{align*}
+			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon 
+		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
+		\end{align*}
 	\end{proof}
 
 
@@ -78,31 +95,35 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\leq d_2 \cdot \frac{1}{2^{d_2 - 1}} \leq 1 \\
 		\end{align*}
 	\end{proof}
+	
+	\begin{Cor}
+		\label{meanvalue2}
+		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively. 
+		
+		Let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$, 
+		\begin{align*}
+		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} 
+		\leq  3\epsilon
+		\end{align*}
 
-	Now we are ready for the main theorem.
+	\end{Cor}
 
 	\begin{proof}
-		First we note that by Mean Value Theorem,
-		given estimated $\hat{\bf x}$, let ${\bf x}$ be the true value, let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$.
-		we have for $d$-variate function $f$,
-
-		\begin{align}
-		\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f({\bf x})}{\partial x_i}} \cdot \epsilon 
-		\leq  d\cdot \left( \frac{1}{2} \right)^{d-1} \cdot \epsilon
-		\label{meanvalue1}
-		\end{align}
-
-		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$, let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$.
-		\begin{align}
-		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq & \left(  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i}} + \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i}} \right)  \epsilon 
+		By Mean Value Theorem, $\exists \tilde{\bf x}, \tilde{\bf y},  \tilde{\bf z}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}, \min\set{y_i,\hat{y_i}} \leq \tilde{y_i} \leq \max\set{y_i, \hat{y_i}}, \min\set{z_i,\hat{z_i}} \leq \tilde{z_i} \leq \max\set{z_i, \hat{z_i}}$.
+		\begin{align*}
+		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq & 
+		\left(  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial x_i}} + \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial z_i}} \right)  \epsilon 
 		\leq  3\epsilon
-		\label{meanvalue2}
-		\end{align}
+		\end{align*}
+	\end{proof}
 
+	Now we are ready for the proof of Theorem \ref{cd-main-theorem}.
 
-		Also note that the recursion for normal edge case is applied only once, so it's sufficient to show for free or dangling edge $e$,
+	\begin{proof}
+
+		Note that the recursion for normal edge case is applied only once, so it's sufficient to show for free or dangling edge $e$,
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
-		then the case of normal edge automatically follows from (\ref{meanvalue2}) that
+		then the case of normal edge automatically follows from Corollary \ref{meanvalue2} that
 		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 
 		Now we prove by induction with induction hypothesis:
@@ -118,7 +139,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		{\bf Case 2}, $e=(u,\_)$ is dangling with $deg(u)=d+1$, then by induction hypothesis we have 
 		$\epsilon \leq \frac{1}{2}^{L-\lceil \log_6{d+1}\rceil}$.
 
-		First we need to show that for $d \leq 4$,
+		First by Corollary \ref{meanvalue1} we need to show that for $d \leq 4$,
 		\[\frac{1}{2^{1+L-\lceil \log_6{(d+1)}\rceil}} \leq \frac{1}{2^L}\]
 
 		which is obvious because $\lceil\log_6{(d+1)}\rceil \leq 1$.
