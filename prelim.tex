@@ -2,7 +2,6 @@
 \section{Preliminaries}
 \subsection{Definitions}
 An edge cover of a graph is a set of edges such that every vertex has at least an adjacent edge in it.
-
 Given a graph $G=(V,E)$ with $e \in E$,  we use $EC(G)$ to denote the set of all edge covers of graph $G$, and $P(G, e)$ to denote the marginal probability over $EC(G)$ that edge $e$ is not chosen, or formally, with $X \sim EC(G)$ uniformly,
 \begin{equation}
 	P(G, e) \triangleq \mathbb{P} \left(\textrm{edge $e$ is not chosen in $X$} \right)
@@ -18,16 +17,16 @@ In this paper, we deal with an extended notion of undirected graphs where dangli
 
 \end{Def}
 
-	So we use graph to refer graphs with or without dangling edges or free edges.
-	Edges in the usual sense (i.e. not dangling and not free), will be referred to as normal edges.
+	We use graph to refer graph with or without dangling edges and free edges.
+	Edges in the usual sense (i.e. neither dangling nor free), will be referred to as normal edges.
 	%and graphs in the usual sense(i.e. graphs with only normal edges) will be refered to as normal graphs.
 
 	We remark that an alternative view to these combinatorial definitions is from Rtw-Mon-CNF.
-	A dangling edge is just a variable which only appears at one clause, and a free edge is a variable
+	A dangling edge is simply a variable which only appears at one clause, and a free edge is a variable
 	that does not appear at all, whereas normal edge just corresponds to variables appearing twice.
 
 For a graph $G=(V,E)$, an edge $e = (u,v) \in E$ and a vertex $u \in V$,
-define
+we define
 \begin{align*}
 G - e &\triangleq (V, E-e) \\
 e - u &\triangleq (\_, v) \text{(note that here $v$ could be $\_$)} \\

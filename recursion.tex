@@ -1,33 +1,32 @@
-\section{The Recursion}
+\section{The Computation Tree Recursion}
+In this section, we provide a recursion for computing the marginal probability $P(G, e)$ with that of smaller instances.
 
-First we show the recursion for computing the marginal probability $P(G, e)$.
-
-\subsection{$e$ is free edge}
+\subsection{$e$ is free}
 %This case is trivial.
 \begin{Prop}
 	\[P(G,e) = \frac{1}{2}\]
 \end{Prop}
 \begin{proof}
-	If $e$ is a free edge, then any edge cover with $e$ chosen is in one-to-one correspondence to any edge cover with $e$ not chosen. Hence exactly half of the edge covers in $EC(G)$ doesn't choose $e$, so $P(G, e) = \frac{1}{2}$.
+	If $e$ is a free edge, then any edge cover with $e$ chosen is in one-to-one correspondence to a edge cover with $e$ not chosen. Hence exactly half of the edge covers in $EC(G)$ does not choose $e$, so $P(G, e) = \frac{1}{2}$.
 \end{proof}
 
 \subsection{$e$ is dangling}
+\begin{Lem}
 For graph $G=(V,E)$ with a dangling edge $e=(u,\_)$, denote the $d$
 edges incident with $u$ except $e$ as $e_1, e_2, \ldots, e_d$,
-let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \triangleq G - e - u$), 
-\begin{Prop}
+let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \triangleq G - e - u$),
 	\begin{equation}
 		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)} %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
 		\label{propp3rg}
 	\end{equation}
-\end{Prop}
+\end{Lem}
 \begin{proof}
 	For $\alpha \in \set{0,1}^d$, let $EC_{\alpha}(G-e-u)$ be the set of edge coverings in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\alpha$, denote $Z_{\alpha} = \norm{EC_{\alpha}(G-e-u)}$, and $Z = \sum_{\alpha \in \set{0,1}^d} Z_{\alpha} = \norm{EC(G-e-u)}$. % \triangleq \set{X : X\subseteq E, $
 
 		Also note that as long as $\alpha \neq 0$, counting edge coverings with restriction $\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
 	\begin{align*}
-		P(G,e) = & \frac{\norm{EC(G-e)}}{\norm{EC(G)}} 
-		= \frac{\sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha}} 
+		P(G,e) = & \frac{\norm{EC(G-e)}}{\norm{EC(G)}}
+		= \frac{\sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha}}
 		=\frac{Z - Z_0}{2 Z - Z_0}
 		= \frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
 	\end{align*}
@@ -42,14 +41,14 @@ let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \trian
 \end{proof}
 
 
-\subsection{$e$ is normal edge}
+\subsection{$e$ is a normal edge}
 By definition we have
 \begin{equation}
 	P(G,e) = \frac{\norm{EC(G-e)}}{\norm{EC(G-e)} + \norm{EC(G-e-u-v)} }.
 \end{equation}
 
 
-	For $e=(u,v)$ as a normal edge, let $\set{e_i}$ be the set of edges incident with vertex $u$ except $e$, and $\set{f_i}$ is the set of edges incident with vertex $v$ except $e$, and $d_1 = \norm{\set{e_i}}, d_2 = \norm{\set{f_i}}$, now for $\alpha \in \set{0,1}^{d_1}, \beta \in \set{0,1}^{d_2}$, we use $E_{\alpha,\beta}^G$ to denote the set of edge coverings in $G$ such that its restriction to $\set{e_i}_{i=1}^{d_1}$ is consistent with $\alpha$, and restriction to $\set{f_i}_{i=1}^{d_2}$ is consistent with $\beta$.
+	For $e=(u,v)$ as a normal edge, let $\set{e_i}$ be the set of edges incident with vertex $u$ except $e$, and $\set{f_i}$ is the set of edges incident with vertex $v$ except $e$, and $d_1 = \norm{\set{e_i}}, d_2 = \norm{\set{f_i}}$, now for $\alpha \in \set{0,1}^{d_1}, \beta \in \set{0,1}^{d_2}$, we use $E_{\alpha,\beta}^G$ to denote the set of edge covers for $G$ such that its restriction to $\set{e_i}_{i=1}^{d_1}$ is consistent with $\alpha$, and restriction to $\set{f_i}_{i=1}^{d_2}$ is consistent with $\beta$.
 
 	Denote $Z_{\alpha, \beta}^G \triangleq \norm{EC_{\alpha, \beta}(G)}$, $G_1 \triangleq G-e, G_2 \triangleq G-e-u-v$. As an illustration, given a normal edge $e=(u,v)$ in $G$ as in Figure \ref{fig:generalG}, $G_1$ and $G_2$ is like Figure \ref{fig:generalG-e} and Figure \ref{fig:generalG-e-u-v}.
 
@@ -134,17 +133,17 @@ By definition we have
 %\[C_2 = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}\]
 
 Since only $G_2$ is involved, denote $Z_{\alpha, \beta} \triangleq Z_{\alpha, \beta}^{G_2}, Z \triangleq \sum_{\alpha \in \set{0,1}^{d_1} , \beta \in \set{0,1}^{d_2}} Z_{\alpha, \beta}$,
-and 
+and
 $G_i^1 \triangleq G_2 - \sum_{k=1}^{i-1} e_k$,
 $G_i^2 \triangleq G_2 - \sum_{k=1}^{d_1}e_k - \sum_{k=1}^{i-1} f_k$,
 $G_i^3 \triangleq G_2 - \sum_{k=1}^{i-1} f_k$,
 
 
-\begin{Prop}
+\begin{Lem}
 	
 	\[P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_2} P(G_i^3, f_i)}\]
 
-\end{Prop}
+\end{Lem}
 \begin{proof}
 
 	\begin{align*}

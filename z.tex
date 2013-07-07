@@ -1,0 +1,81 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{abstract}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage[ruled,vlined]{algorithm2e}
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+
+% THEOREMS -------------------------------------------------------
+\newtheorem{Thm}{Theorem}
+\newtheorem{Cor}[Thm]{Corollary}
+\newtheorem{Conj}[Thm]{Conjecture}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{Prob}{Problem}
+\newtheorem{Exam}{Example}
+\newtheorem{Def}[Thm]{Definition}
+\newtheorem{Rem}[Thm]{Remark}
+\newtheorem{Not}[Thm]{Notation}
+\newtheorem*{Sol}{Solution}
+
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\CommentS}[1]{}
+
+%--------------Now the document begins------------------
+
+\title{A Simple FPTAS for Counting Edge Covers}
+\date{}
+\begin{document}
+\author{
+	Chengyu Lin
+	\thanks{Shanghai Jiaotong University. {\tt linmrain@gmail.com}}
+	\and
+	Jingcheng Liu
+	\thanks{Shanghai Jiaotong University. {\tt liuexp@gmail.com}}
+	\and
+	Pinyan Lu\thanks{Microsoft Research Asia. {\tt pinyanl@microsoft.com}}
+}
+\maketitle
+\begin{abstract}
+An edge cover of a graph is a set of edges such that every vertex has at least an adjacent edge in it. We design a very simple deterministic fully polynomial-time approximation scheme  (FPTAS) for counting the number of edge covers for any graph. Previously, approximation algorithm is only known for 3 regular graphs and it is randomized. Our main technique is correlation decay, which is a powerful tool to design FPTAS for counting problems. In order to get FPTAS for general graphs without degree bound, we make use of a stronger notion called computationally efficient correlation decay, which is introduced in~\cite{LLY12}.
+\end{abstract}
+
+\input{intro.tex}
+
+\input{prelim.tex}
+
+\input{recursion.tex}
+
+\input{fptas.tex}
+
+\input{cdproperty.tex}
+
+\input{counting.tex}
+
+\bibliographystyle{plain}
+
+\bibliography{refs}
+\end{document}

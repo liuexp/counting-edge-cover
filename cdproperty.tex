@@ -45,8 +45,8 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
         \begin{align}
 			\label{mv1pd}
 			\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}}
-		\end{align} 
-        
+		\end{align}
+
     	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
 
     	For $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
@@ -63,7 +63,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
     	\end{align*}
 
 		So for $d \geq 4, \sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$, we have verified the inequality relations (\ref{mv1pd}).
-        
+
 		Finally by (\ref{mv1pd}) and Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}$.
 
 		\begin{align*}
@@ -102,11 +102,11 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\end{align*}
 	\end{proof}
 
-	Now we are ready for the proof of {\bf Theorem \ref{cd-main-theorem}}.
+	Now we are ready for the proof of  Theorem \ref{cd-main-theorem}.
 
 	\begin{proof}
 
-		Note that the recursion for normal edge case is applied only once, so it's sufficient to show for free or dangling edge $e$,
+		Note that the recursion for normal edge case is applied only once, so it is sufficient to show for free or dangling edge $e$,
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 		then the case of normal edge automatically follows from Lemma \ref{meanvalue2} that
 		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
@@ -116,7 +116,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		
 		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling.
 
-		Now suppose for $L<k$ we have the induction hypothesis true, now we try to show it's true for $L=k$.
+		Now suppose for $L<k$ we have the induction hypothesis true, now we shall prove that  it is true for $L=k$.
 
 		{\bf Case 1}, $e$ is free edge, then $\abs{P(G,e,L) - P(G,e)} = 0$.
 
