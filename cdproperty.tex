@@ -31,49 +31,6 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 \[ g({\bf x,y,z}) \triangleq  1- \frac{1}{2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i} \]
 
 
-%	\begin{Lem}
-%		For $d$-variate function $f({\bf x})$,and a d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$,
-%		\begin{align*}
-%			\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq & \min{\set{\frac{1}{2}, d \left( \frac{1}{2} %\right)^{d-1}}}
-%		\end{align*}
-%	\end{Lem}
-%
-%	\begin{proof}
-%		Denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
-%	\begin{align*}
-%		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2}
-%		\leq  d \prod_{k \neq i^*}^d x_k
-%		\leq  d \left( \frac{1}{2} \right)^{d-1}
-%	\end{align*}
-%
-%	So for $d \geq 4$ we have $\sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$.
-%
-%	For $d=0, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = 0$.
-%
-%	Now consider $d=1$, $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{1}{\left( 2 - x_1 \right)^2} \leq \frac{4}{9} $.
-%
-%	Next consider $d=2$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
-%
-%	Finally for $d=3$,  $\sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
-%	\end{proof}
-%
-%	\begin{Cor}
-%		\label{meanvalue1}
-%		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ , let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
-%		\begin{align*}
-%			\abs{f(\hat{\bf x}) - f({\bf x})}
-%		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
-%		\end{align*}
-%	\end{Cor}
-%	\begin{proof}
-%		By Mean Value Theorem, $\exists \tilde{\bf x}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq %\max\set{x_i, \hat{x_i}}$.
-
-%		\begin{align*}
-%			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon
-%		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
-%		\end{align*}
-%	\end{proof}
-
 	\begin{Lem}
 		\label{meanvalue1}
 		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ such that $\hat{\bf x} \in  [0, \frac{1}{2}]^d, {\bf x} \in [0, \frac{1}{2}]^d$, let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
@@ -115,17 +72,6 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\end{align*}
 	\end{proof}
 
-%	\begin{Lem}
-%Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d_2$-dimensional vectors ${\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
-%\label{lemnormalpd}
-%		\begin{align*}
-%			 \sum_i\abs{ \frac{\partial g({\bf x,y,z})}{\partial x_i} } \leq & 1 \\
-%			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_i} } \leq & 1 \\
-%			\sum_i \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_i} } \leq & 1
-%		\end{align*}
-%	\end{Lem}
-%
-	
 	\begin{Lem}
 		\label{meanvalue2}
 		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively, such that ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}, \hat{\bf x} \in [0, \frac{1}{2}]^{d_1} , \hat{\bf y},\hat{\bf z} \in [0, \frac{1}{2}]^{d_2}$,
@@ -166,10 +112,9 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 
 		Now we prove by induction with induction hypothesis:
-		%\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 		
-		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling.% When $e$ is normal, since the normal case only appears once, we have the maximal estimation error for the first two cases that $\epsilon \leq \frac{1}{2}$, so to sum up we have $\abs{P(G,e,L) - P(G,e)} \leq 3\cdot\frac{1}{2}$.
+		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling.
 
 		Now suppose for $L<k$ we have the induction hypothesis true, now we try to show it's true for $L=k$.
 
@@ -217,10 +162,6 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		Therefore, the hypothesis for $L=k$ is verified.
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 
-		%{\bf Case 3}, $e$ is normal edge. Since the normal case only appears once at the root of the computation tree,
-		%by induction hypothesis we have the maximal estimation error $\epsilon \leq (\frac{1}{2})^{L+1}$,
-		%now we have the first part of the hypothesis for $L=k$ verified.
-		%\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 		
 		To sum up, the case of free or dangling edge and the case of normal edge together conclude the proof for our main theorem.
 	\end{proof}
