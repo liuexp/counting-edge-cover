@@ -22,7 +22,7 @@ Such phenomenon is usually referred to as exponential correlation decay. Before 
 	Although one may examine this case by case algebraically, this propositions can be seen quite obvious combinatorially in that, for any edge cover $X \in EC(G)$ s.t. $e \notin X$, $X+e$ is also an edge cover in $G$, and $\forall X,Y \in EC(G)$ s.t. $X \neq Y, e \notin X, e\notin Y$, we have $X+e \neq Y+e$. So the edge covers with $e$ chosen is at least as many as the edge covers with $e$ not chosen, hence the proposition follows.
 \end{proof}
 
-We remark that our algorithm also guarantees that $P(G,e,L) \leq \frac{1}{2}$, since $\frac{1 - \prod_i x_i}{2 - \prod_i x_i} = \frac{1}{2} - \frac{\prod_i x_i}{2(2 - \prod_i x_i)}$, and $X\cdot Y - X - Z \leq 0$.
+We remark that our algorithm also guarantees that $P(G,e,L) \leq \frac{1}{2}$. % , since $\frac{1 - \prod_i x_i}{2 - \prod_i x_i} = \frac{1}{2} - \frac{\prod_i x_i}{2(2 - \prod_i x_i)}$, and $X\cdot Y - X - Z \leq 0$.
 
 For notational convenience, given a d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$, we denote
 \[ f({\bf x}) \triangleq \frac{1- \prod_i x_i}{2 - \prod_i x_i}\]
