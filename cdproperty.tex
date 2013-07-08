@@ -33,7 +33,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 	\begin{Lem}
 		\label{meanvalue1}
-		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ such that $\hat{\bf x} \in  [0, \frac{1}{2}]^d, {\bf x} \in [0, \frac{1}{2}]^d$, let $\epsilon = \max_i{\abs{x_i - \hat{x_i}}}$,
+		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ such that $\hat{\bf x} \in  [0, \frac{1}{2}]^d, {\bf x} \in [0, \frac{1}{2}]^d$, let $\epsilon \triangleq \max_i{\abs{x_i - \hat{x_i}}}$,
 		\begin{align*}
 			\abs{f(\hat{\bf x}) - f({\bf x})}
 		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
@@ -75,7 +75,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\begin{Lem}
 		\label{meanvalue2}
 		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively, such that ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}, \hat{\bf x} \in [0, \frac{1}{2}]^{d_1} , \hat{\bf y},\hat{\bf z} \in [0, \frac{1}{2}]^{d_2}$,
-		let $\epsilon = \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
+		let $\epsilon \triangleq \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
 		\begin{align*}
 		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})}
 		\leq  3\epsilon
