@@ -143,7 +143,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 %        Since $\frac{d \log_2 x + \log_6 (x+1)}{dx} = \frac{1}{x} + \frac{1}{x+1} < 1$ when $x \geq 7$.
 %        So for $d \ge 7$,
 
-		For $d\geq 7$, note that the function $f(x) = d-2 -\log_2 d - \log_6{(d+1)}$ is monotonically increasing, and $f(7)>0$, so we have
+		For $d\geq 7$, since the function $f(x) = d-2 -\log_2 d - \log_6{(d+1)}$ is monotonically increasing, and $f(7)>0$, we have
         \[ \log_2 d + \log_6{(d+1)} + 1 \leq d-1\]
 
 %		$\epsilon \leq \frac{1}{2}^{L - \lceil d/5 \rceil}$.
@@ -161,8 +161,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 %		This is followed from that the function $f(x) = x - 2 - d/5 - \log_2 d$ is monotonically increasing, and $f(6)>0$.
 
 		Therefore, the hypothesis for $L=k$ is verified.
-		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
+		%\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
 
-		
 		To sum up, the case of free or dangling edge and the case of normal edge together conclude the proof for our main theorem.
 	%\end{proof}
