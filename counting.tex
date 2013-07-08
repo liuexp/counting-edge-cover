@@ -55,4 +55,4 @@ Let $Z(G, L) \triangleq \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i, L))}$ be the est
 
 \end{proof}
 
-To sum up, since $Z(G, L)$ involves $m$ calls to $P(G,e,L)$, so run $Z(G, L)$ with $L = \log m + \log(8/ \epsilon)$, is an FPTAS for counting edge covers with overall running time $O(m \cdot n \cdot ( m\cdot \frac{1}{\epsilon})^ {\log_2 6} )$.
+To sum up, since $Z(G, L)$ involves $m$ calls to $P(G,e,L)$, so run $Z(G, L)$ with $L = \log m + \log(8/ \epsilon)$, is an FPTAS for counting edge covers with overall running time $O(m \cdot n^2 \cdot ( m\cdot \frac{1}{\epsilon})^ {\log_2 6} )$.
