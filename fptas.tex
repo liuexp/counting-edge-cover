@@ -29,7 +29,7 @@
 \end{algorithm}
 \DecMargin{1em}
 
-We may compute the marginal probability $P(G, e)$ with the previous recursion, but
+We may compute the marginal probability $P(G, e)$ exactly with the previous recursion, but
 that could take recursion depth of $O(n)$ which results in exponential computation time.
 So here we use a truncated computation tree for an estimate of $P(G,e)$.
 
@@ -46,7 +46,6 @@ so the algorithm $P(G,e,L)$ has running time $O(n^2 \cdot 6^L)$.
 %Now let $B(L)$ be the set of vertices in the recursion tree involved, and $R(L) \triangleq \norm{B(L)}$,
 % by the recursion on $P(G,e,L)$ in the third case we have the recursive relation for $R(L)$,
 %
-% TODO structural induction.
 
  % Note that the corner case when $e$ is free so this is \leq rather than =
 % \begin{align*}
