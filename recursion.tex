@@ -36,7 +36,7 @@ let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \trian
 		\frac{Z_{\mathbf{0}}}{Z}=\mathbb{P} \left( \set{e_i} = \mathbf{0}\right) = \mathbb{P} (e_1 = 0) \prod_{i=2}^d \mathbb{P} \left(e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0}\right) = \prod_{i=1}^d P(G_i, e_i).
 	\end{align*}
 
-	Hence concludes the proof.
+	Hence by substitution we have $P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}$.
 	
 \end{proof}
 
@@ -141,7 +141,10 @@ $G_i^3 \triangleq G_2 - \sum_{k=1}^{i-1} f_k$,
 
 \begin{Lem}
 	
-	\[P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_2} P(G_i^3, f_i)}\]
+	\begin{equation}
+	P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_2} P(G_i^3, f_i)}
+		\label{recursion2}
+	\end{equation}
 
 \end{Lem}
 \begin{proof}
@@ -164,7 +167,7 @@ Now consider the three terms respectively,
 		&= \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i)
 	\end{align*}
 
-	Hence concludes the proof.
+	Hence equation (\ref{recursion2}) is verified.
 \end{proof}
 
 Note that for every $i$, $e_i$ is dangling or free in $G_i^1$, $f_i$ is dangling or free in $G_i^3$, and in $G_i^2$, neither $e_i$ nor $f_i$ is normal.
