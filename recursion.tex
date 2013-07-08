@@ -21,12 +21,12 @@ let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \trian
 	\end{equation}
 \end{Lem}
 \begin{proof}
-	For $\alpha \in \set{0,1}^d$, let $EC_{\alpha}(G-e-u)$ be the set of edge coverings in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\alpha$, denote $Z_{\alpha} = \norm{EC_{\alpha}(G-e-u)}$, and $Z = \sum_{\alpha \in \set{0,1}^d} Z_{\alpha} = \norm{EC(G-e-u)}$. % \triangleq \set{X : X\subseteq E, $
+	For $\boldsymbol\alpha \in \set{0,1}^d$, let $EC_{\boldsymbol\alpha}(G-e-u)$ be the set of edge coverings in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\boldsymbol\alpha$, denote $Z_{\boldsymbol\alpha} = \norm{EC_{\boldsymbol\alpha}(G-e-u)}$, and $Z = \sum_{\boldsymbol\alpha \in \set{0,1}^d} Z_{\boldsymbol\alpha} = \norm{EC(G-e-u)}$. % \triangleq \set{X : X\subseteq E, $
 
-		Also note that as long as $\alpha \neq 0$, counting edge coverings with restriction $\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
+		Also note that as long as $\boldsymbol\alpha \neq 0$, counting edge coverings with restriction $\boldsymbol\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
 	\begin{align*}
 		P(G,e) = & \frac{\norm{EC(G-e)}}{\norm{EC(G)}}
-		= \frac{\sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\alpha \in \set{0,1}^d, \alpha \neq \mathbf{0}} Z_{\alpha}}
+		= \frac{\sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha}}
 		=\frac{Z - Z_0}{2 Z - Z_0}
 		= \frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
 	\end{align*}
@@ -48,9 +48,9 @@ By definition we have
 \end{equation}
 
 
-	For $e=(u,v)$ as a normal edge, let $\set{e_i}$ be the set of edges incident with vertex $u$ except $e$, and $\set{f_i}$ is the set of edges incident with vertex $v$ except $e$, and $d_1 = \norm{\set{e_i}}, d_2 = \norm{\set{f_i}}$, now for $\alpha \in \set{0,1}^{d_1}, \beta \in \set{0,1}^{d_2}$, we use $E_{\alpha,\beta}^G$ to denote the set of edge covers for $G$ such that its restriction to $\set{e_i}_{i=1}^{d_1}$ is consistent with $\alpha$, and restriction to $\set{f_i}_{i=1}^{d_2}$ is consistent with $\beta$.
+	For $e=(u,v)$ as a normal edge, let $\set{e_i}$ be the set of edges incident with vertex $u$ except $e$, and $\set{f_i}$ be the set of edges incident with vertex $v$ except $e$, and $d_1 = \norm{\set{e_i}}, d_2 = \norm{\set{f_i}}$, now for $\boldsymbol\alpha \in \set{0,1}^{d_1}, \boldsymbol\beta \in \set{0,1}^{d_2}$, we use $E_{\boldsymbol\alpha,\boldsymbol\beta}^G$ to denote the set of edge covers for $G$ such that its restriction to $\set{e_i}_{i=1}^{d_1}$ is consistent with $\boldsymbol\alpha$, and restriction to $\set{f_i}_{i=1}^{d_2}$ is consistent with $\boldsymbol\beta$.
 
-	Denote $Z_{\alpha, \beta}^G \triangleq \norm{EC_{\alpha, \beta}(G)}$, $G_1 \triangleq G-e, G_2 \triangleq G-e-u-v$. As an illustration, given a normal edge $e=(u,v)$ in $G$ as in Figure \ref{fig:generalG}, $G_1$ and $G_2$ is like Figure \ref{fig:generalG-e} and Figure \ref{fig:generalG-e-u-v}.
+	Denote $Z_{\boldsymbol\alpha, \boldsymbol\beta}^G \triangleq \norm{EC_{\boldsymbol\alpha, \boldsymbol\beta}(G)}$, $G_1 \triangleq G-e, G_2 \triangleq G-e-u-v$. As an illustration, given a normal edge $e=(u,v)$ in $G$ as in Figure \ref{fig:generalG}, $G_1$ and $G_2$ is like Figure \ref{fig:generalG-e} and Figure \ref{fig:generalG-e-u-v}.
 
 \begin{figure}[htp]
 	\begin{subfigure}[b]{0.3\textwidth}
@@ -128,11 +128,11 @@ By definition we have
 	\caption{Normal edge examples.}
 \end{figure}
 
-	Note that as long as $\alpha \neq \mathbf{0} , \beta \neq \mathbf{0}$, working with $G_1$ and working with $G_2$ is the same with restriction to $\alpha$ and $\beta$, or formally,
-\[\norm{EC(G-e)} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_1} = \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}^{G_2}\]
-%\[C_2 = \sum_{\alpha , \beta} Z_{\alpha, \beta}^{G_2}\]
+	Note that as long as $\boldsymbol\alpha \neq \mathbf{0} , \boldsymbol\beta \neq \mathbf{0}$, working with $G_1$ and working with $G_2$ is the same with restriction to $\boldsymbol\alpha$ and $\boldsymbol\beta$, or formally,
+\[\norm{EC(G-e)} = \sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \mathbf{0}} Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G_1} = \sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \mathbf{0}} Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G_2}\]
+%\[C_2 = \sum_{\boldsymbol\alpha , \boldsymbol\beta} Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G_2}\]
 
-Since only $G_2$ is involved, denote $Z_{\alpha, \beta} \triangleq Z_{\alpha, \beta}^{G_2}, Z \triangleq \sum_{\alpha \in \set{0,1}^{d_1} , \beta \in \set{0,1}^{d_2}} Z_{\alpha, \beta}$,
+Since only $G_2$ is involved, denote $Z_{\boldsymbol\alpha, \boldsymbol\beta} \triangleq Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G_2}, Z \triangleq \sum_{\boldsymbol\alpha \in \set{0,1}^{d_1} , \boldsymbol\beta \in \set{0,1}^{d_2}} Z_{\boldsymbol\alpha, \boldsymbol\beta}$,
 and
 $G_i^1 \triangleq G_2 - \sum_{k=1}^{i-1} e_k$,
 $G_i^2 \triangleq G_2 - \sum_{k=1}^{d_1}e_k - \sum_{k=1}^{i-1} f_k$,
@@ -147,18 +147,18 @@ $G_i^3 \triangleq G_2 - \sum_{k=1}^{i-1} f_k$,
 \begin{proof}
 
 	\begin{align*}
-P(G,e) &= \frac{\sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}}{Z + \sum_{\alpha \neq \mathbf{0}, \beta \neq \mathbf{0}} Z_{\alpha, \beta}} \\
-&=\frac{Z - \sum_{\alpha}Z_{\alpha,\mathbf{0}} - \sum_{\beta} Z_{\mathbf{0}, \beta} + Z_{\mathbf{0}, \mathbf{0}}}{2Z - \sum_{\alpha}Z_{\alpha,\mathbf{0}} - \sum_{\beta} Z_{\mathbf{0}, \beta} + Z_{\mathbf{0}, \mathbf{0}}} \\
-&= 1 - \frac{1}{2 + \mathbb{P}\left( \alpha = 0, \beta = 0 \right) - \mathbb{P} \left( \alpha = 0 \right) - \mathbb{P} \left( \beta = 0 \right)}
+P(G,e) &= \frac{\sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \mathbf{0}} Z_{\boldsymbol\alpha, \boldsymbol\beta}}{Z + \sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \mathbf{0}} Z_{\boldsymbol\alpha, \boldsymbol\beta}} \\
+&=\frac{Z - \sum_{\boldsymbol\alpha}Z_{\boldsymbol\alpha,\mathbf{0}} - \sum_{\boldsymbol\beta} Z_{\mathbf{0}, \boldsymbol\beta} + Z_{\mathbf{0}, \mathbf{0}}}{2Z - \sum_{\boldsymbol\alpha}Z_{\boldsymbol\alpha,\mathbf{0}} - \sum_{\boldsymbol\beta} Z_{\mathbf{0}, \boldsymbol\beta} + Z_{\mathbf{0}, \mathbf{0}}} \\
+&= 1 - \frac{1}{2 + \mathbb{P}\left( \boldsymbol\alpha = \mathbf{0}, \boldsymbol\beta = \mathbf{0} \right) - \mathbb{P} \left( \boldsymbol\alpha = \mathbf{0} \right) - \mathbb{P} \left( \boldsymbol\beta = \mathbf{0} \right)}
 	\end{align*}
 
-where $\mathbb{P} \left( \alpha = 0, \beta = 0 \right) \triangleq \frac{Z_{\mathbf{0},\mathbf{0}}}{Z}, \mathbb{P} \left( \alpha = \mathbf{0} \right) \triangleq \frac{\sum_{\beta} Z_{\mathbf{0}, \beta} }{Z}, \mathbb{P} \left( \beta = \mathbf{0} \right) \triangleq \frac{\sum_{\alpha} Z_{ \alpha , \mathbf{0}} }{Z}$.
+	where $\mathbb{P} \left( \boldsymbol\alpha = \mathbf{0}, \boldsymbol\beta = \mathbf{0} \right) \triangleq \frac{Z_{\mathbf{0},\mathbf{0}}}{Z}, \mathbb{P} \left( \boldsymbol\alpha = \mathbf{0} \right) \triangleq \frac{\sum_{\boldsymbol\beta} Z_{\mathbf{0}, \boldsymbol\beta} }{Z}, \mathbb{P} \left( \boldsymbol\beta = \mathbf{0} \right) \triangleq \frac{\sum_{\boldsymbol\alpha} Z_{ \boldsymbol\alpha , \mathbf{0}} }{Z}$.
 
 Now consider the three terms respectively,
 	\begin{align*}
-		\mathbb{P}\left( \alpha = 0\right) &= \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^1, e_i) \\
-		\mathbb{P}\left( \beta = 0\right) &= \mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_2} P(G_i^3, f_i) \\
-		\mathbb{P}\left( \alpha = 0, \beta = 0 \right) &=  \mathbb{P} \left( \alpha = 0 \right) \cdot \mathbb{P}\left( \beta = 0 \mid \alpha = 0 \right) \\
+		\mathbb{P}\left( \boldsymbol\alpha = \mathbf{0}\right) &= \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^1, e_i) \\
+		\mathbb{P}\left( \boldsymbol\beta = \mathbf{0}\right) &= \mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_2} P(G_i^3, f_i) \\
+		\mathbb{P}\left( \boldsymbol\alpha = \mathbf{0}, \boldsymbol\beta = \mathbf{0} \right) &=  \mathbb{P} \left( \boldsymbol\alpha = \mathbf{0} \right) \cdot \mathbb{P}\left( \boldsymbol\beta = \mathbf{0} \mid \boldsymbol\alpha = \mathbf{0} \right) \\
 		&=  \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \cdot \mathbb{P} \left( \set{f_i} = \mathbf{0} \mid \set{e_i} = \mathbf{0} \right) \\
 		&= \prod_{i=1}^{d_1} \mathbb{P} \left( e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0} \right) \cdot \prod_{i=1}^{d_2} \mathbb{P} \left( f_i = 0 \mid \set{e_j}_{j=1}^{d_1} = \mathbf{0},\set{f_j}_{j=1}^{i-1} = \mathbf{0} \right) \\
 		&= \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i)
