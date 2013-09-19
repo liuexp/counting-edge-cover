@@ -10,4 +10,3 @@ TODO
 * Re-check & re-read the whole proof flows & organization.
 * Spacing, layout, etc.
 * Jusitificate that P(G,e,L) <= 1/2.
-* Rewrite the proof of Theorem 5.
