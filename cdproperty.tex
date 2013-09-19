@@ -53,7 +53,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
     	For $d=2, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2}{\left( 2 - x_1x_2 \right)^2} \leq \frac{16}{49} $.
 
-    	For $d=3, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 + x_2 + x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{32}{75} $.
+    	For $d=3, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 x_2 + x_1 x_3 + x_2 x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{16}{75} $.
 
 		Now denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
     	\begin{align*}
@@ -75,7 +75,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\begin{Lem}
 		\label{meanvalue2}
 		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively, such that ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}, \hat{\bf x} \in [0, \frac{1}{2}]^{d_1} , \hat{\bf y},\hat{\bf z} \in [0, \frac{1}{2}]^{d_2}$,
-		let $\epsilon \triangleq \max \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
+		let $\epsilon \triangleq \max_i \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
 		\begin{align*}
 		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})}
 		\leq  3\epsilon
