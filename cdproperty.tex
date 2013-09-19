@@ -106,10 +106,11 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 	%\begin{proof}
 \noindent{\bf Proof of Theorem \ref{cd-main-theorem}. } 
-		Note that the recursion for normal edge case is applied only once, so it is sufficient to show for free or dangling edge $e$,
+		Note that the recursion for normal edge case is applied only once, so it is sufficient to show that:
 
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
-		then the case of normal edge automatically follows from Lemma \ref{meanvalue2} that
+		
+		And one automatically follows from Lemma \ref{meanvalue2} that
 		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
 
 		Now we prove by induction with induction hypothesis:
