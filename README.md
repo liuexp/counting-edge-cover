@@ -9,4 +9,6 @@ TODO
 ---------------
 * Re-check & re-read the whole proof flows & organization.
 * Spacing, layout, etc.
-* Jusitificate that P(G,e,L) <= 1/2.
+* Justify P(G,e,L) <= 1/2.
+* Rewrite usage of Mean value theorem according to http://www.stanford.edu/~bayati/papers/matchingptas.pdf
+* Check grammatical errors (particularly on new modification)
