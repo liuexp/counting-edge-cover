@@ -65,7 +65,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 		So for $d \geq 4, \sum_i \abs{\cfrac{\partial f({\bf x})}{\partial x_i}} \leq \frac{1}{2}$, we have verified the inequality relation (\ref{mv1pd}).
 
-        Now let $g(\alpha) = f(\alpha {\bf x} + (1 - \alpha) {\bf \hat{x}})$ where $\alpha \in [0,1]$, by (\ref{mv1pd}) and Mean Value Theorem, $\exists \tilde{\alpha} \in [0,1]$ s.t. for $\tilde{\bf x} = \tilde{\alpha} {\bf x} + (1 - \tilde{\alpha}) {\bf \hat{x}}$
+        Now let $h(\alpha) = f(\alpha {\bf x} + (1 - \alpha) {\bf \hat{x}})$ where $\alpha \in [0,1]$, by (\ref{mv1pd}) and Mean Value Theorem, $\exists \tilde{\alpha} \in [0,1]$ s.t. for $\tilde{\bf x} = \tilde{\alpha} {\bf x} + (1 - \tilde{\alpha}) {\bf \hat{x}}$
 
 		\begin{align*}
 			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon
@@ -95,7 +95,8 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\leq d_2 \cdot \frac{1}{2^{d_2 - 1}} \leq 1
 		\end{align*}
 
-		Then by Mean Value Theorem, $\exists \tilde{\bf x}, \tilde{\bf y},  \tilde{\bf z}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}, \min\set{y_i,\hat{y_i}} \leq \tilde{y_i} \leq \max\set{y_i, \hat{y_i}}, \min\set{z_i,\hat{z_i}} \leq \tilde{z_i} \leq \max\set{z_i, \hat{z_i}}$.
+        Now let $h(\alpha) = g(\alpha {\bf x} + (1 - \alpha) {\bf \hat{x}}, \alpha {\bf y} + (1 - \alpha) {\bf \hat{y}}, \alpha {\bf z} + (1 - \alpha) {\bf \hat{z}})$ where $\alpha \in [0,1]$, by Mean Value Theorem, $\exists \tilde{\alpha} \in [0,1]$ s.t. for $\tilde{\bf x} = \tilde{\alpha} {\bf x} + (1 - \tilde{\alpha}) {\bf \hat{x}}, \tilde{\bf y} = \tilde{\alpha} {\bf y} + (1 - \tilde{\alpha}) {\bf \hat{y}}, \tilde{\bf z} = \tilde{\alpha} {\bf z} + (1 - \tilde{\alpha}) {\bf \hat{z}}$
+        %Then by Mean Value Theorem, $\exists \tilde{\bf x}, \tilde{\bf y},  \tilde{\bf z}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}, \min\set{y_i,\hat{y_i}} \leq \tilde{y_i} \leq \max\set{y_i, \hat{y_i}}, \min\set{z_i,\hat{z_i}} \leq \tilde{z_i} \leq \max\set{z_i, \hat{z_i}}$.
 		\begin{align*}
 		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq &
 		\left(  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial x_i}} + \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial z_i}} \right)  \epsilon
