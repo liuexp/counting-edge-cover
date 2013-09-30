@@ -28,7 +28,8 @@ For a graph $G=(V,E)$, an edge $e = (u,v) \in E$ and a vertex $u \in V$, define
 \begin{align*}
     G - e \triangleq& (V, E-e) \\
     e - u \triangleq& (\_, v) \text{(note that here $v$ could be $\_$)} \\
-    G - u \triangleq& (V - u, \set{e: e \in E, e\text{ is not incident with }u} \\
+    G - u \triangleq& (V - u, \\
+                    &\set{e: e \in E, e\text{ is not incident with }u} \\
                     &\cup \set{e - u: e \in E, e\text{ is incident with }u})
 \end{align*}
 
