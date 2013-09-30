@@ -125,33 +125,33 @@ September 5, 1996 ***}
  
 %%% defined algorithm environment by theorem model 
  
-%\def\newalgorithm#1{\@ifnextchar[{\@oalg{#1}}{\@nalg{#1}}} 
+\def\newalgorithm#1{\@ifnextchar[{\@oalg{#1}}{\@nalg{#1}}} 
  
-%\def\@nalg#1#2{% 
-%\@ifnextchar[{\@xnalg{#1}{#2}}{\@ynalg{#1}{#2}}} 
+\def\@nalg#1#2{% 
+\@ifnextchar[{\@xnalg{#1}{#2}}{\@ynalg{#1}{#2}}} 
  
-%\def\@xnalg#1#2[#3]{\expandafter\@ifdefinable\csname #1\endcsname 
-%{\@definecounter{#1}\@addtoreset{#1}{#3}% 
-%\expandafter\xdef\csname the#1\endcsname{\expandafter\noexpand 
-%  \csname the#3\endcsname \@thmcountersep \@thmcounter{#1}}% 
-%\global\@namedef{#1}{\@alg{#1}{#2}}\global\@namedef{end#1}{\@endalgorithm}}} 
+\def\@xnalg#1#2[#3]{\expandafter\@ifdefinable\csname #1\endcsname 
+{\@definecounter{#1}\@addtoreset{#1}{#3}% 
+\expandafter\xdef\csname the#1\endcsname{\expandafter\noexpand 
+  \csname the#3\endcsname \@thmcountersep \@thmcounter{#1}}% 
+\global\@namedef{#1}{\@alg{#1}{#2}}\global\@namedef{end#1}{\@endalgorithm}}} 
  
-%\def\@ynalg#1#2{\expandafter\@ifdefinable\csname #1\endcsname 
-%{\@definecounter{#1}% 
-%\expandafter\xdef\csname the#1\endcsname{\@thmcounter{#1}}% 
-%\global\@namedef{#1}{\@alg{#1}{#2}}\global\@namedef{end#1}{\@endalgorithm}}} 
+\def\@ynalg#1#2{\expandafter\@ifdefinable\csname #1\endcsname 
+{\@definecounter{#1}% 
+\expandafter\xdef\csname the#1\endcsname{\@thmcounter{#1}}% 
+\global\@namedef{#1}{\@alg{#1}{#2}}\global\@namedef{end#1}{\@endalgorithm}}} 
  
-%\def\@oalg#1[#2]#3{\expandafter\@ifdefinable\csname #1\endcsname 
-%  {\global\@namedef{the#1}{\@nameuse{the#2}}% 
-%\global\@namedef{#1}{\@alg{#2}{#3}}% 
-%\global\@namedef{end#1}{\@endalgorithm}}} 
+\def\@oalg#1[#2]#3{\expandafter\@ifdefinable\csname #1\endcsname 
+  {\global\@namedef{the#1}{\@nameuse{the#2}}% 
+\global\@namedef{#1}{\@alg{#2}{#3}}% 
+\global\@namedef{end#1}{\@endalgorithm}}} 
  
-%\def\@alg#1#2{\refstepcounter 
-%    {#1}\@ifnextchar[{\@yalg{#1}{#2}}{\@xalg{#1}{#2}}} 
+\def\@alg#1#2{\refstepcounter 
+    {#1}\@ifnextchar[{\@yalg{#1}{#2}}{\@xalg{#1}{#2}}} 
  
-%\def\@xalg#1#2{\@beginalgorithm{#2}{\csname the#1\endcsname}\ignorespaces} 
-%\def\@yalg#1#2[#3]{\@opargbeginalgorithm{#2}{\csname 
-%       the#1\endcsname}{#3}\ignorespaces} 
+\def\@xalg#1#2{\@beginalgorithm{#2}{\csname the#1\endcsname}\ignorespaces} 
+\def\@yalg#1#2[#3]{\@opargbeginalgorithm{#2}{\csname 
+       the#1\endcsname}{#3}\ignorespaces} 
  
  
  
