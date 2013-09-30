@@ -85,13 +85,15 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\end{lemma}
 
 	\begin{proof}
-Denote 
+Denote
 
 $S_1({\bf x,y,z}) \triangleq \sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} }$,
- 
+
 $S_2({\bf x,y,z}) \triangleq \sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} }$,
 
 $S_3({\bf x,y,z}) \triangleq \sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} }$,
+
+$S_4({\bf x,y,z}) \triangleq S_1({\bf x,y,z})+S_2({\bf x,y,z})+S_3({\bf x,y,z})$.
 
 let $X \triangleq \prod_i^{d_1} x_i$,
 $Y \triangleq \prod_i^{d_2} y_i$,
@@ -107,11 +109,13 @@ For ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
 		\leq \frac{d_2}{2^{d_2 - 1}} \leq 1
 		\end{align*}
 
-        Now let $h(\alpha) = g(\alpha {\bf x} + (1 - \alpha) {\bf \hat{x}}, \alpha {\bf y} + (1 - \alpha) {\bf \hat{y}}, \alpha {\bf z} + (1 - \alpha) {\bf \hat{z}})$ where $\alpha \in [0,1]$, by Mean Value Theorem, $\exists \tilde{\alpha} \in [0,1]$ s.t. for $\tilde{\bf x} = \tilde{\alpha} {\bf x} + (1 - \tilde{\alpha}) {\bf \hat{x}}, \tilde{\bf y} = \tilde{\alpha} {\bf y} + (1 - \tilde{\alpha}) {\bf \hat{y}}, \tilde{\bf z} = \tilde{\alpha} {\bf z} + (1 - \tilde{\alpha}) {\bf \hat{z}}$
+        Now let $h(\alpha) = g(\alpha {\bf x} + (1 - \alpha) {\bf \hat{x}}, \alpha {\bf y} + (1 - \alpha) {\bf \hat{y}}, \alpha {\bf z} + (1 - \alpha) {\bf \hat{z}})$ where $\alpha \in [0,1]$.
+         
+         By Mean Value Theorem, $\exists \tilde{\alpha} \in [0,1]$ s.t. for $\tilde{\bf x} = \tilde{\alpha} {\bf x} + (1 - \tilde{\alpha}) {\bf \hat{x}}, \tilde{\bf y} = \tilde{\alpha} {\bf y} + (1 - \tilde{\alpha}) {\bf \hat{y}}, \tilde{\bf z} = \tilde{\alpha} {\bf z} + (1 - \tilde{\alpha}) {\bf \hat{z}}$
         %Then by Mean Value Theorem, $\exists \tilde{\bf x}, \tilde{\bf y},  \tilde{\bf z}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}, \min\set{y_i,\hat{y_i}} \leq \tilde{y_i} \leq \max\set{y_i, \hat{y_i}}, \min\set{z_i,\hat{z_i}} \leq \tilde{z_i} \leq \max\set{z_i, \hat{z_i}}$.
 		\begin{align*}
 		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq &
-		\left(  S_1(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} ) + S_2(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} ) +  S_3(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} ) \right)  \epsilon
+		S_4(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} ) \epsilon
 		\leq  3\epsilon
 		\end{align*}
 	\end{proof}
@@ -119,16 +123,19 @@ For ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
 	%Now we are ready for the proof of  Theorem \ref{cd-main-theorem}.
 
 	%\begin{proof}
+
 \noindent{\bf Proof of Theorem \ref{cd-main-theorem}. }
-		Note that the recursion for normal edge case is applied only once, so it is sufficient to show that:
+		Note that the recursion for normal edge case is applied only once, so it is sufficient to show that for free or dangling edge $e$:
 
-		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
+		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}\]
 		
-		And it automatically follows from Lemma \ref{meanvalue2} that
-		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}, \textrm{for normal edge $e$}\]
+		And it automatically follows from Lemma \ref{meanvalue2} that for normal edge $e$:
 
-		Now we prove by induction with induction hypothesis:
-		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
+		\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}\]
+
+		Now we prove by induction with induction hypothesis that for free or dangling edge $e$:
+
+		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}\]
 		
 		For base case $L=0, \abs{P(G,e,L) - P(G,e)} \leq \frac{1}{2}$ holds when $e$ is free or dangling.
 
