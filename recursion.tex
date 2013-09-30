@@ -152,16 +152,14 @@ $Z \triangleq \sum_{\boldsymbol\alpha \in \set{0,1}^{d_1} , \boldsymbol\beta \in
 
     $G_i^3 \triangleq G'' - \sum_{k=1}^{i-1} f_k$
 
-    $X = \prod_{i=1}^{d_1} P(G_i^1, e_i)$
 
-    $Y = \prod_{i=1}^{d_2} P(G_i^2, f_i)$
-
-    $Z = \prod_{i=1}^{d_2} P(G_i^3, f_i)$
 
 
 
 \begin{lemma}
-	
+	Let $X = \prod_{i=1}^{d_1} P(G_i^1, e_i)$, 
+
+$Y = \prod_{i=1}^{d_2} P(G_i^2, f_i), Z = \prod_{i=1}^{d_2} P(G_i^3, f_i)$,
 	\begin{equation}
 	P(G,e) =  1 - \frac{1}{2 + X \cdot Y - X - Z}
 		\label{recursion2}
@@ -176,7 +174,9 @@ P(G,e) &= \frac{\sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \
 &= 1 - \frac{1}{2 + \frac{Z_{\mathbf{0},\mathbf{0}}}{Z} - \frac{\sum_{\boldsymbol\beta} Z_{\mathbf{0}, \boldsymbol\beta} }{Z} - \frac{\sum_{\boldsymbol\alpha} Z_{ \boldsymbol\alpha , \mathbf{0}} }{Z}}
 	\end{align*}
 
-	Denote $\mathbb{P} \left( \boldsymbol\alpha = \mathbf{0}, \boldsymbol\beta = \mathbf{0} \right) \triangleq \frac{Z_{\mathbf{0},\mathbf{0}}}{Z}, \mathbb{P} \left( \boldsymbol\alpha = \mathbf{0} \right) \triangleq \frac{\sum_{\boldsymbol\beta} Z_{\mathbf{0}, \boldsymbol\beta} }{Z}, \mathbb{P} \left( \boldsymbol\beta = \mathbf{0} \right) \triangleq \frac{\sum_{\boldsymbol\alpha} Z_{ \boldsymbol\alpha , \mathbf{0}} }{Z}$.
+	Denote $\mathbb{P} \left( \boldsymbol\alpha = \mathbf{0}, \boldsymbol\beta = \mathbf{0} \right) \triangleq \frac{Z_{\mathbf{0},\mathbf{0}}}{Z}$,
+ 
+ $\mathbb{P} \left( \boldsymbol\alpha = \mathbf{0} \right) \triangleq \frac{\sum_{\boldsymbol\beta} Z_{\mathbf{0}, \boldsymbol\beta} }{Z}, \mathbb{P} \left( \boldsymbol\beta = \mathbf{0} \right) \triangleq \frac{\sum_{\boldsymbol\alpha} Z_{ \boldsymbol\alpha , \mathbf{0}} }{Z}$.
 
 Now consider the three terms respectively,
 	\begin{align*}
