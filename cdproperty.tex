@@ -85,21 +85,33 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	\end{lemma}
 
 	\begin{proof}
-		First for any ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
+Denote 
+
+$S_1({\bf x,y,z}) \triangleq \sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} }$,
+ 
+$S_2({\bf x,y,z}) \triangleq \sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} }$,
+
+$S_3({\bf x,y,z}) \triangleq \sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} }$,
+
+let $X \triangleq \prod_i^{d_1} x_i$,
+$Y \triangleq \prod_i^{d_2} y_i$,
+$Z \triangleq \prod_i^{d_2} z_i$,
+$W \triangleq (2+X Y-X-Z)^2$.
+For ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
 		\begin{align*}
-		\sum_k^{d_1} \abs{ \frac{\partial g({\bf x,y,z})}{\partial x_k} } &= \sum_k^{d_1} \frac{\prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - \prod_i^{d_2} y_i \right)}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2}
-		\leq d_1\cdot  \frac{1}{2^{d_1 - 1}}  \leq 1 \\
-		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial y_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} y_i \cdot \prod_{i}^{d_1} x_i}{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2}
-		\leq d_2 \cdot \frac{1}{2^{d_1 + d_2 - 1}} \leq 1 \\
-		\sum_k^{d_2} \abs{ \frac{\partial g({\bf x,y,z})}{\partial z_k} } &= \sum_k^{d_2} \frac{\prod_{i\neq k}^{d_2} z_i }{(2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i)^2}
-		\leq d_2 \cdot \frac{1}{2^{d_2 - 1}} \leq 1
+		S_1({\bf x,y,z}) &= \frac{1}{W} \sum_k^{d_1} \prod_{i\neq k}^{d_1} x_i \cdot \left( 1 - Y \right)
+		\leq \frac{d_1}{2^{d_1 - 1}}  \leq 1 \\
+		S_2({\bf x,y,z}) &= \frac{1}{W} \sum_k^{d_2} \prod_{i\neq k}^{d_2} y_i \cdot X
+		\leq  \frac{d_2}{2^{d_1 + d_2 - 1}} \leq 1 \\
+		S_3({\bf x,y,z}) &= \frac{1}{W} \sum_k^{d_2} \prod_{i\neq k}^{d_2} z_i
+		\leq \frac{d_2}{2^{d_2 - 1}} \leq 1
 		\end{align*}
 
         Now let $h(\alpha) = g(\alpha {\bf x} + (1 - \alpha) {\bf \hat{x}}, \alpha {\bf y} + (1 - \alpha) {\bf \hat{y}}, \alpha {\bf z} + (1 - \alpha) {\bf \hat{z}})$ where $\alpha \in [0,1]$, by Mean Value Theorem, $\exists \tilde{\alpha} \in [0,1]$ s.t. for $\tilde{\bf x} = \tilde{\alpha} {\bf x} + (1 - \tilde{\alpha}) {\bf \hat{x}}, \tilde{\bf y} = \tilde{\alpha} {\bf y} + (1 - \tilde{\alpha}) {\bf \hat{y}}, \tilde{\bf z} = \tilde{\alpha} {\bf z} + (1 - \tilde{\alpha}) {\bf \hat{z}}$
         %Then by Mean Value Theorem, $\exists \tilde{\bf x}, \tilde{\bf y},  \tilde{\bf z}$ s.t. $\forall i, \min\set{x_i,\hat{x_i}} \leq \tilde{x_i} \leq \max\set{x_i, \hat{x_i}}, \min\set{y_i,\hat{y_i}} \leq \tilde{y_i} \leq \max\set{y_i, \hat{y_i}}, \min\set{z_i,\hat{z_i}} \leq \tilde{z_i} \leq \max\set{z_i, \hat{z_i}}$.
 		\begin{align*}
 		\abs{g(\hat{\bf x}, \hat{\bf y}, \hat{\bf z}) - g({\bf x,y,z})} \leq &
-		\left(  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial x_i}} + \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial y_i}} +  \sum_i\abs{ \frac{\partial g(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} )}{\partial z_i}} \right)  \epsilon
+		\left(  S_1(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} ) + S_2(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} ) +  S_3(\tilde{\bf x},\tilde{\bf y},\tilde{\bf z} ) \right)  \epsilon
 		\leq  3\epsilon
 		\end{align*}
 	\end{proof}
@@ -107,7 +119,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 	%Now we are ready for the proof of  Theorem \ref{cd-main-theorem}.
 
 	%\begin{proof}
-\noindent{\bf Proof of Theorem \ref{cd-main-theorem}. } 
+\noindent{\bf Proof of Theorem \ref{cd-main-theorem}. }
 		Note that the recursion for normal edge case is applied only once, so it is sufficient to show that:
 
 		\[\abs{P(G,e,L) - P(G,e)} \leq (\frac{1}{2})^{L+1}, \textrm{for free or dangling edge $e$}\]
@@ -122,7 +134,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
 		Now suppose the induction hypothesis is true for $L<k$, we shall prove that it is true for $L=k$.
 
-		{\bf Case 1}, $e$ is free edge, then $\abs{P(G,e,L) - P(G,e)} = 0$.
+		{\bf Case 1}, $e$ is free edge $\abs{P(G,e,L) - P(G,e)} = 0$.
 
 		{\bf Case 2}, $e=(u,\_)$ is dangling with $deg(u)=d+1$, then by induction hypothesis we have
 		$\epsilon \triangleq \max_i \abs{P\left(G_i,e_i,L-\lceil \log_6{d+1}\rceil \right) - P(G_i,e_i)} \leq \left(\frac{1}{2}\right)^{L-\lceil \log_6{d+1}\rceil + 1}$.
