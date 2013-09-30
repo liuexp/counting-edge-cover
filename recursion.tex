@@ -3,15 +3,15 @@ In this section, we provide a recursion for computing the marginal probability $
 
 \subsection{$e$ is free}
 %This case is trivial.
-\begin{Prop}
+\begin{proposition}
 	\[P(G,e) = \frac{1}{2}\]
-\end{Prop}
+\end{proposition}
 \begin{proof}
 	If $e$ is a free edge, then any edge cover with $e$ chosen is in one-to-one correspondence to an edge cover with $e$ not chosen. Hence exactly half of the edge covers in $EC(G)$ does not choose $e$, so $P(G, e) = \frac{1}{2}$.
 \end{proof}
 
 \subsection{$e$ is dangling}
-\begin{Lem}
+\begin{lemma}
 For graph $G=(V,E)$ with a dangling edge $e=(u,\_)$, denote $d$
 edges incident with $u$ except $e$ as $e_1, e_2, \ldots, e_d$,
 let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \triangleq G - e - u$),
@@ -19,33 +19,40 @@ let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G_1 \trian
 		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)} %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
 		\label{propp3rg}
 	\end{equation}
-\end{Lem}
+\end{lemma}
 \begin{proof}
 	For $\boldsymbol\alpha \in \set{0,1}^d$, let $EC_{\boldsymbol\alpha}(G-e-u)$ be the set of edge covers in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\boldsymbol\alpha$, denote $Z_{\boldsymbol\alpha} = \abs{EC_{\boldsymbol\alpha}(G-e-u)}$, and $Z = \sum_{\boldsymbol\alpha \in \set{0,1}^d} Z_{\boldsymbol\alpha} = \abs{EC(G-e-u)}$. % \triangleq \set{X : X\subseteq E, $
 
 		Also note that as long as $\boldsymbol\alpha \neq 0$, counting edge covers with restriction $\boldsymbol\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
 	\begin{align*}
-		P(G,e) = & \frac{\abs{EC(G-e)}}{\abs{EC(G)}}
-		= \frac{\sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha}}
-		=\frac{Z - Z_0}{2 Z - Z_0}
-		= \frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
+		P(G,e) = & \frac{\abs{EC(G-e)}}{\abs{EC(G)}} \\
+        = & \frac{\sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha}} \\
+        = &\frac{Z - Z_0}{2 Z - Z_0} \\
+        = &\frac{1 - \frac{Z_{\mathbf{0}}}{Z}}{ 2 - \frac{Z_{\mathbf{0}}}{Z}}.
 	\end{align*}
 
 	Now consider the term $\frac{Z_{\mathbf{0}}}{Z}$, it says the probability that a uniformly random edge cover drawn from $EC(G-e-u)$ picked none of $\set{e_i}_{i=1}^{d}$, so
 	\begin{align*}
-		\frac{Z_{\mathbf{0}}}{Z}=\mathbb{P} \left( \set{e_i} = \mathbf{0}\right) = \mathbb{P} (e_1 = 0) \prod_{i=2}^d \mathbb{P} \left(e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0}\right) = \prod_{i=1}^d P(G_i, e_i).
+        \frac{Z_{\mathbf{0}}}{Z} = & \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \\
+        = & \mathbb{P} (e_1 = 0) \prod_{i=2}^d \mathbb{P} \left(e_i = 0 \mid \set{e_j}_{j=1}^{i-1} \mathbf{0}\right) \\
+        = &\prod_{i=1}^d P(G_i, e_i)
 	\end{align*}
 
-	Hence by substitution we have $P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}$.
+	Hence by substitution we have 
+    $$P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}$$
 	
 \end{proof}
 
 We remark that for every $i$, $e_i$ is dangling or free in $G_i$.
 
 \subsection{$e$ is a normal edge}
+
+\ \\
+
 By definition we have
+
 \begin{equation}
-	P(G,e) = \frac{\abs{EC(G-e)}}{\abs{EC(G-e)} + \abs{EC(G-e-u-v)} }.
+	P(G,e) = \frac{\abs{EC(G-e)}}{\abs{EC(G-e)} + \abs{EC(G-e-u-v)} }
 \end{equation}
 
 
@@ -54,21 +61,21 @@ By definition we have
 	Denote $Z_{\boldsymbol\alpha, \boldsymbol\beta}^G \triangleq \abs{EC_{\boldsymbol\alpha, \boldsymbol\beta}(G)}$, $G_1 \triangleq G-e, G_2 \triangleq G-e-u-v$. As an illustration, given a normal edge $e=(u,v)$ in $G$ as in Figure \ref{fig:generalG}, $G_1$ and $G_2$ are Figure \ref{fig:generalG-e} and Figure \ref{fig:generalG-e-u-v} respectively.
 
 \begin{figure}[htp]
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.15\textwidth}
 		\centering
 		\setlength{\unitlength}{1mm}
 		\begin{picture}(20,30)
-			\put(0,0){\circle*{10}}
+			\put(0,0){\circle*{6}}
 			\put(0,0){\line(1,1){10}}
-			\put(20,0){\circle*{10}}
+			\put(20,0){\circle*{6}}
 			\put(20,0){\line(-1,1){10}}
-			\put(10,10){\circle*{10}}
+			\put(10,10){\circle*{6}}
 			\put(10,10){\line(0,1){10}}
-			\put(10,20){\circle*{10}}
+			\put(10,20){\circle*{6}}
 			\put(10,20){\line(1,1){10}}
 			\put(10,20){\line(-1,1){10}}
-			\put(20,30){\circle*{10}}
-			\put(0,30){\circle*{10}}
+			\put(20,30){\circle*{6}}
+			\put(0,30){\circle*{6}}
 			\put(14,20){$v$}
 			\put(14,10){$u$}
 			\put(8,14.5){$e$}
@@ -81,20 +88,20 @@ By definition we have
 		\label{fig:generalG}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.15\textwidth}
 		\centering
 		\setlength{\unitlength}{1mm}
 		\begin{picture}(20,30)
-			\put(0,1){\circle*{10}}
+			\put(0,1){\circle*{6}}
 			\put(0,0){\line(1,1){10}}
-			\put(20,1){\circle*{10}}
+			\put(20,1){\circle*{6}}
 			\put(20,0){\line(-1,1){10}}
-			\put(10,10){\circle*{10}}
-			\put(10,20){\circle*{10}}
+			\put(10,10){\circle*{6}}
+			\put(10,20){\circle*{6}}
 			\put(10,20){\line(1,1){10}}
 			\put(10,20){\line(-1,1){10}}
-			\put(20,30){\circle*{10}}
-			\put(0,30){\circle*{10}}
+			\put(20,30){\circle*{6}}
+			\put(0,30){\circle*{6}}
 			\put(14,20){$v$}
 			\put(14,10){$u$}
 			\put(2,6){$e_1$}
@@ -102,28 +109,28 @@ By definition we have
 			\put(3,28){$f_1$}
 			\put(13,28){$f_2$}
 		\end{picture}
-		\caption{$G_1 = G-e$}
+		\caption{$G_1$}
 		\label{fig:generalG-e}
 	\end{subfigure}
 	\hfill
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.15\textwidth}
 		\centering
 		\setlength{\unitlength}{1mm}
 		\begin{picture}(20,20)
-			\put(0,1){\circle*{10}}
+			\put(0,1){\circle*{6}}
 			\put(0,1){\line(0,1){10}}
-			\put(20,1){\circle*{10}}
+			\put(20,1){\circle*{6}}
 			\put(20,1){\line(0,1){10}}
-			\put(20,30){\circle*{10}}
+			\put(20,30){\circle*{6}}
 			\put(20,30){\line(0,-1){10}}
-			\put(0,30){\circle*{10}}
+			\put(0,30){\circle*{6}}
 			\put(0,30){\line(0,-1){10}}
 			\put(2,6){$e_1$}
 			\put(15,6){$e_2$}
 			\put(2,24){$f_1$}
 			\put(15,24){$f_2$}
 		\end{picture}
-		\caption{$G_2 = G-e-u-v$}
+		\caption{$G_2$}
 		\label{fig:generalG-e-u-v}
 	\end{subfigure}
 	\caption{Normal edge examples.}
@@ -140,14 +147,14 @@ $G_i^2 \triangleq G_2 - \sum_{k=1}^{d_1}e_k - \sum_{k=1}^{i-1} f_k$,
 $G_i^3 \triangleq G_2 - \sum_{k=1}^{i-1} f_k$,
 
 
-\begin{Lem}
+\begin{lemma}
 	
 	\begin{equation}
 	P(G,e) =  1 - \frac{1}{2 + \prod_{i=1}^{d_1} P(G_i^1, e_i) \cdot \prod_{i=1}^{d_2} P(G_i^2, f_i) - \prod_{i=1}^{d_1} P(G_i^1, e_i) - \prod_{i=1}^{d_2} P(G_i^3, f_i)}
 		\label{recursion2}
 	\end{equation}
 
-\end{Lem}
+\end{lemma}
 \begin{proof}
 
 	\begin{align*}

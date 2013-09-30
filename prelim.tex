@@ -8,13 +8,13 @@ Given a graph $G=(V,E)$ with $e \in E$,  we use $EC(G)$ to denote the set of all
 \end{equation}
 
 In this paper, we deal with an extended notion of undirected graphs where dangling edges and free edges are allowed.
-\begin{Def}
+\begin{Definition}
 	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with exactly one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
 
 	A {\bf free edge} $e=(\_, \_)$ of a graph is such edge with no end-point vertex. %Note that a free edge is not a dangling edge.
 
 
-\end{Def}
+\end{Definition}
 
 	We use graph to refer graph with or without dangling edges and free edges.
 	Edges in the usual sense (i.e. neither dangling nor free), will be referred to as normal edges.
@@ -26,9 +26,10 @@ In this paper, we deal with an extended notion of undirected graphs where dangli
 
 For a graph $G=(V,E)$, an edge $e = (u,v) \in E$ and a vertex $u \in V$, define
 \begin{align*}
-G - e &\triangleq (V, E-e) \\
-e - u &\triangleq (\_, v) \text{(note that here $v$ could be $\_$)} \\
-G - u &\triangleq (V - u, \set{e: e \in E, e\text{ is not incident with }u} \cup \set{e - u: e \in E, e\text{ is incident with }u})
+    G - e \triangleq& (V, E-e) \\
+    e - u \triangleq& (\_, v) \text{(note that here $v$ could be $\_$)} \\
+    G - u \triangleq& (V - u, \set{e: e \in E, e\text{ is not incident with }u} \\
+                    &\cup \set{e - u: e \in E, e\text{ is incident with }u})
 \end{align*}
 
 %For a graph $G=(V,E)$ with an edge (may be dangling or free) $e \in E$ and a vertex $v \in V$,
@@ -45,15 +46,15 @@ Note that here in edge set $E$, duplicates are allowed. We may have multiple dan
 For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure \ref{fig:G} , the result of $e_1 - u$ is shown in Figure \ref{fig:e-u} and the result of $G-e-u\triangleq (G-e)-u$ is shown in Figure \ref{fig:G-e-u}.
 
 \begin{figure}[htp]
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.15\textwidth}
 		\centering
-		\setlength{\unitlength}{1mm}
+		\setlength{\unitlength}{0.8mm}
 		\begin{picture}(20,20)
-			\put(0,0){\circle*{10}}
+			\put(0,0){\circle*{6}}
 			\put(0,0){\line(1,1){10}}
-			\put(20,0){\circle*{10}}
+			\put(20,0){\circle*{6}}
 			\put(20,0){\line(-1,1){10}}
-			\put(10,10){\circle*{10}}
+			\put(10,10){\circle*{6}}
 			\put(10,10){\line(0,1){10}}
 			\put(14,10){$u$}
 			\put(8,15){$e$}
@@ -64,15 +65,15 @@ For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure 
 		\label{fig:G}
 	\end{subfigure}
 	\hfill
-    \begin{subfigure}[b]{0.3\textwidth}
+    \begin{subfigure}[b]{0.15\textwidth}
 		\centering
-		\setlength{\unitlength}{1mm}
+		\setlength{\unitlength}{0.8mm}
 		\begin{picture}(20,20)
-			\put(0,0){\circle*{10}}
+			\put(0,0){\circle*{6}}
 			\put(0,0){\line(0,1){10}}
-			\put(20,0){\circle*{10}}
+			\put(20,0){\circle*{6}}
 			\put(20,0){\line(-1,1){10}}
-			\put(10,10){\circle*{10}}
+			\put(10,10){\circle*{6}}
 			\put(10,10){\line(0,1){10}}
 			\put(14,10){$u$}
 			\put(8,15){$e$}
@@ -83,13 +84,13 @@ For example, given a degree-3 vertex $u$ with dangling edge $e$ shown in Figure 
 		\label{fig:e-u}
 	\end{subfigure}
     \hfill
-	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.15\textwidth}
 		\centering
-		\setlength{\unitlength}{1mm}
+		\setlength{\unitlength}{0.8mm}
 		\begin{picture}(20,20)
-			\put(0,0){\circle*{10}}
+			\put(0,0){\circle*{6}}
 			\put(0,0){\line(0,1){10}}
-			\put(20,0){\circle*{10}}
+			\put(20,0){\circle*{6}}
 			\put(20,0){\line(0,1){10}}
 			\put(2,6){$e_1$}
 			\put(15,6){$e_2$}

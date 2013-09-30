@@ -2,13 +2,13 @@
 
 Finally, we present the procedures for approximately counting edge covers given good estimates of the marginal probability $P(G,e)$, hence an FPTAS for the approximate counting of edge covers problem.
 
-\begin{Prop}
+\begin{proposition}
 
 	Let $Z(G) \triangleq \norm{EC(G)}$ and $e_1,e_2,\ldots,e_m$ be an enumeration of the edges $E$. Define $G_1 \triangleq G, G_i \triangleq G_{i-1} - e_{i-1} - u_{i-1} - v_{i-1}, 1 < i \leq m $. Then
 
 	\[ Z(G) = \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i))} \]
 
-\end{Prop}
+\end{proposition}
 
 \begin{proof}
 	Recall that $EC(G) \neq \emptyset$.% since the set of all edges $E$ is an edge cover.
@@ -27,10 +27,10 @@ Finally, we present the procedures for approximately counting edge covers given 
 We now show the main theorem of this section.
 Let $Z(G, L) \triangleq \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i, L))}$ be the estimated number of edge covers given estimated $P(G_i, e_i, L)$
 
-\begin{Thm}
+\begin{theorem}
 	For $0< \epsilon <1$, take $L=\log m + \log(8/ \epsilon) $,
 	\[ 1- \epsilon \leq \frac{Z(G, L)}{Z(G)} \leq 1+ \epsilon\]
-\end{Thm}
+\end{theorem}
 
 \begin{proof}
 

@@ -6,17 +6,17 @@ so here we establish the exponential correlation decay property, in the stronger
 $M$-based depth,
 of the estimation error in $P(G,e,L)$.%, hence $P(G,e,L)$
 
-\begin{Thm}
+\begin{theorem}
 	\label{cd-main-theorem}
 	Given graph $G$, edge $e$ and depth $L$,
 	\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}\]
-\end{Thm}
+\end{theorem}
 
 Such phenomenon is usually referred to as exponential correlation decay. Before we prove the main theorem, we will introduce a few useful propositions and lemmas.
 
-\begin{Prop}
+\begin{proposition}
 	\[P(G, e) \leq \frac{1}{2}\]
-\end{Prop}
+\end{proposition}
 
 \begin{proof}
 	Although one may examine this case by case algebraically, this proposition is quite obvious in a combinatorial view, for any edge cover $X \in EC(G)$ with $e \notin X$, $X+e$ is also an edge cover in $G$, and $\forall X,Y \in EC(G)$ s.t. $X \neq Y, e \notin X, e\notin Y$, we have $X+e \neq Y+e$. So the edge covers with $e$ chosen is at least as many as the edge covers with $e$ not chosen, hence the proposition follows.
@@ -32,14 +32,14 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 \[ g({\bf x,y,z}) \triangleq  1- \frac{1}{2+\prod_i x_i \cdot \prod_i y_i - \prod_i x_i - \prod_i z_i} \]
 
 
-	\begin{Lem}
+	\begin{lemma}
 		\label{meanvalue1}
 		For $d$-variate function $f$, given estimated $\hat{\bf x}$ for true value ${\bf x}$ such that $\hat{\bf x} \in  [0, \frac{1}{2}]^d, {\bf x} \in [0, \frac{1}{2}]^d$, let $\epsilon \triangleq \max_i{\abs{x_i - \hat{x_i}}}$,
 		\begin{align*}
 			\abs{f(\hat{\bf x}) - f({\bf x})}
 		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
 		\end{align*}
-	\end{Lem}
+	\end{lemma}
 
 	\begin{proof}
         First we show for any d-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^d$,
@@ -73,7 +73,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\end{align*}
 	\end{proof}
 
-	\begin{Lem}
+	\begin{lemma}
 		\label{meanvalue2}
 		Given estimated $\hat{\bf x},\hat{\bf y},\hat{\bf z}$ for true value $ {\bf x}, {\bf y}, {\bf z}$ respectively, such that ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}, \hat{\bf x} \in [0, \frac{1}{2}]^{d_1} , \hat{\bf y},\hat{\bf z} \in [0, \frac{1}{2}]^{d_2}$,
 		let $\epsilon \triangleq \max_i \set{\abs{x_i - \hat{x_i}}, \abs{y_i - \hat{y_i} } , \abs{z_i - \hat{z_i}}}$,
@@ -82,7 +82,7 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 		\leq  3\epsilon
 		\end{align*}
 
-	\end{Lem}
+	\end{lemma}
 
 	\begin{proof}
 		First for any ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
