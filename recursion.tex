@@ -14,7 +14,7 @@ In this section, we provide a recursion for computing the marginal probability $
 \begin{lemma}
 For graph $G=(V,E)$ with a dangling edge $e=(u,\_)$, denote $d$
 edges incident with $u$ except $e$ as $e_1, e_2, \ldots, e_d$,
-let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G' \triangleq G - e - u$),
+let $G_1 \triangleq G - e - u$, and $\forall i \geq 2, G_i \triangleq G_{i-1} - e_{i-1}$ ,
 	\begin{equation}
 		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)} %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
 		\label{propp3rg}
@@ -34,11 +34,11 @@ let $G_i \triangleq G - e - u - \sum_{k=1}^{i-1} e_k$ (specifically, $G' \triang
 	Now consider the term $\frac{Z_{\mathbf{0}}}{Z}$, it says the probability that a uniformly random edge cover drawn from $EC(G-e-u)$ picked none of $\set{e_i}_{i=1}^{d}$, so
 	\begin{align*}
         \frac{Z_{\mathbf{0}}}{Z} = & \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \\
-        = & \mathbb{P} (e_1 = 0) \prod_{i=2}^d \mathbb{P} \left(e_i = 0 \mid \set{e_j}_{j=1}^{i-1} \mathbf{0}\right) \\
+        = & \mathbb{P} (e_1 = 0) \prod_{i=2}^d \mathbb{P} \left(e_i = 0 \mid \set{e_j}_{j=1}^{i-1} =\mathbf{0}\right) \\
         = &\prod_{i=1}^d P(G_i, e_i)
 	\end{align*}
 
-	Hence by substitution we have 
+	Hence by substitution we have
     $$P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}$$
 	
 \end{proof}
@@ -139,7 +139,7 @@ By definition we have
 \[\abs{EC(G-e)} = \sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \mathbf{0}} Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G'} = \sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \mathbf{0}} Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G''}\]
 %\[C_2 = \sum_{\boldsymbol\alpha , \boldsymbol\beta} Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G''}\]
 
-Since only $G''$ is involved, denote that 
+Since only $G''$ is involved, denote that
 
 $Z_{\boldsymbol\alpha, \boldsymbol\beta} \triangleq Z_{\boldsymbol\alpha, \boldsymbol\beta}^{G''}$
 
@@ -153,8 +153,8 @@ $Z \triangleq \sum_{\boldsymbol\alpha \in \set{0,1}^{d_1} , \boldsymbol\beta \in
     $G_i^3 \triangleq G'' - \sum_{k=1}^{i-1} f_k$
 
     $X = \prod_{i=1}^{d_1} P(G_i^1, e_i)$
-    
-    $Y = \prod_{i=1}^{d_2} P(G_i^2, f_i)$ 
+
+    $Y = \prod_{i=1}^{d_2} P(G_i^2, f_i)$
 
     $Z = \prod_{i=1}^{d_2} P(G_i^3, f_i)$
 
