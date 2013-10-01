@@ -68,8 +68,8 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
         Now let $h(\alpha) = f(\alpha {\bf x} + (1 - \alpha) {\bf \hat{x}})$ where $\alpha \in [0,1]$, by (\ref{mv1pd}) and Mean Value Theorem, $\exists \tilde{\alpha} \in [0,1]$ s.t. for $\tilde{\bf x} = \tilde{\alpha} {\bf x} + (1 - \tilde{\alpha}) {\bf \hat{x}}$
 
 		\begin{align*}
-			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon
-		\leq  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
+			\abs{f(\hat{\bf x}) - f({\bf x})} \leq& \sum_i\abs{ \frac{\partial f(\tilde{\bf x})}{\partial x_i}} \cdot \epsilon \\
+            \leq&  \min{\set{\frac{1}{2}, d \left( \frac{1}{2} \right)^{d-1}}} \cdot \epsilon
 		\end{align*}
 	\end{proof}
 

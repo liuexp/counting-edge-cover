@@ -181,8 +181,11 @@ P(G,e) &= \frac{\sum_{\boldsymbol\alpha \neq \mathbf{0}, \boldsymbol\beta \neq \
 Now consider the three terms respectively,
 	\begin{align*}
         \mathbb{P}\left( \boldsymbol\alpha = \mathbf{0}\right) =& \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_1} P(G_i^1, e_i) \\
-        \mathbb{P}\left( \boldsymbol\beta = \mathbf{0}\right) =& \mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_2} P(G_i^3, f_i) \\
-        \mathbb{P}\left( \boldsymbol\alpha = \mathbf{0}, \boldsymbol\beta = \mathbf{0} \right) =&  \mathbb{P} \left( \boldsymbol\alpha = \mathbf{0} \right) \cdot \mathbb{P}\left( \boldsymbol\beta = \mathbf{0} \mid \boldsymbol\alpha = \mathbf{0} \right) \\
+        \mathbb{P}\left( \boldsymbol\beta = \mathbf{0}\right) =& \mathbb{P} \left( \set{f_i} = \mathbf{0}\right) =	\prod_{i=1}^{d_2} P(G_i^3, f_i)
+    \end{align*}
+	\begin{align*}
+        &\mathbb{P}\left( \boldsymbol\alpha = \mathbf{0}, \boldsymbol\beta = \mathbf{0} \right) \\
+        =&  \mathbb{P} \left( \boldsymbol\alpha = \mathbf{0} \right) \cdot \mathbb{P}\left( \boldsymbol\beta = \mathbf{0} \mid \boldsymbol\alpha = \mathbf{0} \right) \\
         =&  \mathbb{P} \left( \set{e_i} = \mathbf{0}\right) \cdot \mathbb{P} \left( \set{f_i} = \mathbf{0} \mid \set{e_i} = \mathbf{0} \right) \\
         =& \prod_{i=1}^{d_1} \mathbb{P} \left( e_i = 0 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{0} \right) \\
          &\cdot \prod_{i=1}^{d_2} \mathbb{P} \left( f_i = 0 \mid \set{e_j}_{j=1}^{d_1} = \mathbf{0},\set{f_j}_{j=1}^{i-1} = \mathbf{0} \right) \\
