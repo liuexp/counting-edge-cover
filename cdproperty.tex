@@ -56,10 +56,10 @@ Given a $d_1$-dimensional vector ${\bf x} \in [0, \frac{1}{2}]^{d_1}$ and two $d
 
     	For $d=3, \sum_i\abs{ \cfrac{\partial f({\bf x})}{\partial x_i}} = \frac{x_1 x_2 + x_1 x_3 + x_2 x_3}{\left( 2 - x_1x_2x_3 \right)^2} \leq \frac{16}{75} $.
 
-		Now denote $i^*$ be one of the indices of smallest $x_i$, since $x_i \leq \frac{1}{2}$, we have
+	Next by $\forall k, x_k \leq \frac{1}{2}$, 
     	\begin{align*}
     		\sum_i^d \abs{\cfrac{\partial f({\bf x})}{\partial x_i}}  =& \sum_i^d \cfrac{ \prod_{k \neq i}^d x_k  }{\left( 2 - \prod_i x_i \right)^2}
-    		\leq  d \prod_{k \neq i^*}^d x_k
+    		%\leq  d \prod_{k \neq i^*}^d x_k
     		\leq  d \left( \frac{1}{2} \right)^{d-1}
     	\end{align*}
 
@@ -145,7 +145,7 @@ For ${\bf x} \in [0, \frac{1}{2}]^{d_1} , {\bf y,z} \in [0, \frac{1}{2}]^{d_2}$,
 
 		{\bf Case 1}, $e$ is free edge $\abs{P(G,e,L) - P(G,e)} = 0$.
 
-		{\bf Case 2}, $e=(u,\_)$ is a dangling edge, with $deg(u)=d+1$, then by induction hypothesis we have
+		{\bf Case 2}, $e=(u,\_)$ is a dangling edge, denote with $deg(u)=d+1$, then by induction hypothesis we have
         $\epsilon \triangleq \max_i \abs{P\left(G_i,e_i,L-\lceil \log_6{(d+1)}\rceil \right) - P(G_i,e_i)} \leq \left(\frac{1}{2}\right)^{L-\lceil \log_6{(d+1)}\rceil + 1}$.
 
 		First by Lemma \ref{meanvalue1} we need to show that for $d \leq 4$,
