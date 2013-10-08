@@ -1,0 +1,10 @@
+\section{Conclusions and Open Problems}
+We have presented an FPTAS for approximately counting the number of edge covers for any graph. A natural question to ask is whether there is also an FPTAS for approximately counting weighted edge covers? Will there be a phase transition as in the case of counting independent sets? Our current approach can be directly extended to the case where $\lambda$ is not too big (e.g. $\lambda > \frac{4}{9}$), leaving the region where $\lambda$ is small open.
+
+As we have noted, another view point of the edge cover problem is Rtw-Mon-CNF, hence another 2 natural problems are:
+\begin{itemize}
+	\item For what integer value of $k$, counting read $k$ times monotone CNF admits an FPTAS?
+	\item For read twice CNF, is there an FPTAS?
+\end{itemize}
+We remark that Rtw-CNF is also called Twice-SAT and admits an FPRAS~\cite{TwiceSAT}, while even counting read thrice 2CNF (without the monotone restriction) is as hard as counting 2CNF (without the read restriction) and hence does not admit FPRAS unless $RP=NP$.
+In general, it is of interest to see how far the correlation decay technique could get in designing FPTAS for problems in which Markov Chain Monte Carlo method has succeeded, and such investigation in their relation might shed some light on the understanding of the power of randomization.
