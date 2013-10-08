@@ -23,7 +23,7 @@ let $G_1 \triangleq G - e - u$, and $\forall i \geq 2, G_i \triangleq G_{i-1} - 
 \begin{proof}
 	For $\boldsymbol\alpha \in \set{0,1}^d$, let $EC_{\boldsymbol\alpha}(G-e-u)$ be the set of edge covers in $G-e-u$ such that its restriction onto $\set{e_i}_{i=1}^{d}$ is consistent with $\boldsymbol\alpha$, denote $Z_{\boldsymbol\alpha} = \abs{EC_{\boldsymbol\alpha}(G-e-u)}$, and $Z = \sum_{\boldsymbol\alpha \in \set{0,1}^d} Z_{\boldsymbol\alpha} = \abs{EC(G-e-u)}$. % \triangleq \set{X : X\subseteq E, $
 
-		Also note that as long as $\boldsymbol\alpha \neq 0$, counting edge covers with restriction $\boldsymbol\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it's enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
+		Also note that as long as $\boldsymbol\alpha \neq 0$, counting edge covers with restriction $\boldsymbol\alpha$ is the same in either $G$, $G-e$, or $G-e-u$, so it is enough to work with $G-e-u$. Note that in $G-e-u$, for every $i$, $e_i$ is either dangling or free, but not normal.
 	\begin{align*}
 		P(G,e) = & \frac{\abs{EC(G-e)}}{\abs{EC(G)}} \\
         = & \frac{\sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha} }{ Z_{\mathbf{0}} + 2 \sum_{\boldsymbol\alpha \in \set{0,1}^d, \boldsymbol\alpha \neq \mathbf{0}} Z_{\boldsymbol\alpha}} \\

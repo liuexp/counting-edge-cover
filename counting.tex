@@ -4,16 +4,17 @@ Finally, we present the procedures for approximately counting edge covers given 
 
 \begin{proposition}
 
-	Let $Z(G) \triangleq \abs{EC(G)}$ and $e_1,e_2,\ldots,e_m$ be an enumeration of the edges $E$. Define $G_1 \triangleq G, G_i \triangleq G_{i-1} - e_{i-1} - u_{i-1} - v_{i-1}, 1 < i \leq m $. Then
+    Let $Z(G) \triangleq \abs{EC(G)} \neq 0$ and $e_1,e_2,\ldots,e_m$ be an enumeration of the edges $E$ where $e_i = (u_i, v_i)$. Define $G_1 \triangleq G, G_i \triangleq G_{i-1} - e_{i-1} - u_{i-1} - v_{i-1}, 1 < i \leq m $. Then
 
 	\[ Z(G) = \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i))} \]
 
 \end{proposition}
 
 \begin{proof}
-	Recall that $EC(G) \neq \emptyset$.% since the set of all edges $E$ is an edge cover.
+	%Recall that $EC(G) \neq \emptyset$.% since the set of all edges $E$ is an edge cover.
 
-	Now with $X \sim EC(G)$ uniformly, $\mathbb{P}(X=E)$ has two expressions,
+	%Now 
+    With $X \sim EC(G)$ uniformly, $\mathbb{P}(X=E)$ has two expressions,
 	\begin{align*}
 		\mathbb{P} (X = E) =& \frac{1}{Z(G)} \\
 		\mathbb{P} (X = E) =& \prod_i \mathbb{P} \left(e_i = 1 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{1} \right) \\
