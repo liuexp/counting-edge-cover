@@ -9,7 +9,7 @@
 %\usepackage{minted}
 \usepackage{color}
 \usepackage{makeidx}
-\usepackage{xeCJK}
+%\usepackage{xeCJK}
 %\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={AR PL New Kai}]{Adobe Song Std}
 %\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={Adobe Kaiti Std}]{Adobe Song Std}
 \usepackage{graphicx}
@@ -27,17 +27,17 @@
 \usepackage{subcaption}
 
 % THEOREMS -------------------------------------------------------
-\newtheorem{Thm}{Theorem}
-\newtheorem{Cor}[Thm]{Corollary}
-\newtheorem{Conj}[Thm]{Conjecture}
-\newtheorem{Lem}[Thm]{Lemma}
-\newtheorem{Prop}[Thm]{Proposition}
-\newtheorem{Prob}{Problem}
-\newtheorem{Exam}{Example}
-\newtheorem{Def}[Thm]{Definition}
-\newtheorem{Rem}[Thm]{Remark}
-\newtheorem{Not}[Thm]{Notation}
-\newtheorem*{Sol}{Solution}
+\newtheorem{theorem}{theorem}
+\newtheorem{corollary}[theorem]{corollary}
+\newtheorem{conjecture}[theorem]{conjecture}
+\newtheorem{lemma}[theorem]{lemma}
+\newtheorem{proposition}[theorem]{proposition}
+\newtheorem{problem}{problem}
+\newtheorem{example}{example}
+\newtheorem{definition}[theorem]{definition}
+\newtheorem{remark}[theorem]{remark}
+\newtheorem{notation}[theorem]{notation}
+\newtheorem*{solution}{solution}
 
 % MATH -----------------------------------------------------------
 \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
@@ -131,6 +131,8 @@ An edge cover of a graph is a set of edges such that every vertex has at least a
 \input{cdproperty.tex}
 
 \input{counting.tex}
+
+\input{open.tex}
 
 \bibliographystyle{plain}
 

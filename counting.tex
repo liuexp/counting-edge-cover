@@ -2,18 +2,19 @@
 
 Finally, we present the procedures for approximately counting edge covers given good estimates of the marginal probability $P(G,e)$, hence an FPTAS for the approximate counting of edge covers problem.
 
-\begin{Prop}
+\begin{proposition}
 
-	Let $Z(G) \triangleq \norm{EC(G)}$ and $e_1,e_2,\ldots,e_m$ be an enumeration of the edges $E$. Define $G_1 \triangleq G, G_i \triangleq G_{i-1} - e_{i-1} - u_{i-1} - v_{i-1}, 1 < i \leq m $. Then
+    Let $Z(G) \triangleq \abs{EC(G)} \neq 0$ and $e_1,e_2,\ldots,e_m$ be an enumeration of the edges $E$ where $e_i = (u_i, v_i)$. Define $G_1 \triangleq G, G_i \triangleq G_{i-1} - e_{i-1} - u_{i-1} - v_{i-1}, 1 < i \leq m $. Then
 
 	\[ Z(G) = \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i))} \]
 
-\end{Prop}
+\end{proposition}
 
 \begin{proof}
-	Recall that $EC(G) \neq \emptyset$.% since the set of all edges $E$ is an edge cover.
+	%Recall that $EC(G) \neq \emptyset$.% since the set of all edges $E$ is an edge cover.
 
-	Now with $X \sim EC(G)$ uniformly, $\mathbb{P}(X=E)$ has two expressions,
+	%Now 
+    With $X \sim EC(G)$ uniformly, $\mathbb{P}(X=E)$ has two expressions,
 	\begin{align*}
 		\mathbb{P} (X = E) =& \frac{1}{Z(G)} \\
 		\mathbb{P} (X = E) =& \prod_i \mathbb{P} \left(e_i = 1 \mid \set{e_j}_{j=1}^{i-1} = \mathbf{1} \right) \\
@@ -27,10 +28,10 @@ Finally, we present the procedures for approximately counting edge covers given 
 We now show the main theorem of this section.
 Let $Z(G, L) \triangleq \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i, L))}$ be the estimated number of edge covers given estimated $P(G_i, e_i, L)$
 
-\begin{Thm}
-	For $0< \epsilon <1$, take $L=\log m + \log(8/ \epsilon) $,
+\begin{theorem}
+	For $0< \epsilon <1$, take $L=\log_2 m + \log_2(6/ \epsilon) $,
 	\[ 1- \epsilon \leq \frac{Z(G, L)}{Z(G)} \leq 1+ \epsilon\]
-\end{Thm}
+\end{theorem}
 
 \begin{proof}
 
@@ -55,4 +56,4 @@ Let $Z(G, L) \triangleq \frac{1}{\prod_{i=1}^m (1 - P(G_i, e_i, L))}$ be the est
 
 \end{proof}
 
-To sum up, since $Z(G, L)$ involves $m$ calls to $P(G,e,L)$, so run $Z(G, L)$ with $L = \log m + \log(8/ \epsilon)$, is an FPTAS for counting edge covers with overall running time $O(m \cdot n^2 \cdot ( m\cdot \frac{1}{\epsilon})^ {\log_2 6} )$.
+To sum up, since $Z(G, L)$ involves $m$ calls to $P(G,e,L)$, so run $Z(G, L)$ with $L = \log_2 m + \log_2(6/ \epsilon)$, is an FPTAS for counting edge covers with overall running time $O(m \cdot n^2 \cdot ( m\cdot \frac{1}{\epsilon})^ {\log_2 6} )$.
