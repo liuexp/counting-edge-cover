@@ -107,7 +107,39 @@
 		For an undirected input graph $G=(V,E)$, an {\bf edge cover} of $G$ is a set of edges $C$ covering all vertices.
 	\end{definition}
 	\begin{example}
-		\input{fig-edge-cover.tex}
+		\begin{figure}[htbp]
+			\centering
+			\input{fig-edge-cover1.tex}
+			\caption{Example of an edge cover\visible<2->{, with edges chosen being highlighted in red.}}
+		\end{figure}
+	\end{example}
+	\pause
+	Edge cover is related to many other problems such as:
+	\begin{itemize}
+		\item Matching problem.
+		\item Holant problem.
+		\item Rtw-Mon-CNF. (read twice monotone CNF)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Relation to Matching}
+	\begin{example}
+		Find edge covers by maximal matching?
+		\begin{figure}[htp]
+			\begin{subfigure}[b]{0.49\textwidth}
+				\centering
+				\input{fig-edge-cover1.tex}
+				\caption{$G$ has a perfect matching.}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{0.49\textwidth}
+				\centering
+				\input{fig-edge-cover2.tex}
+
+				\caption{$G$ doesn't have a perfect matching.}
+			\end{subfigure}
+		\end{figure}
 	\end{example}
 \end{frame}
 
