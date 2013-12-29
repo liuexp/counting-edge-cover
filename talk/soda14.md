@@ -29,8 +29,9 @@ In this view, matching is an at-most-one constraint on every vertex, and edge co
 * Alternatively, it is also known as read twice monotone CNF (Rtw-Mon-CNF).
 Here we view each edge as a boolean variable. As an edge has two incident vertices, it's read-twice. The constraint on every vertex gets translated to a monotone OR function.
 
-
 # Remarks
 Comparisons of Paradigms: MCMC vs. correlation decay.
+changing the picture.
 
 # Main Results
+TBA.
