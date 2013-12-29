@@ -1,0 +1,125 @@
+\documentclass[mathserif]{beamer}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+%\usepackage{minted}
+\usepackage{color}
+\usepackage{makeidx}
+%\usepackage{xeCJK}
+%\usepackage{fontspec}
+%\usepackage{lmodern}
+\usepackage{subcaption}
+%\setCJKmainfont[BoldFont={Adobe Heiti Std}, ItalicFont={AR PL New Kai}]{Adobe Song Std}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,anchorcolor=green,citecolor=blue}
+\usepackage{wrapfig}
+%\usepackage{lettrine}
+%\usepackage{abstract}
+
+% THEOREMS -------------------------------------------------------
+%\newtheorem{Thm}{Theorem}
+%\newtheorem{Cor}[Thm]{Corollary}
+%\newtheorem{Conj}[Thm]{Conjecture}
+%\newtheorem{Lem}[Thm]{Lemma}
+%\newtheorem{Prop}[Thm]{Proposition}
+\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{Prob}{Problem}
+%\newtheorem{Exam}{Example}
+%\newtheorem{Def}[Thm]{Definition}
+%\newtheorem{Rem}[theorem]{Remark}
+\newtheorem{remark}[theorem]{Remark}
+%\newtheorem{Not}[Thm]{Notation}
+%\newtheorem*{Sol}{Solution}
+
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\BX}{\mathbf{B}(X)}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\CommentS}[1]{}
+% CODE ----------------------------------------------------------
+\newcommand{\PltImg}[1]{
+\begin{center}
+\input{#1}
+\end{center}
+}
+
+\newenvironment{code}%
+{\vglue 5pt \VerbatimEnvironment\begin{Sbox}\begin{minipage}{0.9\textwidth}\begin{small}\begin{Verbatim}}%
+{\end{Verbatim}\end{small}\end{minipage}\end{Sbox}\setlength{\shadowsize}{2pt}\shadowbox{\TheSbox}\vglue 5pt}
+
+
+\usepackage{pgf}
+%\usepackage{tikz}
+%\usetikzlibrary{arrows,automata}
+%\usepackage[latin1]{inputenc}
+\usepackage{verbatim}
+\usepackage{listings}
+%\usepackage{algorithmic} %old version; we can use algorithmicx instead
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode} %for pseudo code, include algorithmicsx automatically
+
+\lstloadlanguages{C++, Lisp, Haskell, Python, Mathematica, Java,bash,Gnuplot,make,Matlab,PHP,Prolog,R,Ruby,sh,SQL,TeX,XML}
+
+
+\title[\scshape Counting Edge Covers]{\scshape A Simple FPTAS for Counting Edge Covers}
+\author[C. Lin, J. Liu, P. Lu]{Chengyu Lin\inst{1} \and Jingcheng Liu\inst{1} \and Pinyan Lu\inst{2}}
+\institute[SJTU, MSRA]{\scshape \inst{1} Shanghai Jiao Tong University \and \inst{2} Microsoft Research Asia}
+\date[SODA 2014]{\scshape ACM-SIAM Symposium on Discrete Algorithms, 2014}
+%\usetheme{Warsaw}
+\usetheme{Madrid}
+%\usetheme[numbers,totalnumber,compress,sidebarshades]{PaloAlto}
+%\usetheme{Copenhagen}
+%\usecolortheme{whale}
+\usecolortheme{seahorse}
+%\setbeamercolor{background canvas}{bg=blue!9} 
+%\setbeamertemplate{theorems}[ams style]
+\setbeamertemplate{navigation symbols}{}      
+\setbeamercovered{transparent}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{Overview}
+	\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}
+	\frametitle{Edge cover}
+	\begin{definition}
+		For an undirected input graph $G=(V,E)$, an {\bf edge cover} of $G$ is a set of edges $C$ covering all vertices.
+	\end{definition}
+	\begin{example}
+		\input{fig-edge-cover.tex}
+	\end{example}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Approximation Schemes}
+	We are interested primarily in two type of polynomial time approximation scheme:
+	\pause
+	\begin{definition}
+		(Informally) For given parameter $\eps > 0$ and an instance of a particular problem class, if the algorithm outputs a number $\hat{N}$ such that $(1-\eps) N \leq \hat{N} \leq (1+\eps) N$, where $N$ is the accurate answer of the problem instance, and the running time is bounded by $poly(n, 1/ \eps)$ with $n$ being the size of instance, this is called the {\bf FPTAS (fully polynomial time approximation scheme)}.
+
+		A randomized relaxation of FPTAS is known as {\bf FPRAS (fully polynomial time randomized approximation scheme)}, which uses random bits and only outputs $\hat{N}$ to the desired precision with high probability.
+	\end{definition}
+\end{frame}
+
+\end{document}
