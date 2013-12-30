@@ -1,10 +1,12 @@
-First of all, what is an edge cover.
+To start with, let me introduce what is an edge cover.
 
 # Edge Covers
-This concept is from graph theory and belongs to the class of covering problems. Given an undirected input graph, an edge cover of it is a set of edges such that every vertex is incident to at least one edge from the set.
-Here is an example, we highlight the edges being chosen. 
+The concept of edge cover comes from graph theory and belongs to the class of covering problems. It is defined similarly as vertex covers. Given an undirected input graph, an edge cover of the graph is a set of edges such that every vertex is incident to at least one edge from the set.
+Here is an example edge cover for the Petersen graph, we highlight the edges being chosen. 
 It's clear that for any graph without isolated vertices, there is always an edge cover which is just the set of all edges.
 So the decision problem is trivial.
+In this example, this edge cover is also a perfect matching.
+In general these two concepts are closely related.
 
 Edge cover is related to many problems:
 * Matching, vertex cycle cover, or k-factor problem in general. 
@@ -30,8 +32,13 @@ In this view, matching is an at-most-one constraint on every vertex, and edge co
 Here we view each edge as a boolean variable. As an edge has two incident vertices, it's read-twice. The constraint on every vertex gets translated to a monotone OR function.
 
 # Remarks
+A common paradigm for designing approximate counting algorithms is to relate counting with a probability distribution.
+This is especially the case in randomized counting, and is also refered as counting vs. sampling.
+For randomized sampling, the most successful approach is by Markov chains.
+On the other hand, the recent developments of correlation based deterministic FPTAS is changing the picture.
+One most successful example is in anti-ferromagnetic two-spin systems.
+
 Comparisons of Paradigms: MCMC vs. correlation decay.
-changing the picture.
 
 # Main Results
 TBA.
