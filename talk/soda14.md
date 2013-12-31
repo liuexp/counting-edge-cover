@@ -32,6 +32,7 @@ In this view, matching is an at-most-one constraint on every vertex, and edge co
 Here we view each edge as a boolean variable. As an edge has two incident vertices, it's read-twice. The constraint on every vertex gets translated to a monotone OR function.
 
 # Counting Problems
+Next let's introduce what is a counting problem.
 * Counting SAT.
 * Counting colorings.
 * Counting Independent sets (or vertex cover).
