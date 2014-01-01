@@ -244,7 +244,9 @@ Besides theoretical computer science, counting problems are also related to many
 %	
 %\end{frame}
 
+
 \section{\scshape Our Result}
+
 \begin{frame}
 	\frametitle{Main Result}
 	Previous work:
@@ -297,7 +299,7 @@ Besides theoretical computer science, counting problems are also related to many
 		\visible<+->{&= \prod_i \Pr( e_i \in X \mid \set{e_j}_{j=1}^{i-1} \subseteq X) \\}
 		\visible<+->{&= \prod_i \left(1-P(G_i,e_i)\right), }
 	\end{align*}
-	where $G_1 = G, G_{i+1} = G_i - e_i - u_i - v_i$.
+	\visible<.->{where $G_1 = G, G_{i+1} = G_i - e_i - u_i - v_i$.}
 
 	\pause
 	Therefore,
@@ -318,7 +320,7 @@ Besides theoretical computer science, counting problems are also related to many
 	\pause
 	Truncate with modified recursion depth:
 	\[
-		P(G, e, L) = \frac{1-\prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}{2 - \prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)},
+		P(G, e, L) = \frac{1-\prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}{2 - \prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}.
 	\]
 
 \end{frame}
