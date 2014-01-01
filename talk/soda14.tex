@@ -318,9 +318,13 @@ Besides theoretical computer science, counting problems are also related to many
 	where $G_1 \triangleq G - e - u$, and $G_{i+1} \triangleq G_{i} - e_{i}$.
 
 	\pause
-	Truncate with modified recursion depth:
+	Truncate with a modified recursion depth:
 	\[
-		P(G, e, L) = \frac{1-\prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}{2 - \prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}.
+		P(G, e, L) = 
+		\begin{cases}
+			\frac{1}{2}, & \hbox{ if $L \leq 0$;} \\
+			\frac{1-\prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}{2 - \prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}, &\hbox{otherwise.}
+		\end{cases}
 	\]
 
 \end{frame}
