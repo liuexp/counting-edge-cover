@@ -99,7 +99,7 @@
 	\tableofcontents
 \end{frame}
 
-\section{Introduction}
+\section{\scshape Introduction}
 
 \begin{frame}
 	\frametitle{Edge cover}
@@ -229,8 +229,102 @@ Besides theoretical computer science, counting problems are also related to many
 	\end{definition}
 \end{frame}
 
+%\begin{frame}
+%	\frametitle{MCMC vs. correlation decay}
+%	
+%\end{frame}
+
+\section{\scshape Our Result}
+\begin{frame}
+	\frametitle{Main Result}
+	Previous work:
+	\begin{itemize}
+		\item Only an MCMC-based FPRAS is known for counting edge covers in graphs with maximum degree $3$.
+		\item The correlation decay based FPTAS for anti-ferromagnetic 2-spins systems (e.g. counting independent sets) goes beyond the best known MCMC based FPRAS and achieves the boundary of approximability.
+	\end{itemize}
+
+	\pause
+	Our main result is a correlation based FPTAS for counting edge covers for general graphs, which provides another example where the tractable range for correlation decay based FPTAS exceeds the sampling based FPRAS.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dangling instance} % Here we introduce the only concept that you need to keep in mind.
+
+\begin{definition}
+	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with exactly one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
+\end{definition}
+\input{fig-dangling.tex}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Counting v.s. Marginal Probability}
-	TBA.
-\end{frame}<++>
+	Recall our counting problem:
+	\begin{block}{Problem}
+	Let $EC(G)$ be the set of edge covers.
+
+	Goal: estimate $\abs{EC(G)}$.
+	\end{block}
+	
+	\pause
+	Let $X$ be an edge cover sampled uniformly from $EC(G)$, consider the following marginal probability:
+
+	for an edge $e$, we write $P(G,e) \triangleq \Pr ( e \notin X)$.
+
+	\bigskip
+
+	Solution: estimate $P(G,e)$.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Counting from marginal probability}
+	Recall that the set of all edges $E$ is an edge cover.
+	For a randomly sampled edge cover $X$, what is $\Pr (X=E)$?
+	\pause
+	\begin{align*}
+		\uncover<+->{\Pr (X=E) &= \frac{1}{\abs{EC(G)}} \\}
+		\visible<+->{\Pr (X=E) &= \Pr ( \forall i, e_i \in X) \\}
+		\visible<+->{&= \Pr (e_1 \in X) \Pr(e_2 \in X \mid e_1 \in X) \cdots\\ }
+		\visible<+->{&= \prod_i \Pr( e_i \in X \mid \set{e_j}_{j=1}^{i-1} \subseteq X) \\}
+		\visible<+->{&= \prod_i \left(1-P(G_i,e_i)\right), }
+	\end{align*}
+	where $G_1 = G, G_{i+1} = G_i - e_i - u_i - v_i$.
+
+	\pause
+	Therefore,
+	\[\frac{1}{\abs{EC(G)}} = \prod_i \left(1-P(G_i,e_i)\right). \]
+	
+\end{frame}
+
+% maybe add figures of normal edge examples here
+
+\begin{frame}
+	\frametitle{Estimating Marginal Probability}
+	We focus on $e$ is dangling.
+	\[
+		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}, %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
+	\]
+	where $G_1 \triangleq G - e - u$, and $G_{i+1} \triangleq G_{i} - e_{i}$.
+
+	\pause
+	Truncate with modified recursion depth:
+	\[
+		P(G, e, L) = \frac{1-\prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}{2 - \prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)},
+	\]
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Correlation Decay}
+
+\begin{proposition}
+	Given graph $G$, edge $e$ and depth $L$,
+	\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}\]
+\end{proposition}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\Huge \scshape Thank you!
+	\end{center}
+\end{frame}
 \end{document}
