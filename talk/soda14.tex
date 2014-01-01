@@ -155,12 +155,22 @@
 
 \begin{frame}
 	\frametitle{ Relation to Rtw-Mon-CNF}
-	TBA.
+	Consider the following graph, its edge covers are exactly satisfying assignments to the following CNF formula, if we treat edges as variables, and vertices as clauses.
+	\[
+		\phi = (e_1 \vee e_2 \vee e_3) \wedge (e_1 \vee e_4) \wedge (e_4 \vee e_5 \vee e_2 ) \wedge (e_3 \vee e_5).
+	\]
+
+	\begin{figure}[htp]
+		\centering
+		\input{fig-cnf.tex}
+		\caption{Graph representation for $\phi$.}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Counting Problems}
 	A list of problems in their search, optimization, and counting versions.
+	\bigskip
 
 	\begin{minipage}[tb]{0.3\linewidth}
 		{\bf Search problems:}
