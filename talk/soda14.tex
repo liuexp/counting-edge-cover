@@ -14,7 +14,6 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{array}
-\usepackage{gnuplot-lua-tikz}
 \usepackage{cite}
 \usepackage{url}
 \usepackage{hyperref}
@@ -60,8 +59,8 @@
 {\end{Verbatim}\end{small}\end{minipage}\end{Sbox}\setlength{\shadowsize}{2pt}\shadowbox{\TheSbox}\vglue 5pt}
 
 
-\usepackage{pgf}
-%\usepackage{tikz}
+%\usepackage{pgf}
+\usepackage{tikz}
 %\usetikzlibrary{arrows,automata}
 %\usepackage[latin1]{inputenc}
 \usepackage{verbatim}
@@ -147,15 +146,20 @@
 			\end{subfigure}
 		\end{figure}
 	\end{example}
-	\pause
-	\begin{remark}
+	\begin{remark}<4->
 		For a graph with a perfect matching, enumerating (sampling) perfect matchings is equivalent to enumerating (sampling) minimum edge covers.
 	\end{remark}
 \end{frame}
 
 \begin{frame}
-	\frametitle{ Relation to Rtw-Mon-CNF}
-	Consider the following graph, its edge covers are exactly satisfying assignments to the following CNF formula, if we treat edges as variables, and vertices as clauses.
+	\frametitle{Relation to Rtw-Mon-CNF}
+    \begin{definition}
+        A formula is {\bf read twice} if every variables appears at most twice.
+        
+        A formula is {\bf monotone} if every variables appears positively.
+    \end{definition}
+    \pause
+	Consider the following Rtw-Mon-CNF formula, its satisfying assignments are exactly edge covers of its graph representation, where we write edges as variables, and vertices as clauses.
 	\[
 		\phi = (e_1 \vee e_2 \vee e_3) \wedge (e_1 \vee e_4) \wedge (e_4 \vee e_5 \vee e_2 ) \wedge (e_3 \vee e_5).
 	\]
@@ -213,11 +217,11 @@
 	\frametitle{Why counting?}
 Besides theoretical computer science, counting problems are also related to many problems from other discipline such as:
 \begin{itemize}
-	\item Partition function of Statistical physics. 
+	\item Partition function of Statistical physics.
 		\pause
-	\item Graph polynomials. 
+	\item Graph polynomials.
 		\pause
-	\item Sampling, learning and inference. 
+	\item Sampling, learning and inference.
 		\pause
 	\item Query evaluations of probabilistic database.
 	\item \dots.
@@ -249,14 +253,16 @@ Besides theoretical computer science, counting problems are also related to many
 
 \begin{frame}
 	\frametitle{Main Result}
-	Previous work:
+	{\bf Previous work:}
 	\begin{itemize}
 		\item Only an MCMC-based FPRAS is known for counting edge covers in graphs with maximum degree $3$.
 		\item The correlation decay based FPTAS for anti-ferromagnetic 2-spins systems (e.g. counting independent sets) goes beyond the best known MCMC based FPRAS and achieves the boundary of approximability.
 	\end{itemize}
 
 	\pause
-	Our main result is a correlation based FPTAS for counting edge covers for general graphs, which provides another example where the tractable range for correlation decay based FPTAS exceeds the sampling based FPRAS.
+	{\bf Our main result:} a correlation decay based FPTAS for {\emph general} graphs.
+ 
+ This provides another example where the tractable range for correlation decay based FPTAS exceeds the sampling based FPRAS.
 \end{frame}
 
 \begin{frame}
@@ -264,6 +270,8 @@ Besides theoretical computer science, counting problems are also related to many
 
 \begin{definition}
 	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with exactly one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
+\[ G - e \triangleq \left(V, E \setminus e\right) \]
+\[ G - u \triangleq \left(V \setminus u, E - u\right) \]
 \end{definition}
 \input{fig-dangling.tex}
 \end{frame}
@@ -288,10 +296,12 @@ Besides theoretical computer science, counting problems are also related to many
 \end{frame}
 
 \begin{frame}
-	\frametitle{Counting from marginal probability}
+	\frametitle{Why $P(G,e)$?}
 	Recall that the set of all edges $E$ is an edge cover.
 	For a randomly sampled edge cover $X$, what is $\Pr (X=E)$?
+
 	\pause
+    Let $E=\set{e_i}$, and $e_i = (u_i,v_i)$.
 	\begin{align*}
 		\uncover<+->{\Pr (X=E) &= \frac{1}{\abs{EC(G)}} \\}
 		\visible<+->{\Pr (X=E) &= \Pr ( \forall i, e_i \in X) \\}
@@ -308,9 +318,21 @@ Besides theoretical computer science, counting problems are also related to many
 \end{frame}
 
 % maybe add figures of normal edge examples here
-
 \begin{frame}
 	\frametitle{Estimating Marginal Probability}
+Overall work-flow:
+\begin{itemize}
+  \item Derive a computation tree recursion for $P(G,e)$ from that of smaller instances.
+  TBA.
+  \item Truncate the computation tree at depth $L$ to get $P(G,e,L)$, for some notion of tree depth $L$.
+  \item Show exponential correlation decay with respect to that tree depth:
+  \[
+    \abs{ P(G,e,L) - P(G,e) } \leq exp(-\Omega(L))
+  \]
+\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{Computation Tree Recursion}
 	We focus on $e$ is dangling.
 	\[
 		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}, %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
@@ -320,7 +342,7 @@ Besides theoretical computer science, counting problems are also related to many
 	\pause
 	Truncate with a modified recursion depth:
 	\[
-		P(G, e, L) = 
+		P(G, e, L) =
 		\begin{cases}
 			\frac{1}{2}, & \hbox{ if $L \leq 0$;} \\
 			\frac{1-\prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}{2 - \prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}, &\hbox{otherwise.}
