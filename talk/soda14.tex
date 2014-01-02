@@ -127,7 +127,7 @@
 	\end{itemize}
 \end{frame}
 
-\subsection{Relation to Matching}
+\subsection{Edge Covers and Matching}
 \begin{frame}{Overview}
 	\tableofcontents[currentsection]
 \end{frame}
@@ -153,7 +153,7 @@ For a graph with a perfect matching, enumerating (sampling) perfect matchings is
 	\end{example}
 \end{frame}
 
-\subsection{Relation to Rtw-Mon-CNF Formulae}
+\subsection{Edge Covers and Rtw-Mon-CNF Formulae}
 \begin{frame}{Overview}
 	\tableofcontents[currentsection]
 \end{frame}
@@ -401,8 +401,7 @@ Here is an overall work-flow:
 \end{frame}
 
 \subsection{Correlation Decay}
-\begin{frame}
-	\frametitle{Correlation Decay}
+\begin{frame}{Correlation Decay}
 
 \begin{proposition}
 	Given graph $G$, edge $e$ and depth $L$,
@@ -411,6 +410,18 @@ Here is an overall work-flow:
     Now we just take $L = \log_2 \left(\frac{6m}{\eps} \right)$, this gives the desired FPTAS.
 \end{frame}
 
+\begin{frame}{Conclusions and Upcoming Results}
+As a conclusion, we have shown an FPTAS for counting edge covers in general graphs.
+\bigskip
+
+We later generalized our techniques for establishing correlation decay based FPTAS and obtained the following:
+\begin{itemize}
+  \item FPTAS for weighted edge covers. (Arbitrary edge weights).
+  \item FPTAS for Read-5-Mon-CNF, while Read-6-Mon-CNF does not admit FPTAS unless $P=NP$.
+  \item FPTAS for hypergraph matching in certain range (e.g. $3$D-Matching with maximum degree $4$).
+  \item \dots
+\end{itemize}
+\end{frame}
 \begin{frame}
 	\begin{center}
 		\Huge \scshape Thank you!
