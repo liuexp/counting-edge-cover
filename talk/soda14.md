@@ -4,6 +4,9 @@ I'm gonna talk about a simple FPTAS for counting edge covers.
 This is a joint work with pinyan and chengyu.
 
 To start with, I will talk about edge covers, and its relation to matching, to a special class of CNF formulae known as Rtw-Mon-CNF, and why its counting version is interesting.
+Then I will move on to our main result, an FPTAS for counting edge covers, which is based on a technique known as correlation decay.
+
+Now first of all, basic definitions.
 
 # Edge Covers
 The concept of edge cover comes from graph theory and belongs to the class of covering problems. It is defined similarly as vertex covers. Given an undirected input graph, an edge cover of the graph is a set of edges such that every vertex is incident to at least one edge from the set.
