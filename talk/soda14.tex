@@ -100,7 +100,7 @@
 \section{\scshape Introduction}
 \subsection{Definition}
 \begin{frame}{Overview}
-	\tableofcontents[currentsection]
+	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
 \end{frame}
 \begin{frame}{Edge cover}
 	\begin{definition}
@@ -129,7 +129,7 @@
 
 \subsection{Edge Covers and Matching}
 \begin{frame}{Overview}
-	\tableofcontents[currentsection]
+	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
 \end{frame}
 \begin{frame}{Relation to Matching}
 	%The minimal edge cover could be found via a greedy algorithm based on a maximum matching.
@@ -155,7 +155,7 @@ For a graph with a perfect matching, enumerating (sampling) perfect matchings is
 
 \subsection{Edge Covers and Rtw-Mon-CNF Formulae}
 \begin{frame}{Overview}
-	\tableofcontents[currentsection]
+	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
 \end{frame}
 
 \begin{frame}{Relation to Rtw-Mon-CNF}
@@ -179,7 +179,7 @@ For a graph with a perfect matching, enumerating (sampling) perfect matchings is
 
 \subsection{Counting Problems}
 \begin{frame}{Overview}
-	\tableofcontents[currentsection]
+	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
 \end{frame}
 \begin{frame}{Counting Problems}
 	A list of problems in their search, optimization, and counting versions.
@@ -225,7 +225,7 @@ Besides theoretical computer science, counting problems are also related to many
 		\pause
 	\item Sampling, learning and inference.
 		\pause
-    \item Pricing in combinatorial markets.
+    \item Pricing in combinatorial prediction markets.
 	\item Query evaluations of probabilistic database.
 	\item \dots.
 \end{itemize}
@@ -252,24 +252,34 @@ Besides theoretical computer science, counting problems are also related to many
 %\end{frame}
 
 
-\section{\scshape Our Result}
+\section{\scshape Main Result}
 
-\begin{frame}
-	\frametitle{Main Result}
-	{\bf Previous work:}
+\subsection{Previous Results and Our Result}
+\begin{frame}{Overview}
+	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
+\end{frame}
+\begin{frame}{Previous Results}
 	\begin{itemize}
-		\item Only an MCMC-based FPRAS is known for counting edge covers in graphs with maximum degree $3$.
-		\item The correlation decay based FPTAS for anti-ferromagnetic 2-spins systems (e.g. counting independent sets) goes beyond the best known MCMC based FPRAS and achieves the boundary of approximability.
+		\item For counting edge covers, only an MCMC-based FPRAS is known graphs with maximum degree $3$.
+			\pause
+		\item For \#DNF and counting matchings, only FPRAS is known.
+			\pause
+		\item For counting perfect matchings, it's still open whether or not it admits FPRAS (or FPTAS).
+			\pause
+		\item For anti-ferromagnetic 2-spins systems (e.g. counting independent sets), an FPTAS is known, and it's correlation decay based, and goes beyond the best known MCMC based FPRAS and achieves the boundary of approximability.
 	\end{itemize}
 
-	\pause
-	{\bf Our main result:} a correlation decay based FPTAS for {\emph general} graphs.
+\end{frame}
+\begin{frame}{Our Result}
+	\begin{itemize}
+		\item An FPTAS for counting edge covers in \emph{general} graphs.
+		\item Our algorithm is correlation decay based.
+		\item This provides another example where the tractable range of correlation decay based FPTAS exceeds the sampling based FPRAS.
+	\end{itemize}
  
- This provides another example where the tractable range for correlation decay based FPTAS exceeds the sampling based FPRAS.
 \end{frame}
 
-\begin{frame}
-	\frametitle{Proof Sketch}
+\begin{frame}{Proof Sketch}
 Let $EC(G)$ be the set of edge covers.
 Here is an overall work-flow:
 \begin{itemize}
@@ -283,8 +293,7 @@ Here is an overall work-flow:
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Devising sub-problems} % Here we introduce the only concept that you need to keep in mind.
+\begin{frame}{Devising sub-problems} % Here we introduce the only concept that you need to keep in mind.
 
 \begin{definition}[Dangling edge]
 	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with exactly one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
@@ -294,8 +303,7 @@ Here is an overall work-flow:
 \input{fig-dangling.tex}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Proof Sketch}
+\begin{frame}{Proof Sketch}
 Let $EC(G)$ be the set of edge covers.
 Here is an overall work-flow:
 \begin{itemize}
@@ -311,8 +319,7 @@ Here is an overall work-flow:
 \end{frame}
 
 \subsection{Counting via Marginal Probability}
-\begin{frame}
-	\frametitle{Counting v.s. Marginal Probability}
+\begin{frame}{Counting v.s. Marginal Probability}
 	\begin{block}{Problem}
 	Goal: estimate $\abs{EC(G)}$.
 	\end{block}
@@ -326,8 +333,7 @@ Here is an overall work-flow:
 	Solution: estimate $P(G,e)$.
 \end{frame}
 
-\begin{frame}
-	\frametitle{Why $P(G,e)$?}
+\begin{frame}{Why $P(G,e)$?}
 	Recall that the set of all edges $E$ is an edge cover.
 	For a randomly sampled edge cover $X$, what is $\Pr (X=E)$?
 
@@ -349,8 +355,7 @@ Here is an overall work-flow:
 \end{frame}
 
 % maybe add figures of normal edge examples here
-\begin{frame}
-	\frametitle{Proof Sketch}
+\begin{frame}{Proof Sketch}
 Let $EC(G)$ be the set of edge covers.
 Here is an overall work-flow:
 \begin{itemize}
@@ -365,8 +370,7 @@ Here is an overall work-flow:
 \end{frame}
 
 \subsection{Computation Tree Recursion}
-\begin{frame}
-	\frametitle{Computation Tree Recursion}
+\begin{frame}{Computation Tree Recursion}
 	We focus on $e$ is dangling.
 	\[
 		P(G, e) = \frac{1-\prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}, %= \frac{1}{2} - \frac{0.5 \prod_{i=1}^d P(G_i, e_i)}{2 - \prod_{i=1}^d P(G_i, e_i)}
@@ -385,8 +389,7 @@ Here is an overall work-flow:
 
 \end{frame}
 
-\begin{frame}
-	\frametitle{Proof Sketch}
+\begin{frame}{Proof Sketch}
 Let $EC(G)$ be the set of edge covers.
 Here is an overall work-flow:
 \begin{itemize}
@@ -414,17 +417,23 @@ Here is an overall work-flow:
 As a conclusion, we have shown an FPTAS for counting edge covers in general graphs.
 \bigskip
 
+	  \pause
 We later generalized our techniques for establishing correlation decay based FPTAS and obtained the following:
 \begin{itemize}
-  \item FPTAS for weighted edge covers. (Arbitrary edge weights).
-  \item FPTAS for Read-5-Mon-CNF, while Read-6-Mon-CNF does not admit FPTAS unless $P=NP$.
-  \item FPTAS for hypergraph matching in certain range (e.g. $3$D-Matching with maximum degree $4$).
+  \item FPTAS for counting weighted edge covers. (Arbitrary edge weights).
+  \item FPTAS for counting Read-5-Mon-CNF, while Read-6-Mon-CNF does not admit FPTAS unless $P=NP$.
+  \item FPTAS for counting hypergraph matching in certain range (e.g. $3$D-Matching with maximum degree $4$).
   \item \dots
 \end{itemize}
 \end{frame}
 \begin{frame}
 	\begin{center}
 		\Huge \scshape Thank you!
+	\end{center}
+
+	\bigskip
+	\begin{center}
+		\huge Q \& A.
 	\end{center}
 \end{frame}
 \end{document}
