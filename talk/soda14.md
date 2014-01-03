@@ -1,7 +1,4 @@
-Hello everyone, thanks for coming.
 
-I'm gonna talk about a simple FPTAS for counting edge covers.
-This is a joint work with pinyan and chengyu.
 
 To start with, I will talk about edge covers, and its relation to matching, to a special class of CNF formulae known as Rtw-Mon-CNF, and why its counting version is interesting.
 Then I will move on to our main result, an FPTAS for counting edge covers, which is based on a technique known as correlation decay.
@@ -10,23 +7,24 @@ Now first of all, basic definitions.
 
 # Edge Covers
 The concept of edge cover comes from graph theory and belongs to the class of covering problems. It is defined similarly as vertex covers. Given an undirected input graph, an edge cover of the graph is a set of edges such that every vertex is incident to at least one edge from the set.
-Here is an example edge cover for the Petersen graph, we highlight the edges being chosen. 
-It's clear that for any graph without isolated vertices, there is always an edge cover which is just the set of all edges.
-So the decision problem is trivial.
+
+Here is an example edge cover for the Petersen graph, we highlight the edges being chosen in red. 
+
+So the decision problem is trivial. We can always take the set of all edges to cover all vertices.
 In this example, this edge cover is also a perfect matching.
-In general these two concepts are closely related.
+This is not a coincidence and these two concepts are closely related.
 
-Edge cover is related to many problems:
+In general, edge cover could be related to many problems such as:
 * Matching, vertex cycle cover, or k-factor problem in general. 
+* read twice monotone CNF formulae.
+* Holant problems in general.
+
 In brief, a perfect matching is always a minimum edge cover. 
-But the converse is not true. Yet they are not that much far away.
-Here is an example.
-On the left, the edges chosen turns out to be not only an edge cover, but also a perfect matching, while on the right is a maximum matching but not an edge cover.
+So counting perfect matching can be solved by an oracle that counts minimum edge covers, whether exact or approximate counting.
+Though the converse is not true. Yet the two concepts are not so different.
+Here is an illustration.
 
-In fact, the size of min. edge cover plus the size of max. matching is always the number of vertices.
-For a graph with perfect matching, they are both exactly at half of the number of vertices.
-
-This led to a greedy algorithm based on a maximum matching that solves the optimization problem of edge cover.
+A minimum edge cover could be found by extending a maximum matching greedily, an edge for every not-yet covered vertex.
 
 Unlike the decision or optimization problem, the counting version is a #P-complete problem even if the input graph is 3-regular.
 
