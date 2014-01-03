@@ -161,7 +161,7 @@ For a graph with a perfect matching, enumerating (sampling) perfect matchings is
 \begin{frame}{Relation to Rtw-Mon-CNF}
     \begin{definition}
         A formula is {\bf read twice} if every variables appears at most twice.
-        
+
         A formula is {\bf monotone} if every variables appears positively.
     \end{definition}
     \pause
@@ -210,7 +210,7 @@ For a graph with a perfect matching, enumerating (sampling) perfect matchings is
 		\begin{itemize}
 			\item \#SAT.
 			\item Counting matchings.
-			\item Counting edge covers.
+			\item\alert{Counting edge covers}.
 			\item \dots.
 		\end{itemize}
 	\end{minipage}
@@ -237,7 +237,9 @@ Besides theoretical computer science, counting problems are also related to many
 	Instead we look for these two types of polynomial time approximation scheme:
 	\pause
 	\begin{definition}[FPTAS]
-		For given parameter $\eps > 0$ and an instance of a particular problem class, if the algorithm outputs a number $\hat{N}$ such that $(1-\eps) N \leq \hat{N} \leq (1+\eps) N$, where $N$ is the accurate answer of the problem instance, and the running time is bounded by $poly(n, 1/ \eps)$ with $n$ being the size of instance, this is called the {\bf FPTAS (fully polynomial time approximation scheme)}.
+		For given parameter $\eps > 0$ and an instance of a particular problem class, if the algorithm outputs a number $\hat{N}$ such that 
+\[(1-\eps) N \leq \hat{N} \leq (1+\eps) N,\]
+ where $N$ is the accurate answer of the problem instance, and the running time is bounded by $poly(n, 1/ \eps)$ with $n$ being the size of instance, this is called the {\bf FPTAS (fully polynomial time approximation scheme)}.
 
 	\end{definition}
 	%\pause
@@ -276,7 +278,7 @@ Besides theoretical computer science, counting problems are also related to many
 		\item Our algorithm is correlation decay based.
 		\item This provides another example where the tractable range of correlation decay based FPTAS exceeds the sampling based FPRAS.
 	\end{itemize}
- 
+
 \end{frame}
 
 \begin{frame}{Proof Sketch}
