@@ -1,5 +1,4 @@
 
-
 To start with, I will talk about edge covers, and its relation to matching, to a special class of CNF formulae known as Rtw-Mon-CNF, and why its counting version is interesting.
 Then I will move on to our main result, an FPTAS for counting edge covers, which is based on a technique known as correlation decay.
 
@@ -45,20 +44,16 @@ Next let's introduce what is a counting problem.
 * ...
 
 Besides theoretical computer science, counting problems are also related to many problems from other discipline.
-* Partition function of Statistical physics.
-* Graph polynomials.
-* Sampling, learning and inference.
-* Query evaluations of probabilistic database.
+* from statistical physics
+* pure combinatorics
+* machine learning
+* game theory
+* database community.
 * ...
 
-# Remarks
-A common paradigm for designing approximate counting algorithms is to relate counting with a probability distribution.
-This is especially the case in randomized counting, and is also refered as counting vs. sampling.
-For randomized sampling, the most successful approach is by Markov chains.
-On the other hand, the recent developments of correlation based deterministic FPTAS is changing the picture.
-One most successful example is in anti-ferromagnetic two-spin systems.
+While counting in general is interesting, exact counting is usually hard.
+We are interested in their approximate version, such as FTPAS and FPRAS
 
-Comparisons of Paradigms: MCMC vs. correlation decay.
 
 # Main Results
 TBA.
