@@ -117,6 +117,53 @@
 \end{frame}
 
 
+
+\subsection{Counting Problems}
+\begin{frame}{Overview}
+	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
+\end{frame}
+
+\begin{frame}{Why counting?}
+	\begin{remark}[Counting edge covers]
+		\begin{itemize}
+			\item As the name suggests, the problem of counting edge covers simply asks for the number of edge covers in a graph.
+			\item While both decision and optimization (minimum edge covers) version of edge cover is easy, the counting version is more challenging and interesting.
+		\end{itemize}
+	\end{remark}
+
+	\bigskip
+	\pause
+Besides theoretical computer science, counting problems could also be related to many problems from other discipline such as:
+\begin{itemize}
+	\item Partition function in statistical physics.
+		\pause
+	\item Graph polynomials.
+		\pause
+	\item Sampling, learning and inference in probabilistic graphical models.
+		\pause
+    \item Pricing in combinatorial prediction markets.
+	\item Query evaluations of probabilistic database.
+	\item \dots.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Approximate Counting}
+	Many interesting problems in the exact counting regimes, including counting edge cover, is hard (\#P-complete).
+	We look for their approximate version.
+	\pause
+	\begin{definition}[FPTAS]
+		For given parameter $\eps > 0$ and an instance of a particular problem class, if the algorithm outputs a number $\hat{N}$ such that 
+\[(1-\eps) N \leq \hat{N} \leq (1+\eps) N,\]
+ where $N$ is the accurate answer of the problem instance, and the running time is bounded by $poly(n, 1/ \eps)$ with $n$ being the size of instance, this is called the {\bf FPTAS (fully polynomial time approximation scheme)}.
+
+	\end{definition}
+	%\pause
+	%\begin{definition}[FPRAS]
+		A randomized relaxation of FPTAS is known as {\bf FPRAS (fully polynomial time randomized approximation scheme)}, which uses random bits and only outputs $\hat{N}$ to the desired precision with high probability.
+	%\end{definition}
+\end{frame}
+
 \begin{frame}{Edge cover}
 	Edge cover is related to many other problems such as:
 	\begin{itemize}
@@ -133,7 +180,9 @@
 \end{frame}
 \begin{frame}{Relation to Matching}
 	%The minimal edge cover could be found via a greedy algorithm based on a maximum matching.
-For a graph with a perfect matching, enumerating (sampling) perfect matchings is equivalent to enumerating (sampling) minimum edge covers.
+%For a graph with a perfect matching, enumerating (sampling) perfect matchings is equivalent to enumerating (sampling) minimum edge covers.
+	Counting perfect matchings could be solved with an oracle that counts the minimum edge covers.
+	\bigskip 
 	\begin{example}[Minimum edge covers]
 		Find a minimum edge cover by maximal matching?
 		\begin{figure}[htp]
@@ -165,88 +214,20 @@ For a graph with a perfect matching, enumerating (sampling) perfect matchings is
         A formula is {\bf monotone} if every variables appears positively.
     \end{definition}
     \pause
-	Consider the following Rtw-Mon-CNF formula, its satisfying assignments are exactly edge covers of its graph representation, where we write edges as variables, and vertices as clauses.
-	\[
-		\phi = (e_1 \vee e_2 \vee e_3) \wedge (e_1 \vee e_4) \wedge (e_4 \vee e_5 \vee e_2 ) \wedge (e_3 \vee e_5).
-	\]
+By treating edges as variables, and vertices as clauses, 
+every graph $G$ has a $\phi(G)$ in Rtw-Mon-CNF, and every Rtw-Mon-CNF $\phi$ has a $G(\phi)$,
+in such a way that $SAT(\phi(G)) \equiv EC(G)$ and $SAT(\phi) \equiv EC(G(\phi))$.
+%satisfying assignments of a Rtw-Mon-CNF formulae is in one-to-one correspondence to edge covers of its graph representation.
+
+\pause
 
 	\begin{figure}[htp]
 		\centering
 		\input{fig-cnf.tex}
-		\caption{Graph representation for $\phi$.}
+		\caption{Graph representation for $\phi = (e_1 \vee e_2 \vee e_3) \wedge (e_1 \vee e_4) \wedge (e_4 \vee e_5 \vee e_2 ) \wedge (e_3 \vee e_5)$.}
 	\end{figure}
 \end{frame}
 
-\subsection{Counting Problems}
-\begin{frame}{Overview}
-	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
-\end{frame}
-\begin{frame}{Counting Problems}
-	A list of problems in their search, optimization, and counting versions.
-	\bigskip
-
-	\begin{minipage}[tb]{0.3\linewidth}
-		{\bf Search problems:}
-		\begin{itemize}
-			\item SAT.
-			\item Find a (perfect) matching.
-			\item Find an edge cover.
-			\item \dots.
-		\end{itemize}
-	\end{minipage}
-	\pause
-	\begin{minipage}[tb]{0.3\linewidth}
-		{\bf Optimizations:}
-		\begin{itemize}
-			\item MAX-SAT.
-			\item Find a maximum matching.
-			\item Find a minimum edge cover.
-			\item \dots.
-		\end{itemize}
-	\end{minipage}
-	\pause
-	\begin{minipage}[tb]{0.3\linewidth}
-		{\bf Counting problems:}
-		\begin{itemize}
-			\item \#SAT.
-			\item Counting matchings.
-			\item\alert{Counting edge covers}.
-			\item \dots.
-		\end{itemize}
-	\end{minipage}
-\end{frame}
-
-\begin{frame}{Why counting?}
-Besides theoretical computer science, counting problems are also related to many problems from other discipline such as:
-\begin{itemize}
-	\item Partition function in statistical physics.
-		\pause
-	\item Graph polynomials.
-		\pause
-	\item Sampling, learning and inference in probabilistic graphical models.
-		\pause
-    \item Pricing in combinatorial prediction markets.
-	\item Query evaluations of probabilistic database.
-	\item \dots.
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Approximate Counting}
-	Many interesting problems in the exact counting regimes, including counting edge cover, is hard (\#P-complete).
-	Instead we look for these two types of polynomial time approximation scheme:
-	\pause
-	\begin{definition}[FPTAS]
-		For given parameter $\eps > 0$ and an instance of a particular problem class, if the algorithm outputs a number $\hat{N}$ such that 
-\[(1-\eps) N \leq \hat{N} \leq (1+\eps) N,\]
- where $N$ is the accurate answer of the problem instance, and the running time is bounded by $poly(n, 1/ \eps)$ with $n$ being the size of instance, this is called the {\bf FPTAS (fully polynomial time approximation scheme)}.
-
-	\end{definition}
-	%\pause
-	%\begin{definition}[FPRAS]
-		A randomized relaxation of FPTAS is known as {\bf FPRAS (fully polynomial time randomized approximation scheme)}, which uses random bits and only outputs $\hat{N}$ to the desired precision with high probability.
-	%\end{definition}
-\end{frame}
 
 %\begin{frame}
 %	\frametitle{MCMC vs. correlation decay}
@@ -262,13 +243,13 @@ Besides theoretical computer science, counting problems are also related to many
 \end{frame}
 \begin{frame}{Previous Results}
 	\begin{itemize}
-		\item For counting edge covers, only an MCMC-based FPRAS is known graphs with maximum degree $3$.
+		\item For counting edge covers, only an Markov Chain Monte Carlo (MCMC) based FPRAS is known for graphs with maximum degree $3$.
 			\pause
-		\item For \#DNF and counting matchings, only FPRAS is known.
+		\item For \#DNF and counting matchings, also only FPRAS is known.
 			\pause
 		\item For counting perfect matchings, it's still open whether or not it admits FPRAS (or FPTAS).
 			\pause
-		\item For anti-ferromagnetic 2-spins systems (e.g. counting independent sets), an FPTAS is known, and it's correlation decay based, and goes beyond the best known MCMC based FPRAS and achieves the boundary of approximability.
+		\item For anti-ferromagnetic 2-spins systems (e.g. counting independent sets), an FPTAS is known, and it's correlation decay based, and goes beyond the best known MCMC based FPRAS and achieves the boundary of approximability (in terms of maximum degree).
 	\end{itemize}
 
 \end{frame}
@@ -298,7 +279,7 @@ Here is an overall work-flow:
 \begin{frame}{Devising sub-problems} % Here we introduce the only concept that you need to keep in mind.
 
 \begin{definition}[Dangling edge]
-	A {\bf dangling edge} $e=(u,\_)$ of a graph is such singleton edge with exactly one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
+	A {\bf dangling edge} $e=(u,\_)$ of a graph is such a singleton edge with exactly one end-point vertex $u$, as shown in the Figure \ref{fig:G}.
 \[ G - e \triangleq \left(V, E \setminus e\right) \]
 \[ G - u \triangleq \left(V \setminus u, E - u\right) \]
 \end{definition}
@@ -350,9 +331,8 @@ Here is an overall work-flow:
 	\end{align*}
 	\visible<.->{where $G_1 = G, G_{i+1} = G_i - e_i - u_i - v_i$.}
 
-	\pause
-	Therefore,
-	\[\frac{1}{\abs{EC(G)}} = \prod_i \left(1-P(G_i,e_i)\right). \]
+	\visible<+->{Therefore,
+		\[\frac{1}{\abs{EC(G)}} = \prod_i \left(1-P(G_i,e_i)\right). \]}
 	
 \end{frame}
 
