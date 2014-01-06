@@ -165,7 +165,7 @@ Besides theoretical computer science, counting problems could also be related to
 \end{frame}
 
 \begin{frame}{Edge cover}
-	Edge cover is related to many other problems such as:
+	Besides its own interests, edge cover is closely related to many other problems such as:
 	\begin{itemize}
 		\item Matching problem.
 		\item Rtw-Mon-CNF. (read twice monotone CNF)
@@ -179,10 +179,13 @@ Besides theoretical computer science, counting problems could also be related to
 	\tableofcontents[currentsubsection, hideothersubsections, sectionstyle=show/shaded, subsectionstyle=show/shaded]
 \end{frame}
 \begin{frame}{Relation to Matching}
+	A perfect matching is always a minimum edge cover.
 	%The minimal edge cover could be found via a greedy algorithm based on a maximum matching.
 %For a graph with a perfect matching, enumerating (sampling) perfect matchings is equivalent to enumerating (sampling) minimum edge covers.
-	Counting perfect matchings could be solved with an oracle that counts the minimum edge covers.
+	%Counting perfect matchings could be solved with an oracle that counts the minimum edge covers.
+	\[ \#\hbox{perfect-matchings} \leq_{AP} \#\hbox{minimum-edge-covers}.\]
 	\bigskip 
+	Besides,
 	\begin{example}[Minimum edge covers]
 		Find a minimum edge cover by maximal matching?
 		\begin{figure}[htp]
@@ -213,13 +216,13 @@ Besides theoretical computer science, counting problems could also be related to
 
         A formula is {\bf monotone} if every variables appears positively.
     \end{definition}
-    \pause
+    %\pause
 By treating edges as variables, and vertices as clauses, 
-every graph $G$ has a $\phi(G)$ in Rtw-Mon-CNF, and every Rtw-Mon-CNF $\phi$ has a $G(\phi)$,
-in such a way that $SAT(\phi(G)) \equiv EC(G)$ and $SAT(\phi) \equiv EC(G(\phi))$.
+\[\hbox{Edge-covers} \equiv \hbox{Rtw-Mon-CNF}.\]
+%every graph $G$ has a $\phi(G)$ in Rtw-Mon-CNF, and every Rtw-Mon-CNF $\phi$ has a $G(\phi)$,
+%in such a way that $SAT(\phi(G)) \equiv EC(G)$ and $SAT(\phi) \equiv EC(G(\phi))$.
 %satisfying assignments of a Rtw-Mon-CNF formulae is in one-to-one correspondence to edge covers of its graph representation.
 
-\pause
 
 	\begin{figure}[htp]
 		\centering
@@ -243,9 +246,9 @@ in such a way that $SAT(\phi(G)) \equiv EC(G)$ and $SAT(\phi) \equiv EC(G(\phi))
 \end{frame}
 \begin{frame}{Previous Results}
 	\begin{itemize}
-		\item For counting edge covers, only an Markov Chain Monte Carlo (MCMC) based FPRAS is known for graphs with maximum degree $3$.
+		\item For counting edge covers, only an Markov Chain Monte Carlo (MCMC) based FPRAS is known for graphs with maximum degree $3$ [I. Bezáková and W. Rummler 2009].
 			\pause
-		\item For \#DNF and counting matchings, also only FPRAS is known.
+		\item For \#DNF[Karp and Luby 1983] and counting matchings[Jerrum and Sinclair 1989], only FPRAS is known.
 			\pause
 		\item For counting perfect matchings, it's still open whether or not it admits FPRAS (or FPTAS).
 			\pause
@@ -255,9 +258,9 @@ in such a way that $SAT(\phi(G)) \equiv EC(G)$ and $SAT(\phi) \equiv EC(G(\phi))
 \end{frame}
 \begin{frame}{Our Result}
 	\begin{itemize}
-		\item An FPTAS for counting edge covers in \emph{general} graphs.
+		\item An \textcolor{red}{FPTAS} for counting edge covers in \textcolor{red}{general} graphs.
 		\item Our algorithm is correlation decay based.
-		\item This provides another example where the tractable range of correlation decay based FPTAS exceeds the sampling based FPRAS.
+		\item This provides another example where the tractable range of correlation decay based FPTAS exceeds the best-known sampling based FPRAS.
 	\end{itemize}
 
 \end{frame}
@@ -359,8 +362,18 @@ Here is an overall work-flow:
 	\]
 	where $G_1 \triangleq G - e - u$, and $G_{i+1} \triangleq G_{i} - e_{i}$.
 
-	\pause
-	Truncate with a modified recursion depth:
+	\bigskip
+	But the computation tree could be exponentially large, how do we get an estimate out of it?
+
+\end{frame}
+
+\begin{frame}{Computationally Efficient Correlation Decay}
+	A natural estimate: Truncate the tree!
+
+	\bigskip
+
+	But without a degree bound, the tree could still be exponentially large.
+	So we truncate with a modified recursion depth:
 	\[
 		P(G, e, L) =
 		\begin{cases}
@@ -368,6 +381,9 @@ Here is an overall work-flow:
 			\frac{1-\prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}{2 - \prod_{i=1}^d P(G_i, e_i, L - \lceil \log_6{(d+1)} \rceil)}, &\hbox{otherwise.}
 		\end{cases}
 	\]
+
+	\bigskip
+	This is also known as computational efficient correlation decay.
 
 \end{frame}
 
@@ -388,25 +404,22 @@ Here is an overall work-flow:
 \subsection{Correlation Decay}
 \begin{frame}{Correlation Decay}
 
-\begin{proposition}
+	\begin{block}{Key Lemma}
 	Given graph $G$, edge $e$ and depth $L$,
 	\[\abs{P(G,e,L) - P(G,e)} \leq 3\cdot(\frac{1}{2})^{L+1}\]
-\end{proposition}
+\end{block}
     Now we just take $L = \log_2 \left(\frac{6m}{\eps} \right)$, this gives the desired FPTAS.
 \end{frame}
 
 \begin{frame}{Conclusions and Upcoming Results}
-As a conclusion, we have shown an FPTAS for counting edge covers in general graphs.
+As a conclusion, we have shown an FPTAS for counting edge covers (or Rtw-Mon-CNF) in general graphs. 
 \bigskip
 
-	  \pause
-We later generalized our techniques for establishing correlation decay based FPTAS and obtained the following:
-\begin{itemize}
-  \item FPTAS for counting weighted edge covers. (Arbitrary edge weights).
-  \item FPTAS for counting Read-5-Mon-CNF, while Read-6-Mon-CNF does not admit FPTAS unless $P=NP$.
-  \item FPTAS for counting hypergraph matching in certain range (e.g. $3$D-Matching with maximum degree $4$).
-  \item \dots
-\end{itemize}
+A natural question: what about counting Read-$k$-Mon-CNF?
+\bigskip
+
+\pause
+Upcoming: FPTAS for counting Read-5-Mon-CNF, while Read-6-Mon-CNF does not admit FPTAS unless $P=NP$.
 \end{frame}
 \begin{frame}
 	\begin{center}
@@ -416,6 +429,9 @@ We later generalized our techniques for establishing correlation decay based FPT
 	\bigskip
 	\begin{center}
 		\huge Q \& A.
+\bigskip
+
+		liuexp[at]gmail[dot]com
 	\end{center}
 \end{frame}
 \end{document}

@@ -35,7 +35,7 @@ In general, besides theoretical computer science, counting problems could be rel
 
 # Approximate Counting
 
-That being said, we agree that counting in general is interesting, however, exact counting is usually hard.
+That being said, we all agree that counting in general is interesting, however, exact counting is usually hard.
 So we are interested in their approximate version, such as the notion of FTPAS and FPRAS
 
 For an algorithm to be an FPTAS, it's required that given a desired multiplicative precision by epsilon, the algorithm outputs an answer within polynomial time that achieves the precison.
