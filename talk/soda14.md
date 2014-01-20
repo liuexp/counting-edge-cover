@@ -1,3 +1,5 @@
+_Warning: This script is deprecated!_
+=================================
 
 In this talk I will start with edge covers, and what it means to count them.
 Some related problems, such as matching, and a special class of CNF formulae known as Rtw-Mon-CNF will also be discussed.
